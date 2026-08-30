@@ -47,13 +47,17 @@
           <!-- Honesty banner: never describe unshipped software as if it exists. -->
           <div class="mt-8">
             <PlaceholderNotice
-              v-if="product.status !== 'beta'"
+              v-if="!isUsable"
               :title="$t('products.page.placeholderTitle')"
               :body="$t('products.page.placeholderBody', { name: product.name })"
             />
 
-            <UiAlert v-else color="green" icon="mdi:flask-outline" bordered size="md" role="note">
-              {{ $t('status.betaHint') }}
+            <!--
+              Amber rather than green even for alpha: it is installable, which is
+              not the same as dependable.
+            -->
+            <UiAlert v-else color="amber" icon="mdi:flask-outline" bordered size="md" role="note">
+              {{ $t(`status.${product.status}Hint`) }}
             </UiAlert>
           </div>
 
@@ -217,6 +221,8 @@
  * prominent notice: writing present-tense marketing copy for software that does
  * not exist is precisely what this project argues against.
  */
+import { USABLE_STATUSES } from '~/data/products'
+
 const route = useRoute()
 const localePath = useLocalePath()
 const { t } = useI18n()
@@ -238,6 +244,9 @@ if (!product.value) {
 
 const perks = computed(() => perksOf(product.value))
 const relatedProducts = computed(() => related(slug.value))
+
+/** Alpha and pre-alpha can be installed today; anything earlier cannot. */
+const isUsable = computed(() => USABLE_STATUSES.includes(product.value.status))
 
 const ids = {
   perks: useId(),

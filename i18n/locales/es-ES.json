@@ -4,6 +4,11 @@
     "tagline": "Software que se ocupa de lo suyo",
     "description": "Un conjunto de aplicaciones y servicios de código abierto pensados para la privacidad, sin ninguna función de IA. A un precio justo, auditables por completo y fáciles de abandonar cuando quieras."
   },
+  "banner": {
+    "label": "En construcción",
+    "text": "Numori se está construyendo en abierto. Todavía no hay nada en venta y la mayoría de las aplicaciones están sin terminar.",
+    "cta": "Ver qué está listo"
+  },
   "nav": {
     "home": "Inicio",
     "products": "Productos",
@@ -54,13 +59,13 @@
   },
   "status": {
     "label": "Estado",
-    "beta": "Beta",
+    "alpha": "Alfa",
+    "preAlpha": "Pre-alfa",
     "development": "En desarrollo",
-    "planned": "Previsto",
-    "betaHint": "Se puede usar hoy, aunque cambia a menudo.",
-    "developmentHint": "El código es público y avanza, pero todavía no se puede usar.",
-    "plannedHint": "Diseñado y comprometido. Aún no hay código que mostrar.",
-    "honestNote": "Preferimos decirte que algo no está listo antes que disfrazar una lista de espera de lanzamiento."
+    "alphaHint": "Ya se puede usar, y está en bruto. Espera errores, rincones sin terminar y algún cambio que rompa cosas. Tus datos están a salvo (la exportación funciona), pero todavía no lo dejes como única copia de nada.",
+    "preAlphaHint": "Muy temprano. Funciona, pero faltan piezas y las cosas cambian sin avisar. Merece un vistazo si te gusta ver cómo se construye el software; todavía no merece que dependas de él.",
+    "developmentHint": "En construcción. Aún no se puede instalar: el repositorio es público para que puedas seguirlo, y lo que describimos abajo es nuestra intención, no un producto terminado.",
+    "honestNote": "Nada de esto está terminado. Una aplicación está en alfa, otra en pre-alfa y el resto siguen construyéndose. Cada tarjeta dice en qué punto está, y ninguna dice «próximamente» para no decir «no hemos empezado»."
   },
   "categories": {
     "label": "Categoría",
@@ -216,7 +221,7 @@
     },
     "index": {
       "title": "Productos y servicios",
-      "subtitle": "{count} piezas, una cuenta y unas mismas reglas. La mayoría siguen en construcción, y lo indicamos en cada tarjeta.",
+      "subtitle": "{count} piezas, una cuenta y unas mismas reglas. Todo sigue en construcción, y cada tarjeta dice exactamente en qué punto está.",
       "filterLabel": "Filtrar por estado",
       "filterAll": "Todo",
       "countAll": "Mostrando los {count} productos",
@@ -230,7 +235,7 @@
       "sourceTitle": "Lee el código",
       "sourceBody": "{name} se publica bajo la licencia AGPL-3.0. Léelo, compílalo, audítalo o ejecuta tu propia copia.",
       "placeholderTitle": "Esta página es provisional",
-      "placeholderBody": "{name} no está terminado, así que lo que estás leyendo es nuestra intención y no la descripción de un producto ya publicado. Lo sustituiremos por capturas y detalles concretos a medida que avance el trabajo.",
+      "placeholderBody": "{name} sigue en construcción, así que lo que estás leyendo es nuestra intención y no la descripción de un producto que funcione. Lo sustituiremos por capturas y detalles concretos a medida que avance el trabajo.",
       "notFound": "No encontramos ese producto",
       "notFoundBody": "Puede que le hayamos cambiado el nombre. Tienes la lista completa más abajo."
     },

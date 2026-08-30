@@ -16,12 +16,24 @@
 export const GITHUB_ORG = 'https://github.com/Numori-Ecosystem'
 
 /**
- * Lifecycle stages, in the order they should be displayed.
- * - `beta`        — usable today, still changing.
- * - `development` — code exists and is public, not yet usable.
- * - `planned`     — designed and committed to, no code yet.
+ * Lifecycle stages, ordered most advanced first. That order drives the filter on
+ * the products index and the ranking in `useProducts().related()`, so it is
+ * load-bearing rather than cosmetic.
+ *
+ * - `alpha`       — usable, and rough. Bugs and breaking changes expected.
+ * - `preAlpha`    — runs, but incomplete and changing without warning.
+ * - `development` — being built, not usable yet. The code is public regardless.
+ *
+ * There is deliberately no `beta` or `stable` yet. Adding one is a claim about
+ * quality, and it should be made when it is true rather than kept warm in an enum.
  */
-export const STATUSES = ['beta', 'development', 'planned']
+export const STATUSES = ['alpha', 'preAlpha', 'development']
+
+/**
+ * Statuses a visitor can actually install and use today. Drives whether a product
+ * page shows a "try it, but" note or a "this is a placeholder" one.
+ */
+export const USABLE_STATUSES = ['alpha', 'preAlpha']
 
 /**
  * Product groupings, in display order.
@@ -61,7 +73,7 @@ export const ACCESS_LEVELS = ['local', 'account', 'infrastructure']
  * @property {string} icon MDI icon name, rendered through @nuxt/icon.
  * @property {string} accent Accent palette key; see ACCENTS in app/utils/accents.js.
  * @property {'apps'|'platform'|'developer'} category
- * @property {'beta'|'development'|'planned'} status
+ * @property {'alpha'|'preAlpha'|'development'} status
  * @property {'local'|'account'|'infrastructure'} access
  * @property {boolean} [syncsWithAccount] Whether a free Numori account adds key
  *   features — almost always cross-device sync. Distinct from `access: 'account'`,
@@ -83,7 +95,7 @@ export const products = [
     icon: 'mdi:note-text-outline',
     accent: 'primary',
     category: 'apps',
-    status: 'beta',
+    status: 'alpha',
     access: 'local',
     syncsWithAccount: true,
     featured: true,
@@ -98,7 +110,7 @@ export const products = [
     icon: 'mdi:clipboard-text-multiple-outline',
     accent: 'amber',
     category: 'apps',
-    status: 'beta',
+    status: 'preAlpha',
     access: 'local',
     syncsWithAccount: true,
     featured: true,
@@ -113,7 +125,7 @@ export const products = [
     icon: 'mdi:email-outline',
     accent: 'sky',
     category: 'apps',
-    status: 'planned',
+    status: 'development',
     // A mail *client*, not a mail service: it talks to whatever mailbox you
     // already have over IMAP/SMTP, so it needs nothing from us. A Numori-hosted
     // mailbox is a separate product with its own pricing, and when it exists it
@@ -134,7 +146,7 @@ export const products = [
     icon: 'mdi:cloud-lock-outline',
     accent: 'teal',
     category: 'apps',
-    status: 'planned',
+    status: 'development',
     // Drive is the storage quota itself, so it needs an account to attach it to.
     access: 'account',
     featured: true,
@@ -149,7 +161,7 @@ export const products = [
     icon: 'mdi:calendar-outline',
     accent: 'rose',
     category: 'apps',
-    status: 'planned',
+    status: 'development',
     access: 'local',
     syncsWithAccount: true,
     featured: true,
@@ -164,7 +176,7 @@ export const products = [
     icon: 'mdi:format-list-checks',
     accent: 'success',
     category: 'apps',
-    status: 'planned',
+    status: 'development',
     access: 'local',
     syncsWithAccount: true,
     featured: true,
@@ -179,7 +191,7 @@ export const products = [
     icon: 'mdi:chat-outline',
     accent: 'violet',
     category: 'apps',
-    status: 'planned',
+    status: 'development',
     // Messages have to be held for a recipient who is offline, so a server is
     // involved and it needs to know whose messages these are.
     access: 'account',
@@ -195,7 +207,7 @@ export const products = [
     icon: 'mdi:bookmark-outline',
     accent: 'orange',
     category: 'apps',
-    status: 'planned',
+    status: 'development',
     access: 'local',
     syncsWithAccount: true,
     featured: false,
@@ -210,7 +222,7 @@ export const products = [
     icon: 'mdi:table-large',
     accent: 'success',
     category: 'apps',
-    status: 'planned',
+    status: 'development',
     access: 'local',
     syncsWithAccount: true,
     featured: false,
@@ -225,7 +237,7 @@ export const products = [
     icon: 'mdi:form-select',
     accent: 'indigo',
     category: 'apps',
-    status: 'planned',
+    status: 'development',
     // A form is a public URL that has to stay up and collect replies for someone.
     access: 'account',
     featured: false,
@@ -240,7 +252,7 @@ export const products = [
     icon: 'mdi:wallet-outline',
     accent: 'teal',
     category: 'apps',
-    status: 'planned',
+    status: 'development',
     access: 'local',
     syncsWithAccount: true,
     featured: false,
@@ -255,7 +267,7 @@ export const products = [
     icon: 'mdi:file-pdf-box',
     accent: 'error',
     category: 'apps',
-    status: 'planned',
+    status: 'development',
     access: 'local',
     featured: false,
     platforms: ['web', 'macos', 'windows', 'linux'],
@@ -271,7 +283,7 @@ export const products = [
     icon: 'mdi:shield-key-outline',
     accent: 'sky',
     category: 'platform',
-    status: 'planned',
+    status: 'development',
     access: 'infrastructure',
     featured: false,
     platforms: ['service'],
@@ -303,7 +315,7 @@ export const products = [
     // happens to run our status page too, which is the honest way to demonstrate
     // that a monitoring tool works.
     category: 'apps',
-    status: 'planned',
+    status: 'development',
     // Checks run while your machine is off, so a server does the work on your behalf.
     access: 'account',
     featured: false,
@@ -334,7 +346,7 @@ export const products = [
     icon: 'mdi:package-variant-closed',
     accent: 'gray',
     category: 'developer',
-    status: 'planned',
+    status: 'development',
     access: 'infrastructure',
     featured: false,
     platforms: ['library'],
@@ -351,7 +363,7 @@ export const products = [
     // over-the-air update dashboard, where the alternatives are a paid hosted
     // service or building the dashboard yourself.
     category: 'developer',
-    status: 'planned',
+    status: 'development',
     // Distributing updates needs a server that is always reachable. Self-hosting
     // is a first-class option, which is why 'selfHosted' is listed.
     // A free account is enough to use the hosted one.

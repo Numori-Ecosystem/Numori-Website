@@ -90,9 +90,14 @@ export const accentStyles = (accent) => ACCENTS[accent] ?? ACCENTS.gray
 /**
  * Maps a product lifecycle status onto a UiBadge colour.
  * UiBadge accepts 'primary' | 'gray' | 'red' | 'green' | 'amber'.
+ *
+ * Nothing is green, because nothing is stable. The ramp runs gray (not usable) →
+ * red (pre-alpha, expect it to break) → amber (alpha, rough but works). Red is
+ * uncomfortable next to a product name, which is the point: pre-alpha software
+ * genuinely should not be relied on, and a reassuring colour would be a lie.
  */
 export const STATUS_BADGE_COLOUR = {
-  beta: 'green',
-  development: 'amber',
-  planned: 'gray',
+  alpha: 'amber',
+  preAlpha: 'red',
+  development: 'gray',
 }

@@ -4,6 +4,11 @@
     "tagline": "Software that minds its own business",
     "description": "A family of open-source apps and services built for privacy, with no AI features of any kind. Fairly priced, fully auditable, and yours to leave whenever you like."
   },
+  "banner": {
+    "label": "Work in progress",
+    "text": "Numori is being built in the open. Nothing is on sale yet and most apps are unfinished.",
+    "cta": "See what's ready"
+  },
   "nav": {
     "home": "Home",
     "products": "Products",
@@ -54,13 +59,13 @@
   },
   "status": {
     "label": "Status",
-    "beta": "Beta",
+    "alpha": "Alpha",
+    "preAlpha": "Pre-alpha",
     "development": "In development",
-    "planned": "Planned",
-    "betaHint": "Usable today, still changing quickly.",
-    "developmentHint": "The code is public and moving, but it is not ready to use.",
-    "plannedHint": "Designed and committed to. No code to show yet.",
-    "honestNote": "We would rather tell you a thing is not ready than dress up a waiting list as a launch."
+    "alphaHint": "Usable today, and rough. Expect bugs, missing corners and the occasional breaking change. Your data is safe — exports work — but do not make it the only copy of anything yet.",
+    "preAlphaHint": "Very early. It runs, but pieces are missing and things change without warning. Worth a look if you like watching software get built; not yet worth depending on.",
+    "developmentHint": "Being built. Not ready to install yet — the repository is public so you can follow along, and the description below is our intent rather than a finished product.",
+    "honestNote": "Nothing here is finished. One app is in alpha, one in pre-alpha, and the rest are still being built — every card says which, and none of them says \"coming soon\" to mean \"we have not started\"."
   },
   "categories": {
     "label": "Category",
@@ -216,7 +221,7 @@
     },
     "index": {
       "title": "Products and services",
-      "subtitle": "{count} pieces, one account, one set of rules. Most are still being built, and we say so on every card.",
+      "subtitle": "{count} pieces, one account, one set of rules. All of it is still being built, and every card says exactly how far along it is.",
       "filterLabel": "Filter by status",
       "filterAll": "Everything",
       "countAll": "Showing all {count} products",
@@ -230,7 +235,7 @@
       "sourceTitle": "Read the source",
       "sourceBody": "{name} is licensed under the AGPL-3.0. Read it, build it, audit it, or run your own copy.",
       "placeholderTitle": "This page is a placeholder",
-      "placeholderBody": "{name} is not finished, so what you are reading is our intent rather than a description of shipped software. It will be replaced with screenshots and specifics as the work lands.",
+      "placeholderBody": "{name} is still being built, so what you are reading is our intent rather than a description of working software. It will be replaced with screenshots and specifics as the work lands.",
       "notFound": "We could not find that product",
       "notFoundBody": "It may have been renamed. The full list is below."
     },

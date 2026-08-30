@@ -9,14 +9,14 @@
 /**
  * StatusBadge — lifecycle status of a product, as a coloured pill.
  *
- * The visible text alone ("Beta") is ambiguous out of context, so a
+ * The visible text alone ("Alpha") is ambiguous out of context, so a
  * screen-reader-only prefix names what the value refers to.
  *
  * @example
- * <StatusBadge status="beta" />
+ * <StatusBadge status="alpha" />
  *
  * @example Larger, for a product page header
- * <StatusBadge status="planned" size="sm" />
+ * <StatusBadge status="development" size="sm" />
  */
 import { STATUS_BADGE_COLOUR } from '~/utils/accents'
 
@@ -24,7 +24,7 @@ const props = defineProps({
   /**
    * Lifecycle stage. Must match a key in `status.*` in the locale files.
    * @type {string}
-   * @values 'beta' | 'development' | 'planned'
+   * @values 'alpha' | 'preAlpha' | 'development'
    */
   status: { type: String, required: true },
 

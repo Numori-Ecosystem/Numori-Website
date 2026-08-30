@@ -125,7 +125,7 @@ Two steps, and the page builds itself.
   icon: 'mdi:image-outline',      // any MDI icon; @nuxt/icon bundles it
   accent: 'violet',               // key from app/utils/accents.js
   category: 'apps',               // apps | platform | developer
-  status: 'planned',              // beta | development | planned
+  status: 'development',          // alpha | preAlpha | development
   access: 'local',                // local | account | infrastructure
   syncsWithAccount: true,         // does a free account add sync?
   featured: false,                // show on the home page?
@@ -158,8 +158,14 @@ messages on purpose: vue-i18n resolves a missing key to the key path itself, so
 looping blindly would print `products.photos.perks.5.title` on the page. Run
 `npm run check:locales` and it will tell you exactly which keys you missed.
 
-Anything with a status other than `beta` automatically shows a "this page is a
-placeholder" notice. Please leave that in until the software actually exists.
+Statuses run `alpha` → `preAlpha` → `development`, most advanced first. That order
+drives the products-index filter and the ranking in `related()`, so it matters.
+There is deliberately no `beta` or `stable` yet — adding one is a claim about
+quality, to be made when it is true rather than kept warm in an enum.
+
+`USABLE_STATUSES` (`alpha`, `preAlpha`) decides which notice a product page shows:
+an amber "installable, not dependable" alert, or the "this page is a placeholder"
+one. Please leave whichever applies in place until the software actually exists.
 
 `access` decides more than a badge — the pricing page counts these to build the
 sentence "8 of the 12 apps never need a subscription", so setting it wrongly
@@ -326,6 +332,29 @@ second support level, stop.
 `pricing.support.*` states the free/paid support boundary. Keep the free side
 described as what it includes (documentation, forum, issue tracker) rather than
 what it lacks.
+
+## The work-in-progress banner
+
+`TheStatusBanner` is a permanent notice above the header, on every page. Two
+deliberate choices:
+
+**Not dismissible.** Remembering a dismissal means writing to storage, which would
+cost the site its "no cookies at all" claim for the sake of hiding the most
+important thing a first-time visitor needs to know.
+
+**No ARIA role.** It is static content, not an alert. `role="status"` would declare
+a live region that never changes; `role="alert"` would interrupt on every page load.
+Being early in the DOM is what makes it discoverable — after the skip link, before
+the header, so keyboard users can still jump past both on their first Tab.
+
+The stickiness lives on a wrapper in `app/layouts/default.vue`, not on the banner or
+`TheHeader`. Two separately-sticky siblings both claiming `top-0` overlap, with the
+header sliding underneath. If you change the height of either, update
+`scroll-margin-top` in `main.css` — in-page anchors need to clear the whole block,
+currently about 6.5rem.
+
+`200.html` and `404.html` are Nuxt's SPA fallback shells and contain no
+server-rendered banner; it appears on hydration. Every real page has it in the HTML.
 
 ## Donations
 

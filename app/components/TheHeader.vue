@@ -1,6 +1,10 @@
 <template>
+  <!--
+    Not sticky itself — the layout pins this and TheStatusBanner together as one
+    block, so the two cannot both claim `top-0` and overlap.
+  -->
   <header
-    class="sticky top-0 z-50 border-b bg-white/85 backdrop-blur-md transition-[border-color,box-shadow,background-color] duration-300 dark:bg-gray-925/85"
+    class="border-b bg-white/85 backdrop-blur-md transition-[border-color,box-shadow,background-color] duration-300 dark:bg-gray-925/85"
     :class="
       scrolled
         ? 'border-gray-200 shadow-sm dark:border-gray-800'
