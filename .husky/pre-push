@@ -1,0 +1,2 @@
+npx eslint . --max-warnings 0
+node scripts/check-locales.mjs

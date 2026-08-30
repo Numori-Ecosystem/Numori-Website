@@ -1,0 +1,88 @@
+{
+  "name": "numori-website",
+  "type": "module",
+  "private": true,
+  "version": "0.1.0",
+  "description": "The Numori ecosystem website — a showcase for a family of open-source, privacy-first, AI-free apps and services at a fair price.",
+  "author": {
+    "name": "Erik Bjerke",
+    "email": "contact@erikbjerke.com",
+    "url": "https://erikbjerke.com"
+  },
+  "contributors": [
+    {
+      "name": "Yaiza Wadhwani Valderas",
+      "email": "yaizawv@proton.me"
+    },
+    {
+      "name": "TheProcedural Software Ltd",
+      "email": "contact@theprocedural.com",
+      "url": "https://theprocedural.com"
+    }
+  ],
+  "license": "AGPL-3.0",
+  "homepage": "https://github.com/Numori-Ecosystem/Numori-Website",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Numori-Ecosystem/Numori-Website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Numori-Ecosystem/Numori-Website/issues"
+  },
+  "keywords": [
+    "privacy",
+    "open-source",
+    "no-ai",
+    "ecosystem",
+    "marketing-site",
+    "blog",
+    "i18n",
+    "accessibility",
+    "tailwind-v4",
+    "vue",
+    "nuxt"
+  ],
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "dev": "nuxt dev --host 0.0.0.0",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix",
+    "check:locales": "node scripts/check-locales.mjs",
+    "test": "nuxt prepare && npm run check:locales && npm run lint && npm run format:check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@nuxt/content": "^3.16.0",
+    "@nuxt/fonts": "^0.14.0",
+    "@nuxt/icon": "^2.5.1",
+    "@nuxtjs/color-mode": "^4.0.1",
+    "@nuxtjs/i18n": "^10.6.0",
+    "@nuxtjs/robots": "^6.2.0",
+    "@nuxtjs/sitemap": "^8.5.0",
+    "numori-ui": "file:../numori-ui",
+    "nuxt": "^4.5.2",
+    "vue": "^3.5.41",
+    "vue-router": "^5.2.0"
+  },
+  "devDependencies": {
+    "@iconify-json/mdi": "^1.2.3",
+    "@nuxt/a11y": "^1.0.0-alpha.1",
+    "@nuxt/eslint": "^1.17.0",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.1.2",
+    "eslint": "^10.9.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.4.1",
+    "prettier": "^3.9.6",
+    "tailwindcss": "^4.3.3"
+  }
+}

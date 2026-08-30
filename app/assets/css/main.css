@@ -1,0 +1,222 @@
+/**
+ * Numori website — global stylesheet.
+ *
+ * Tailwind 4 is loaded as a Vite plugin (see nuxt.config.ts), so this file is
+ * the single CSS entry point. The design tokens come from numori-ui, which also
+ * ships the `dark` custom variant (class-based) and the @source declarations for
+ * its own components — Tailwind would otherwise skip node_modules.
+ */
+@import 'tailwindcss';
+@import 'numori-ui/css';
+
+@plugin '@tailwindcss/typography';
+
+/* ─── Tokens specific to the website ─────────────────────────────── */
+@theme {
+  /* Long-form reading measure, used by the blog and legal pages. */
+  --container-prose: 44rem;
+
+  /* Vertical rhythm for marketing sections. */
+  --spacing-section: 5rem;
+  --spacing-section-lg: 7.5rem;
+
+  --shadow-glow:
+    0 0 0 1px --alpha(var(--color-primary-400) / 25%),
+    0 8px 40px -8px --alpha(var(--color-primary-400) / 35%);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── Base ───────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Stops the page shifting sideways when a route has no scrollbar. */
+    scrollbar-gutter: stable;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white text-gray-800 antialiased;
+    @apply dark:bg-gray-925 dark:text-gray-200;
+  }
+
+  /*
+   * Visible focus for keyboard users only. Never remove the outline outright:
+   * :focus-visible already excludes mouse clicks, so there is nothing to gain
+   * from hiding it and a lot to lose.
+   */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary-500 dark:outline-primary-400;
+  }
+
+  /* Anything that opts out of the ring must provide its own affordance. */
+  .focus-ring-none:focus-visible {
+    @apply outline-none;
+  }
+
+  ::selection {
+    @apply bg-primary-200 text-gray-900;
+  }
+
+  :where(.dark) ::selection {
+    @apply bg-primary-500/40 text-white;
+  }
+
+  /* Headings default to the tighter tracking used across the marketing pages. */
+  :where(h1, h2, h3, h4) {
+    @apply text-balance tracking-tight text-gray-900 dark:text-gray-50;
+  }
+
+  /* Give in-page anchors room to clear the sticky header. */
+  :where(h2, h3, h4)[id] {
+    scroll-margin-top: 6rem;
+  }
+
+  hr {
+    @apply border-gray-200 dark:border-gray-700;
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-gray-300) transparent;
+  }
+
+  :where(.dark) * {
+    scrollbar-color: var(--color-gray-600) transparent;
+  }
+
+  /* WebKit */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full border-2 border-transparent bg-gray-300 bg-clip-content;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400;
+  }
+
+  :where(.dark) ::-webkit-scrollbar-thumb {
+    @apply bg-gray-600;
+  }
+
+  :where(.dark) ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+  }
+}
+
+/* ─── Components ─────────────────────────────────────────────────── */
+@layer components {
+  /*
+   * Skip link: off-screen until focused, then pinned to the top-left. Kept as a
+   * class rather than sr-only + focus: utilities so the layout markup stays legible.
+   */
+  .skip-link {
+    @apply fixed left-4 top-4 z-100 -translate-y-24 rounded-lg bg-primary-500 px-4 py-2;
+    @apply text-sm font-semibold text-white shadow-lg transition-transform;
+    @apply focus-visible:translate-y-0;
+  }
+
+  /* Section shell: consistent gutters and max width for every page band. */
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-reading {
+    @apply mx-auto w-full max-w-(--container-prose) px-4 sm:px-6;
+  }
+
+  /* The soft gradient wash behind hero sections. */
+  .hero-wash {
+    background-image:
+      radial-gradient(
+        60rem 30rem at 50% -10%,
+        --alpha(var(--color-primary-300) / 22%),
+        transparent 70%
+      ),
+      radial-gradient(
+        40rem 24rem at 90% 10%,
+        --alpha(var(--color-warning-300) / 14%),
+        transparent 70%
+      );
+  }
+
+  :where(.dark) .hero-wash {
+    background-image:
+      radial-gradient(
+        60rem 30rem at 50% -10%,
+        --alpha(var(--color-primary-500) / 20%),
+        transparent 70%
+      ),
+      radial-gradient(
+        40rem 24rem at 90% 10%,
+        --alpha(var(--color-primary-700) / 16%),
+        transparent 70%
+      );
+  }
+}
+
+/* ─── Long-form content (blog, legal, manifesto) ─────────────────── */
+@layer components {
+  .prose-numori {
+    @apply prose prose-gray max-w-none dark:prose-invert;
+
+    --tw-prose-links: var(--color-primary-600);
+    --tw-prose-invert-links: var(--color-primary-300);
+    --tw-prose-quote-borders: var(--color-primary-400);
+    --tw-prose-invert-quote-borders: var(--color-primary-500);
+    --tw-prose-bullets: var(--color-primary-400);
+    --tw-prose-invert-bullets: var(--color-primary-500);
+    --tw-prose-counters: var(--color-gray-500);
+  }
+
+  .prose-numori :where(a):not(:where(.not-prose *)) {
+    @apply underline decoration-primary-400/50 decoration-2 underline-offset-2;
+    @apply hover:decoration-primary-500;
+  }
+
+  .prose-numori :where(code):not(:where(pre *, .not-prose *)) {
+    @apply rounded-md bg-gray-100 px-1.5 py-0.5 font-medium text-gray-800;
+    @apply dark:bg-gray-800 dark:text-gray-100;
+  }
+
+  /* The typography plugin wraps inline code in backticks; we style it instead. */
+  .prose-numori :where(code):not(:where(pre *, .not-prose *))::before,
+  .prose-numori :where(code):not(:where(pre *, .not-prose *))::after {
+    content: none;
+  }
+
+  .prose-numori :where(pre):not(:where(.not-prose *)) {
+    @apply rounded-xl border border-gray-200 bg-gray-50 text-gray-800;
+    @apply dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100;
+  }
+}
+
+/* ─── Motion ─────────────────────────────────────────────────────── */
+/*
+ * Honour the OS-level "reduce motion" setting. This is a hard requirement for
+ * WCAG 2.3.3 and cheap to respect: everything below is decorative.
+ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

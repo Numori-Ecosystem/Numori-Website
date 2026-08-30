@@ -1,0 +1,845 @@
+{
+  "site": {
+    "name": "Numori",
+    "tagline": "Software that minds its own business",
+    "description": "A family of open-source apps and services built for privacy, with no AI features of any kind. Fairly priced, fully auditable, and yours to leave whenever you like."
+  },
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "pricing": "Pricing",
+    "blog": "Blog",
+    "about": "About",
+    "openSource": "Open source",
+    "openMenu": "Open main menu",
+    "closeMenu": "Close main menu",
+    "primary": "Primary",
+    "footer": "Footer",
+    "skipToContent": "Skip to main content",
+    "breadcrumb": "Breadcrumb"
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "readMore": "Read more",
+    "readPost": "Read the post",
+    "viewSource": "View source",
+    "viewOnGithub": "View on GitHub",
+    "openApp": "Open the app",
+    "seeAllProducts": "See all products",
+    "seeAllPosts": "All posts",
+    "backToProducts": "Back to products",
+    "backToBlog": "Back to the blog",
+    "backHome": "Back to the home page",
+    "comingSoon": "Coming soon",
+    "notYetAvailable": "Not available yet",
+    "onThisPage": "On this page",
+    "publishedOn": "Published {date}",
+    "updatedOn": "Updated {date}",
+    "readingTime": "{minutes} min read",
+    "by": "By {author}",
+    "opensInNewTab": "opens in a new tab",
+    "loading": "Loading",
+    "aboutProduct": "About {name}"
+  },
+  "theme": {
+    "label": "Theme",
+    "toLight": "Switch to light theme",
+    "toDark": "Switch to dark theme"
+  },
+  "locale": {
+    "label": "Language",
+    "switch": "Change language",
+    "current": "Current language: {name}"
+  },
+  "status": {
+    "label": "Status",
+    "beta": "Beta",
+    "development": "In development",
+    "planned": "Planned",
+    "betaHint": "Usable today, still changing quickly.",
+    "developmentHint": "The code is public and moving, but it is not ready to use.",
+    "plannedHint": "Designed and committed to. No code to show yet.",
+    "honestNote": "We would rather tell you a thing is not ready than dress up a waiting list as a launch."
+  },
+  "categories": {
+    "label": "Category",
+    "apps": {
+      "title": "Apps",
+      "short": "Apps",
+      "description": "The things you actually open every day."
+    },
+    "platform": {
+      "title": "Platform services",
+      "short": "Platform",
+      "description": "The shared plumbing the apps run on. Self-host any of it."
+    },
+    "developer": {
+      "title": "Developer building blocks",
+      "short": "Developer",
+      "description": "The pieces we build everything else out of, released for anyone to use."
+    }
+  },
+  "platforms": {
+    "label": "Available on",
+    "web": "Web",
+    "android": "Android",
+    "ios": "iOS",
+    "macos": "macOS",
+    "windows": "Windows",
+    "linux": "Linux",
+    "browser": "Browser extension",
+    "service": "Hosted service",
+    "selfHosted": "Self-hosted",
+    "library": "Open-source library"
+  },
+  "home": {
+    "meta": {
+      "title": "Privacy-first, open-source software without the AI",
+      "description": "Numori is a family of open-source apps and services — notes, mail, calendar, files and more — built for privacy, free of AI features, and priced as one fair subscription."
+    },
+    "hero": {
+      "eyebrow": "Every line of it open source",
+      "title": "Software that minds its own business",
+      "subtitle": "Notes, mail, calendar, files, tasks and more. Built properly, priced fairly, and with no interest whatsoever in what you keep inside them.",
+      "note": "No AI assistants. No tracking. No adverts. Not now, not later.",
+      "ctaPrimary": "Explore the products",
+      "ctaSecondary": "Read the manifesto"
+    },
+    "principles": {
+      "title": "What we actually promise",
+      "subtitle": "Six commitments. Each one is either visible in the source code or it is not a commitment at all.",
+      "private": {
+        "title": "Private by design",
+        "body": "No tracking, no profiling, no advertising, no third-party analytics. Each service collects what it technically needs to function, and stops there."
+      },
+      "open": {
+        "title": "Open source, all of it",
+        "body": "Every client and every server, not just the bits that are safe to show. Promises are cheap; a public repository you can compile yourself is not."
+      },
+      "noAi": {
+        "title": "No AI, anywhere",
+        "body": "No assistants, no summaries, no \"smart\" suggestions quietly reading your data to justify a valuation. Tools that do the thing you asked, and only that."
+      },
+      "priced": {
+        "title": "Priced like a utility",
+        "body": "One modest subscription covers the entire ecosystem. No per-product tiers, no per-seat arithmetic, no \"contact sales\"."
+      },
+      "craft": {
+        "title": "Craft over churn",
+        "body": "Small, careful releases. Keyboard-first, properly accessible, quick on the hardware you already own, and translated by people who speak the language."
+      },
+      "portable": {
+        "title": "Yours to take",
+        "body": "Open formats and one-click export in every app. Self-host the whole stack, or walk out with your data intact. Leaving should be boring."
+      }
+    },
+    "products": {
+      "title": "One ecosystem, not a bundle of acquisitions",
+      "subtitle": "Everything shares one account, one design system and one set of rules. Here are the pieces we are building first.",
+      "cta": "See all {count} products and services"
+    },
+    "comparison": {
+      "title": "How this differs from the usual arrangement",
+      "subtitle": "A fair comparison against how a large privacy suite is typically put together, not against any one company.",
+      "caption": "Numori compared with a typical large privacy suite",
+      "columnFeature": "",
+      "columnNumori": "Numori",
+      "columnTypical": "The usual arrangement",
+      "rows": {
+        "source": {
+          "feature": "Open source",
+          "numori": "The entire ecosystem, clients and servers",
+          "typical": "Clients only, and often not all of them"
+        },
+        "ai": {
+          "feature": "AI features",
+          "numori": "None, as a matter of policy",
+          "typical": "Added yearly, usually on by default"
+        },
+        "tracking": {
+          "feature": "Tracking",
+          "numori": "None, including on this website",
+          "typical": "Product analytics and marketing pixels"
+        },
+        "pricing": {
+          "feature": "Pricing",
+          "numori": "One low price for everything",
+          "typical": "Per-product tiers that add up quickly"
+        },
+        "selfHosting": {
+          "feature": "Self-hosting",
+          "numori": "Supported and documented",
+          "typical": "Enterprise plans, if at all"
+        },
+        "export": {
+          "feature": "Getting your data out",
+          "numori": "Open formats, one click, no support ticket",
+          "typical": "Partial exports in proprietary formats"
+        }
+      }
+    },
+    "blog": {
+      "title": "From the blog",
+      "subtitle": "Progress reports, decisions we had to argue about, and the occasional opinion.",
+      "empty": "The first posts are being written. Check back shortly."
+    },
+    "cta": {
+      "title": "Read the code before you trust the pitch",
+      "body": "Every repository is public, including this website. Have a look at what is finished, what is half-built, and what is still only a plan.",
+      "primary": "Browse the repositories",
+      "secondary": "See what is ready"
+    }
+  },
+  "products": {
+    "meta": {
+      "title": "Products and services",
+      "description": "Every app and service in the Numori ecosystem: what it does, what it refuses to do, how far along it is, and where to read its source."
+    },
+    "index": {
+      "title": "Products and services",
+      "subtitle": "Eighteen pieces, one account, one set of rules. Most are still being built, and we say so on every card.",
+      "filterLabel": "Filter by status",
+      "filterAll": "Everything",
+      "countAll": "Showing all {count} products",
+      "countFiltered": "Showing {count} of {total} products",
+      "empty": "Nothing matches that filter."
+    },
+    "page": {
+      "perks": "What makes it different",
+      "roadmap": "Where it stands",
+      "related": "Rest of the ecosystem",
+      "sourceTitle": "Read the source",
+      "sourceBody": "{name} is licensed under the AGPL-3.0. Read it, build it, audit it, or run your own copy.",
+      "placeholderTitle": "This page is a placeholder",
+      "placeholderBody": "{name} is not finished, so what you are reading is our intent rather than a description of shipped software. It will be replaced with screenshots and specifics as the work lands.",
+      "notFound": "We could not find that product",
+      "notFoundBody": "It may have been renamed. The full list is below."
+    },
+    "notes": {
+      "tagline": "Notes that do the maths for you",
+      "summary": "A plain-text notepad with a natural-language calculator built into every line. Write \"48 GBP in EUR\" or \"12% of 340\" and the answer appears beside it, no separate calculator needed.",
+      "perks": {
+        "1": {
+          "title": "A calculator that reads English",
+          "body": "Units, currencies, percentages, SI prefixes and variables, all in the same line of prose you were already typing."
+        },
+        "2": {
+          "title": "Local first, sync optional",
+          "body": "Notes live on your device and stay there. Turn on end-to-end encrypted sync only if you want them on a second device."
+        },
+        "3": {
+          "title": "Exports that are not a hostage negotiation",
+          "body": "Markdown, plain text, DOCX and PDF, all from a menu rather than a support request."
+        },
+        "4": {
+          "title": "Genuinely offline",
+          "body": "The desktop and mobile apps bundle everything they need. No network, no degraded mode."
+        }
+      }
+    },
+    "clips": {
+      "tagline": "A clipboard with a memory and a filter",
+      "summary": "A clipboard manager that keeps your history on your machine, recognises code and formats it properly, and refuses to record anything from the apps you tell it to ignore.",
+      "perks": {
+        "1": {
+          "title": "Nothing leaves the device by default",
+          "body": "History is stored locally. Sync is opt-in, end-to-end encrypted, and can be turned off without losing what you already have."
+        },
+        "2": {
+          "title": "An ignore list that is actually respected",
+          "body": "Name your password manager, your banking app, your terminal. Clips will not record from them, full stop."
+        },
+        "3": {
+          "title": "Understands code",
+          "body": "Snippets are detected, syntax-highlighted and pasted back with their formatting intact."
+        },
+        "4": {
+          "title": "Locks like a phone",
+          "body": "PIN, password or biometrics, plus a privacy screen so your history is not in the app switcher."
+        }
+      }
+    },
+    "mail": {
+      "tagline": "Email that is only email",
+      "summary": "An encrypted mailbox with no assistant offering to write your replies and no engine reading your post to sell you a holiday. Standard protocols, open formats, your own domain.",
+      "perks": {
+        "1": {
+          "title": "Nothing reads your mail",
+          "body": "No summarising, no smart replies, no categorising by content. The only party parsing your messages is your own client."
+        },
+        "2": {
+          "title": "Encrypted where it counts",
+          "body": "End-to-end encryption between Numori accounts, and standards-based encryption with everyone else."
+        },
+        "3": {
+          "title": "Your domain, your addresses",
+          "body": "Custom domains, generous aliases and per-sender addresses included, not sold as an add-on."
+        },
+        "4": {
+          "title": "No lock-in at the protocol level",
+          "body": "IMAP and SMTP access, full mailbox export, and an importer that gets you in without a migration project."
+        }
+      }
+    },
+    "drive": {
+      "tagline": "Storage that cannot read what it stores",
+      "summary": "End-to-end encrypted file storage with ordinary sharing, ordinary folders and no content scanning. Files go up encrypted, and the server never sees the keys.",
+      "perks": {
+        "1": {
+          "title": "Encrypted before it leaves",
+          "body": "Encryption happens on your device. We hold ciphertext and metadata we cannot avoid, and nothing else."
+        },
+        "2": {
+          "title": "Sharing without an account requirement",
+          "body": "Password-protected, expiring links that work for people who will never sign up to anything."
+        },
+        "3": {
+          "title": "Versions and a real bin",
+          "body": "File history and a recovery window, because \"encrypted\" should not mean \"one mistake from gone\"."
+        },
+        "4": {
+          "title": "Sync that behaves",
+          "body": "Selective sync, sensible conflict handling and no surprise re-uploads of your entire library."
+        }
+      }
+    },
+    "calendar": {
+      "tagline": "A calendar that keeps your schedule to itself",
+      "summary": "Encrypted events with proper recurrence, real time-zone handling and invitations that work with everyone else's calendar. Your diary is not training data.",
+      "perks": {
+        "1": {
+          "title": "Encrypted event contents",
+          "body": "Titles, locations, notes and guests are encrypted. What we can see is limited to what scheduling technically requires."
+        },
+        "2": {
+          "title": "Recurrence that survives reality",
+          "body": "Exceptions, moved instances and cross-time-zone repeats handled correctly, including the awkward ones."
+        },
+        "3": {
+          "title": "Works with the outside world",
+          "body": "CalDAV, ICS subscriptions and standard invitations, so nobody has to join anything to meet you."
+        },
+        "4": {
+          "title": "Availability sharing without exposure",
+          "body": "Share that you are busy without sharing what you are doing."
+        }
+      }
+    },
+    "tasks": {
+      "tagline": "Tasks, not a productivity philosophy",
+      "summary": "Lists, projects, due dates and recurrence, with an offline-first store and keyboard-first navigation. No streaks, no scoring, no nudges.",
+      "perks": {
+        "1": {
+          "title": "Keyboard-first throughout",
+          "body": "Add, schedule, reorder and complete without touching the mouse. Every action has a shortcut."
+        },
+        "2": {
+          "title": "Offline by default",
+          "body": "The list is on your device. Sync is a feature you enable, not a dependency you inherit."
+        },
+        "3": {
+          "title": "No gamification",
+          "body": "No streaks to break, no productivity score, no notifications engineered to pull you back in."
+        },
+        "4": {
+          "title": "Fits the rest of the suite",
+          "body": "Tasks reference notes and calendar entries directly, without a third-party integration in the middle."
+        }
+      }
+    },
+    "chat": {
+      "tagline": "Messaging with nothing in the middle",
+      "summary": "End-to-end encrypted conversations for one-to-one and groups, with metadata kept to the bare minimum and no bots reading the room.",
+      "perks": {
+        "1": {
+          "title": "Encrypted by default, not on request",
+          "body": "Every conversation, including groups, with no downgrade path and no \"secret chat\" toggle to forget."
+        },
+        "2": {
+          "title": "Minimal metadata",
+          "body": "We are designing to hold as little as possible about who talks to whom, and to document exactly what remains."
+        },
+        "3": {
+          "title": "No assistants in your conversations",
+          "body": "No suggested replies, no summarising of what you missed, no third party parsing the transcript."
+        },
+        "4": {
+          "title": "Self-hostable",
+          "body": "Run the server yourself and federate, or keep a group entirely inside your own infrastructure."
+        }
+      }
+    },
+    "marks": {
+      "tagline": "Bookmarks that stay yours",
+      "summary": "Encrypted bookmarks with full-text search, archived copies of what you saved, and a browser extension that does not phone home about your browsing.",
+      "perks": {
+        "1": {
+          "title": "The extension collects nothing",
+          "body": "It saves what you ask it to save. It does not report the pages you visit, ever."
+        },
+        "2": {
+          "title": "Keeps a copy",
+          "body": "Optional readable snapshots, so a dead link is an inconvenience rather than a loss."
+        },
+        "3": {
+          "title": "Search that reaches inside",
+          "body": "Full-text search across the pages you saved, not just their titles and tags."
+        },
+        "4": {
+          "title": "Imports and exports plainly",
+          "body": "Standard bookmark files in and out. Bring the pile you have accumulated elsewhere."
+        }
+      }
+    },
+    "sheets": {
+      "tagline": "Spreadsheets without a copilot",
+      "summary": "A fast, collaborative spreadsheet with a familiar formula language, encrypted documents and no assistant guessing at your intent.",
+      "perks": {
+        "1": {
+          "title": "Formulas you already know",
+          "body": "A compatible formula language, so existing sheets and existing habits both survive the move."
+        },
+        "2": {
+          "title": "Collaboration without a middleman",
+          "body": "Real-time editing over the same encrypted sync layer the rest of the suite uses."
+        },
+        "3": {
+          "title": "Quick on large sheets",
+          "body": "Built for tens of thousands of rows without the tab becoming unresponsive."
+        },
+        "4": {
+          "title": "Open formats both ways",
+          "body": "Native ODS and XLSX import and export, plus CSV for everything else."
+        }
+      }
+    },
+    "forms": {
+      "tagline": "Forms that do not surveil respondents",
+      "summary": "Build a form, share a link, collect encrypted responses. No trackers embedded in the page, no analytics on the people filling it in.",
+      "perks": {
+        "1": {
+          "title": "Encrypted responses",
+          "body": "Answers are encrypted to you. The service stores submissions it cannot read."
+        },
+        "2": {
+          "title": "No tracking in the form itself",
+          "body": "No third-party scripts, no fingerprinting, no IP logging beyond what abuse prevention needs."
+        },
+        "3": {
+          "title": "Accessible out of the box",
+          "body": "Keyboard navigable, screen-reader tested, and readable at 200% zoom without you configuring anything."
+        },
+        "4": {
+          "title": "Results where you want them",
+          "body": "Export to CSV, or push straight into a Numori Sheets document."
+        }
+      }
+    },
+    "finance": {
+      "tagline": "Budgeting that stays on your device",
+      "summary": "Track accounts, budgets and spending with everything encrypted and nothing shared. No bank scraping, no data brokers, no offers based on your balance.",
+      "perks": {
+        "1": {
+          "title": "No third-party bank connections",
+          "body": "Import statements yourself. We will not hand your credentials to an aggregator that resells the transaction feed."
+        },
+        "2": {
+          "title": "Multi-currency arithmetic that works",
+          "body": "Built on the same calculation engine as Numori Notes, including historical rates."
+        },
+        "3": {
+          "title": "Nobody sells you anything",
+          "body": "No sponsored products, no credit-score upsells, no referral commission shaping the advice."
+        },
+        "4": {
+          "title": "Reports you can take away",
+          "body": "CSV, ODS and PDF exports, plus a full encrypted backup on request."
+        }
+      }
+    },
+    "pdf": {
+      "tagline": "PDF tools that never see your document",
+      "summary": "Merge, split, sign, compress and convert entirely in your browser or on your desktop. Files are not uploaded, because the processing happens locally.",
+      "perks": {
+        "1": {
+          "title": "Nothing is uploaded",
+          "body": "Every operation runs on your own machine. There is no server to trust with the contract you are signing."
+        },
+        "2": {
+          "title": "The whole toolbox",
+          "body": "Merge, split, rotate, reorder, compress, redact, sign and fill in forms."
+        },
+        "3": {
+          "title": "Redaction that actually removes",
+          "body": "Redacted content is deleted from the file, not covered with a black rectangle you can drag away."
+        },
+        "4": {
+          "title": "Works offline",
+          "body": "Install it once and it keeps working on a train, on a plane, and on a locked-down network."
+        }
+      }
+    },
+    "auth": {
+      "tagline": "One account for the ecosystem",
+      "summary": "The identity service behind every Numori product: sign-in, sessions, devices and recovery. Open source, self-hostable, and deliberately boring.",
+      "perks": {
+        "1": {
+          "title": "One account, every product",
+          "body": "Sign in once. No separate registration per app, and no separate password to lose."
+        },
+        "2": {
+          "title": "Strong second factors",
+          "body": "Passkeys, hardware keys and TOTP. Recovery codes you print, not a phone number we can be socially engineered out of."
+        },
+        "3": {
+          "title": "Sessions you can see",
+          "body": "Every active device listed, with one-tap revocation and a readable log of sign-ins."
+        },
+        "4": {
+          "title": "Standards, not a walled garden",
+          "body": "OAuth 2.1 and OpenID Connect, so you can put your own applications behind it too."
+        }
+      }
+    },
+    "crdt": {
+      "tagline": "The sync layer, and it cannot read a thing",
+      "summary": "The conflict-free replication service every Numori app syncs through. It relays encrypted changes between your devices without ever holding a key.",
+      "perks": {
+        "1": {
+          "title": "Zero-knowledge relay",
+          "body": "The server moves encrypted operations around. It has no keys and therefore no view of your content."
+        },
+        "2": {
+          "title": "Merges without losing edits",
+          "body": "Conflict-free replicated data types, so two offline devices reconcile cleanly instead of picking a winner."
+        },
+        "3": {
+          "title": "Offline is the normal case",
+          "body": "Edit for a week with no connection. Reconnecting is a merge, not a conflict-resolution interview."
+        },
+        "4": {
+          "title": "Run your own",
+          "body": "A single container, documented configuration, and clients that will happily point at your server instead of ours."
+        }
+      }
+    },
+    "pulse": {
+      "tagline": "Status and uptime, out in the open",
+      "summary": "The public health dashboard for every Numori service, plus the monitoring behind it. Incidents are posted while they are happening, not summarised afterwards.",
+      "perks": {
+        "1": {
+          "title": "Honest incident history",
+          "body": "Nothing is quietly edited later. Past incidents stay published, with what broke and what we changed."
+        },
+        "2": {
+          "title": "No third-party status vendor",
+          "body": "The status page does not embed someone else's tracking script to tell you our servers are up."
+        },
+        "3": {
+          "title": "Subscribe how you like",
+          "body": "Email, RSS or webhooks. No account needed to be told a service is down."
+        },
+        "4": {
+          "title": "Useful on its own",
+          "body": "Self-host it to monitor your own services. It is a real monitoring tool, not a marketing page."
+        }
+      }
+    },
+    "updater": {
+      "tagline": "Updates that do not report back",
+      "summary": "The release and update service for the desktop and mobile apps. It ships signed builds and learns as little as possible about the machines it updates.",
+      "perks": {
+        "1": {
+          "title": "Signed and verifiable",
+          "body": "Every build is signed and reproducible, so you can confirm the binary matches the public source."
+        },
+        "2": {
+          "title": "Update checks are not telemetry",
+          "body": "The check asks for a version number. It does not carry a device profile or a persistent identifier."
+        },
+        "3": {
+          "title": "You choose when",
+          "body": "Automatic, prompted or manual. Nothing installs itself in the middle of your work."
+        },
+        "4": {
+          "title": "Roll back cleanly",
+          "body": "Previous versions stay available and downgrading is supported, because releases are occasionally wrong."
+        }
+      }
+    },
+    "ui": {
+      "tagline": "The design system behind all of it",
+      "summary": "The Tailwind 4 and Vue 3 component library every Numori interface is built from. Accessible, tree-shakeable, and usable in your own projects.",
+      "perks": {
+        "1": {
+          "title": "Accessibility is not a variant",
+          "body": "Keyboard behaviour, focus management and ARIA semantics are part of each component, not a prop you remember to set."
+        },
+        "2": {
+          "title": "Take only what you use",
+          "body": "Import a single component and ship a few kilobytes. Nothing drags the whole library along."
+        },
+        "3": {
+          "title": "Nuxt module or Vite plugin",
+          "body": "Auto-import in Nuxt, a resolver in plain Vite, or explicit imports anywhere else."
+        },
+        "4": {
+          "title": "Documented in the source",
+          "body": "Every component carries its props, events, slots and examples in JSDoc, so your editor already knows the API."
+        }
+      }
+    },
+    "template": {
+      "tagline": "The starting point for a Numori app",
+      "summary": "The project scaffold every Numori application begins from: Nuxt, the design system, i18n, linting, testing and release wiring already agreed upon.",
+      "perks": {
+        "1": {
+          "title": "Decisions already made",
+          "body": "Linting, formatting, hooks, testing and CI configured the way the rest of the ecosystem is configured."
+        },
+        "2": {
+          "title": "Every target from day one",
+          "body": "Web, desktop and mobile builds wired up before you write a line of product code."
+        },
+        "3": {
+          "title": "Translatable from the first commit",
+          "body": "i18n structure in place, so localisation is never a retrofit."
+        },
+        "4": {
+          "title": "Useful outside Numori",
+          "body": "None of it is specific to us. Clone it for your own privacy-respecting application."
+        }
+      }
+    }
+  },
+  "pricing": {
+    "meta": {
+      "title": "Pricing",
+      "description": "One low subscription for the entire Numori ecosystem, a free tier that is genuinely useful, and self-hosting that costs nothing."
+    },
+    "title": "One price, everything in it",
+    "subtitle": "No per-product tiers, no seat maths, no enterprise phone call. The free tier is not a trial, and self-hosting is not a downgrade.",
+    "draftNotice": {
+      "title": "These numbers are not final",
+      "body": "Most of the ecosystem is still being built, so treat this page as our intent. We will publish final pricing before anyone is asked to pay, and we will not raise it on people who signed up earlier."
+    },
+    "perMonth": "per month",
+    "perYear": "per year",
+    "billedYearly": "billed yearly",
+    "free": {
+      "name": "Free",
+      "price": "£0",
+      "tagline": "Forever, and not crippled",
+      "cta": "Start with the free tier",
+      "features": {
+        "1": "Every app, on every platform",
+        "2": "Local storage with no size limit",
+        "3": "Full export in open formats",
+        "4": "Sync across two devices",
+        "5": "1 GB in Numori Drive"
+      }
+    },
+    "complete": {
+      "name": "Complete",
+      "price": "£3",
+      "tagline": "The whole ecosystem, one line on your statement",
+      "badge": "Most people want this",
+      "cta": "Join the waiting list",
+      "features": {
+        "1": "Everything in Free",
+        "2": "Unlimited devices and sync",
+        "3": "500 GB in Numori Drive",
+        "4": "Custom domains and aliases in Mail",
+        "5": "Priority support from the people who wrote it"
+      }
+    },
+    "selfHosted": {
+      "name": "Self-hosted",
+      "price": "£0",
+      "tagline": "Your servers, your rules",
+      "cta": "Read the deployment guide",
+      "features": {
+        "1": "Every feature of Complete",
+        "2": "No licence fee and no user cap",
+        "3": "Container images and documented configuration",
+        "4": "Community support",
+        "5": "AGPL-3.0, so it stays open"
+      }
+    },
+    "faq": {
+      "title": "The awkward questions",
+      "1": {
+        "q": "Why so cheap?",
+        "a": "Because we are not funding a sales team, an advertising budget or a data-science department. A small, well-run ecosystem does not need thirty pounds a month from you to survive."
+      },
+      "2": {
+        "q": "What happens if Numori shuts down?",
+        "a": "Everything is AGPL-3.0 and self-hostable, and every app exports to open formats. If we disappear, you can run the whole stack yourself or take your data elsewhere. That is the point of publishing the servers too."
+      },
+      "3": {
+        "q": "Will you add AI features later once it gets expensive not to?",
+        "a": "No. It is a founding commitment rather than a current preference, and it is the sort of promise that is easy to check: watch the repositories."
+      },
+      "4": {
+        "q": "Is the free tier just a trial?",
+        "a": "No. It has no expiry and it includes every application. The paid tier buys hosted sync and storage, not the software itself."
+      },
+      "5": {
+        "q": "Do you offer student or non-profit pricing?",
+        "a": "Yes, once billing exists. It will be a straightforward discount rather than an application process."
+      }
+    }
+  },
+  "blog": {
+    "meta": {
+      "title": "Blog",
+      "description": "Progress reports, engineering decisions and the reasoning behind how the Numori ecosystem is built."
+    },
+    "title": "Blog",
+    "subtitle": "What we are building, what we decided against, and why. Written by the people doing the work.",
+    "empty": {
+      "title": "Nothing published yet",
+      "body": "The first posts are being written. Nothing here is auto-generated, so it takes a little longer."
+    },
+    "tagged": "Tagged {tag}",
+    "allTags": "All topics",
+    "postsCount": "{count} post|{count} posts",
+    "notFound": "We could not find that post",
+    "notFoundBody": "It may have moved. Everything we have published is listed below.",
+    "missingTranslation": {
+      "title": "Not translated yet",
+      "body": "This post has not been translated into your language, so you are reading the English original."
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "About and manifesto",
+      "description": "Why Numori exists: an open-source, privacy-first, deliberately AI-free alternative to software that treats its users as inventory."
+    },
+    "title": "Why we are building this",
+    "subtitle": "A short manifesto, and the reasoning we keep coming back to.",
+    "intro": "Most software you rely on is engineered around a business model that needs your attention or your data. Numori is an attempt to build the same tools around a much duller model: you pay a small amount, we run the service well, and nothing else happens.",
+    "manifesto": {
+      "title": "The manifesto",
+      "1": {
+        "title": "Privacy is an architecture, not a policy page",
+        "body": "A privacy policy is a promise about what a company will choose to do. Encryption and local-first storage are statements about what it is able to do. We prefer the second kind and design so that the tempting option is not technically available to us."
+      },
+      "2": {
+        "title": "Open source has to include the servers",
+        "body": "Publishing a client while the server stays closed proves very little: the interesting decisions happen where you cannot see them. Every Numori server is public under the AGPL-3.0, which is why we can reasonably ask to be trusted, and why you do not have to."
+      },
+      "3": {
+        "title": "Refusing AI is a feature",
+        "body": "We are not against the technology in the abstract. We are against what it currently requires: your private data moved somewhere it can be processed, a running cost that has to be recovered from you, and a category of feature nobody asked for arriving switched on. So there is none of it, anywhere, and there will not be."
+      },
+      "4": {
+        "title": "Software should be finished, not fed",
+        "body": "A note-taking app does not need a quarterly redesign. We would rather ship fewer, better-considered releases and spend the difference on correctness, accessibility and speed than manufacture activity to look alive."
+      },
+      "5": {
+        "title": "Accessibility is not an extra",
+        "body": "Keyboard navigation, screen-reader support, sensible contrast, reduced-motion handling and real translations are part of the definition of finished. If it only works for someone using a mouse, with perfect vision, in English, it is not finished."
+      },
+      "6": {
+        "title": "Fair price, no dark patterns",
+        "body": "One price for everything, cancellation that takes one click, no countdown timers, no interstitials asking whether you are sure you want to leave, and no price rise aimed at people already signed up."
+      },
+      "7": {
+        "title": "Leaving should be easy",
+        "body": "Every app exports everything, in formats other software can read, without a support ticket. If we have to trap you to keep you, we have already failed at the actual job."
+      }
+    },
+    "who": {
+      "title": "Who is building it",
+      "body": "A very small team, working carefully rather than quickly. Numori is developed in the open by Erik Bjerke with Yaiza Wadhwani Valderas and TheProcedural Software Ltd, and every repository takes contributions.",
+      "cta": "See the organisation on GitHub"
+    },
+    "cta": {
+      "title": "Check the claims",
+      "body": "This page makes a lot of assertions. All of them are testable against the source code, including the source of this website.",
+      "primary": "Browse the repositories",
+      "secondary": "See the products"
+    }
+  },
+  "openSource": {
+    "meta": {
+      "title": "Open source",
+      "description": "Every repository in the Numori ecosystem, licensed under the AGPL-3.0: clients, servers, design system and this website."
+    },
+    "title": "All of it, in the open",
+    "subtitle": "Nineteen repositories under the AGPL-3.0. Clients, servers, the design system and the website you are reading.",
+    "licence": {
+      "title": "Why the AGPL-3.0",
+      "body": "The AGPL closes the loophole that lets a hosted service build on open code without giving anything back. Anyone may run, modify and offer Numori as a service; they simply have to publish their changes too. It keeps the ecosystem open even if we are no longer the ones maintaining it."
+    },
+    "contribute": {
+      "title": "Contributing",
+      "body": "Issues, translations, accessibility audits and pull requests are all welcome. Translation work is especially valuable: we would rather ship a language properly than run machine translation over the interface.",
+      "cta": "Open the organisation"
+    },
+    "table": {
+      "caption": "Every Numori repository, with its status",
+      "name": "Repository",
+      "what": "What it is",
+      "status": "Status",
+      "link": "Source"
+    },
+    "website": {
+      "title": "Including this website",
+      "body": "No analytics, no trackers, no cookie banner to dismiss, because there is nothing to consent to. The site sets one cookie, only after you change language by hand, so that your choice survives a reload.",
+      "cta": "Read this site's source"
+    }
+  },
+  "legal": {
+    "privacy": {
+      "title": "Privacy policy",
+      "subtitle": "What we collect, which is very little, and what we do with it, which is very little.",
+      "placeholder": "This is placeholder text. A complete, plain-language privacy policy will be published here before any Numori service accepts a registration.",
+      "summary": {
+        "title": "The short version",
+        "1": "This website sets no analytics or advertising cookies, and embeds no third-party scripts.",
+        "2": "One functional cookie stores your language preference, and only once you choose a language yourself.",
+        "3": "No account is required to read anything here.",
+        "4": "Server logs are kept briefly for security and abuse prevention, then deleted."
+      }
+    },
+    "terms": {
+      "title": "Terms of service",
+      "subtitle": "The rules of using Numori services, in language you can actually read.",
+      "placeholder": "This is placeholder text. Final terms will be published here before any Numori service accepts a registration."
+    },
+    "imprint": {
+      "title": "Imprint",
+      "subtitle": "Who is responsible for this website.",
+      "placeholder": "This is placeholder text. Full company details will be published here before launch."
+    },
+    "lastUpdated": "Last updated {date}"
+  },
+  "error": {
+    "404": {
+      "title": "That page does not exist",
+      "body": "The link may be out of date, or we may have moved something. Neither is your fault."
+    },
+    "500": {
+      "title": "Something went wrong on our side",
+      "body": "The error has been logged without any information about you. Please try again shortly."
+    },
+    "generic": {
+      "title": "Something went wrong",
+      "body": "Please try again, or head back to the home page."
+    },
+    "code": "Error {code}"
+  },
+  "footer": {
+    "tagline": "Open-source, privacy-first software with no AI features and no interest in your data.",
+    "products": "Products",
+    "ecosystem": "Ecosystem",
+    "company": "Project",
+    "legal": "Legal",
+    "status": "Service status",
+    "rights": "© {year} Numori. Released under the AGPL-3.0.",
+    "builtWith": "This website is open source too.",
+    "noTracking": "No trackers. No analytics. No cookie banner, because there is nothing to consent to."
+  }
+}
