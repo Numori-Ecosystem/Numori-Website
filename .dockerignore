@@ -1,0 +1,29 @@
+# node_modules must be excluded: it contains `numori-ui` as a symlink pointing
+# outside the build context, which would arrive dangling and break the install.
+node_modules
+
+# Build artefacts — regenerated inside the image. Copying a local .output in
+# would also mask a broken build with stale, apparently-working output.
+.nuxt
+.output
+.data
+dist
+
+# Not needed to build, and .git in particular is why HUSKY=0 is set in the
+# Dockerfile: `npm ci` runs `prepare`, which runs husky, which wants a repo.
+.git
+.github
+.husky
+.vscode
+.DS_Store
+
+# Local environment and logs
+.env
+.env.*
+!.env.example
+*.log
+npm-debug.log*
+
+# Deployment files that are read by the daemon, not needed inside the image
+Dockerfile
+.dockerignore
