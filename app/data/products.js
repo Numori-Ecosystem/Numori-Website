@@ -35,8 +35,13 @@ export const CATEGORIES = ['apps', 'platform', 'developer']
  * What it takes to use a product.
  *
  * - `local` — fully functional on-device with no account and no subscription.
- *   A plan only adds hosted sync and the shared storage quota. This is the
- *   default for anything whose data lives on your machine.
+ *   This is the default for anything whose data lives on your machine.
+ *
+ *   Note that `local` is about *payment*, not about accounts. Most local apps
+ *   have key features that need a free Numori account — chiefly cross-device
+ *   sync — and that is recorded separately in the `account` flag below. Conflating
+ *   the two made the copy claim that paying is what adds sync, which is wrong:
+ *   there are three levels, and only the third costs anything.
  * - `subscription` — needs infrastructure we have to run continuously, so it
  *   needs a paid plan or your own server. A mailbox has to receive mail while
  *   your laptop is shut; a form has to answer a public URL. There is no honest
@@ -56,6 +61,10 @@ export const ACCESS_LEVELS = ['local', 'subscription', 'infrastructure']
  * @property {'apps'|'platform'|'developer'} category
  * @property {'beta'|'development'|'planned'} status
  * @property {'local'|'subscription'|'infrastructure'} access
+ * @property {boolean} [account] Whether a free Numori account unlocks key
+ *   features — almost always cross-device sync. Independent of `access`: an app
+ *   can be free, need no account to be useful, and still be markedly better with
+ *   one. When true, `products.<slug>.account` must exist in every locale.
  * @property {boolean} featured Whether it appears on the home page.
  * @property {string[]} platforms Platform keys, translated via `platforms.<key>`.
  * @property {string|null} url Live product URL, or null when not yet shipped.
@@ -74,6 +83,7 @@ export const products = [
     category: 'apps',
     status: 'beta',
     access: 'local',
+    account: true,
     featured: true,
     platforms: ['web', 'android', 'ios', 'macos', 'windows', 'linux'],
     url: 'https://notes.numori.app',
@@ -88,6 +98,7 @@ export const products = [
     category: 'apps',
     status: 'beta',
     access: 'local',
+    account: true,
     featured: true,
     platforms: ['android', 'ios', 'macos', 'windows', 'linux'],
     url: null,
@@ -101,10 +112,16 @@ export const products = [
     accent: 'sky',
     category: 'apps',
     status: 'planned',
-    // A mailbox has to accept mail while every one of your devices is offline.
-    access: 'subscription',
+    // A mail *client*, not a mail service: it talks to whatever mailbox you
+    // already have over IMAP/SMTP, so it needs nothing from us. A Numori-hosted
+    // mailbox is a separate product with its own pricing, and when it exists it
+    // will be its own catalogue entry rather than a paid tier of this one.
+    access: 'local',
+    account: true,
     featured: true,
-    platforms: ['web', 'android', 'ios', 'macos', 'windows', 'linux'],
+    // Deliberately no 'web': a browser cannot speak IMAP, so a webmail version
+    // would need our server to proxy it, which would make it a hosted service.
+    platforms: ['android', 'ios', 'macos', 'windows', 'linux'],
     url: null,
     perks: 4,
   },
@@ -132,6 +149,7 @@ export const products = [
     category: 'apps',
     status: 'planned',
     access: 'local',
+    account: true,
     featured: true,
     platforms: ['web', 'android', 'ios', 'macos', 'windows', 'linux'],
     url: null,
@@ -146,6 +164,7 @@ export const products = [
     category: 'apps',
     status: 'planned',
     access: 'local',
+    account: true,
     featured: true,
     platforms: ['web', 'android', 'ios', 'macos', 'windows', 'linux'],
     url: null,
@@ -175,6 +194,7 @@ export const products = [
     category: 'apps',
     status: 'planned',
     access: 'local',
+    account: true,
     featured: false,
     platforms: ['web', 'android', 'ios', 'browser'],
     url: null,
@@ -189,6 +209,7 @@ export const products = [
     category: 'apps',
     status: 'planned',
     access: 'local',
+    account: true,
     featured: false,
     platforms: ['web', 'macos', 'windows', 'linux'],
     url: null,
@@ -218,6 +239,7 @@ export const products = [
     category: 'apps',
     status: 'planned',
     access: 'local',
+    account: true,
     featured: false,
     platforms: ['web', 'android', 'ios', 'macos', 'windows', 'linux'],
     url: null,
@@ -273,25 +295,16 @@ export const products = [
     repo: 'Numori-Pulse',
     icon: 'mdi:pulse',
     accent: 'success',
-    category: 'platform',
+    // Categorised as an app rather than platform: it is a monitoring service
+    // subscribers use on their own sites, not only our internal health check. It
+    // happens to run our status page too, which is the honest way to demonstrate
+    // that a monitoring tool works.
+    category: 'apps',
     status: 'planned',
-    access: 'infrastructure',
+    // Checks have to run while your machine is off, so it needs a server.
+    access: 'subscription',
     featured: false,
-    platforms: ['web', 'service'],
-    url: null,
-    perks: 4,
-  },
-  {
-    slug: 'updater',
-    name: 'Numori Updater',
-    repo: 'Numori-Updater',
-    icon: 'mdi:cloud-download-outline',
-    accent: 'gray',
-    category: 'platform',
-    status: 'planned',
-    access: 'infrastructure',
-    featured: false,
-    platforms: ['service'],
+    platforms: ['web', 'service', 'selfHosted'],
     url: null,
     perks: 4,
   },
@@ -325,6 +338,25 @@ export const products = [
     url: null,
     perks: 4,
   },
+  {
+    slug: 'updater',
+    name: 'Numori Updater',
+    repo: 'Numori-Updater',
+    icon: 'mdi:cloud-download-outline',
+    accent: 'gray',
+    // A developer tool, not internal plumbing: it is a ready-to-run
+    // over-the-air update dashboard, where the alternatives are a paid hosted
+    // service or building the dashboard yourself.
+    category: 'developer',
+    status: 'planned',
+    // Distributing updates needs a server that is always reachable. Self-hosting
+    // is a first-class option, which is why 'selfHosted' is listed.
+    access: 'subscription',
+    featured: false,
+    platforms: ['service', 'selfHosted'],
+    url: null,
+    perks: 4,
+  },
 ]
 
 /** Repository URL for a product. */
@@ -348,6 +380,11 @@ export const productsByAccess = (access) => products.filter((product) => product
 export const freeApps = () =>
   products.filter((product) => product.category === 'apps' && product.access === 'local')
 
-/** Apps that need a paid plan or self-hosting. */
-export const paidApps = () =>
-  products.filter((product) => product.category === 'apps' && product.access === 'subscription')
+/**
+ * Everything that needs a paid plan or self-hosting, across all categories.
+ *
+ * Not restricted to `category === 'apps'`, because Numori Updater is a developer
+ * tool that still needs a server — filtering by category would have quietly left
+ * a paid product off the pricing page.
+ */
+export const paidProducts = () => products.filter((product) => product.access === 'subscription')

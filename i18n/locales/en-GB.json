@@ -11,6 +11,7 @@
     "blog": "Blog",
     "about": "About",
     "openSource": "Open source",
+    "donate": "Donate",
     "openMenu": "Open main menu",
     "closeMenu": "Close main menu",
     "primary": "Primary",
@@ -83,13 +84,14 @@
     "label": "What you need",
     "local": "No subscription needed",
     "localShort": "Free, in full",
-    "localHint": "Runs entirely on your device. A plan only adds hosted sync and shared storage — it does not unlock anything.",
+    "localHint": "Works in full on your device with no account at all. A free account adds sync across devices; paying adds storage, extra accounts and support.",
     "subscription": "Needs a plan",
     "subscriptionShort": "Plan or self-host",
     "subscriptionHint": "This one needs a server running while your devices are asleep, so it needs a paid plan — or your own machine.",
     "infrastructure": "Free and open",
     "infrastructureShort": "Always free",
-    "infrastructureHint": "Shared infrastructure and open-source libraries. Not sold to anyone, at any tier."
+    "infrastructureHint": "Shared infrastructure and open-source libraries. Not sold to anyone, at any tier.",
+    "accountLabel": "What a free account adds"
   },
   "platforms": {
     "label": "Available on",
@@ -134,7 +136,7 @@
       },
       "priced": {
         "title": "Priced like a utility",
-        "body": "One modest subscription covers the entire ecosystem. No per-product tiers, no per-seat arithmetic, no \"contact sales\"."
+        "body": "One subscription covers the entire ecosystem. The price follows how much storage you need and how many people share it — no per-product tiers, no feature withheld for a higher price, and no \"contact sales\"."
       },
       "craft": {
         "title": "Craft over churn",
@@ -175,7 +177,7 @@
         },
         "pricing": {
           "feature": "Pricing",
-          "numori": "One low price for everything",
+          "numori": "One subscription, every product",
           "typical": "Per-product tiers that add up quickly"
         },
         "selfHosting": {
@@ -209,7 +211,7 @@
     },
     "index": {
       "title": "Products and services",
-      "subtitle": "Eighteen pieces, one account, one set of rules. Most are still being built, and we say so on every card.",
+      "subtitle": "{count} pieces, one account, one set of rules. Most are still being built, and we say so on every card.",
       "filterLabel": "Filter by status",
       "filterAll": "Everything",
       "countAll": "Showing all {count} products",
@@ -247,7 +249,8 @@
           "title": "Genuinely offline",
           "body": "The desktop and mobile apps bundle everything they need. No network, no degraded mode."
         }
-      }
+      },
+      "account": "Sign in and every note is already there on your next device, end-to-end encrypted. Without an account the app is complete, but each device keeps its own notes."
     },
     "clips": {
       "tagline": "A clipboard with a memory and a filter",
@@ -269,29 +272,31 @@
           "title": "Locks like a phone",
           "body": "PIN, password or biometrics, plus a privacy screen so your history is not in the app switcher."
         }
-      }
+      },
+      "account": "Sign in and your clipboard history follows you between machines, encrypted. Without an account each device keeps its own history."
     },
     "mail": {
-      "tagline": "Email that is only email",
-      "summary": "An encrypted mailbox with no assistant offering to write your replies and no engine reading your post to sell you a holiday. Standard protocols, open formats, your own domain.",
+      "tagline": "An email client that is only an email client",
+      "summary": "A fast, private client for the mailbox you already have — any IMAP or SMTP account, whoever runs it. No assistant offering to write your replies and no engine reading your post. A Numori-hosted mail service will follow later, priced separately from storage.",
       "perks": {
         "1": {
-          "title": "Nothing reads your mail",
-          "body": "No summarising, no smart replies, no categorising by content. The only party parsing your messages is your own client."
+          "title": "Works with the mailbox you already have",
+          "body": "Standard IMAP and SMTP, so it talks to your current provider, your work account or your own server. Nothing to migrate and no address to change."
         },
         "2": {
-          "title": "Encrypted where it counts",
-          "body": "End-to-end encryption between Numori accounts, and standards-based encryption with everyone else."
+          "title": "Every account, already there on the next device",
+          "body": "Configure your mailboxes once. Sign in to your Numori account on a phone or a new laptop and all of them are set up and waiting, rather than six rounds of server names and port numbers."
         },
         "3": {
-          "title": "Your domain, your addresses",
-          "body": "Custom domains, generous aliases and per-sender addresses included, not sold as an add-on."
+          "title": "Nothing reads your mail",
+          "body": "No summarising, no smart replies, no categorising by content. The only thing parsing your messages is the client on your own machine."
         },
         "4": {
-          "title": "No lock-in at the protocol level",
-          "body": "IMAP and SMTP access, full mailbox export, and an importer that gets you in without a migration project."
+          "title": "Encryption whose keys you hold",
+          "body": "OpenPGP and S/MIME, with keys generated and kept on your device — not escrowed with a provider who could be compelled to hand them over."
         }
-      }
+      },
+      "account": "Sign in once and every mailbox you have configured is already set up on your next device. No adding six accounts by hand on a new phone, and no exporting settings between machines."
     },
     "drive": {
       "tagline": "Storage that cannot read what it stores",
@@ -335,7 +340,8 @@
           "title": "Availability sharing without exposure",
           "body": "Share that you are busy without sharing what you are doing."
         }
-      }
+      },
+      "account": "Sign in and your calendars, and the accounts they come from, appear on every device. Without an account each device holds its own."
     },
     "tasks": {
       "tagline": "Tasks, not a productivity philosophy",
@@ -357,7 +363,8 @@
           "title": "Fits the rest of the suite",
           "body": "Tasks reference notes and calendar entries directly, without a third-party integration in the middle."
         }
-      }
+      },
+      "account": "Sign in and your lists and projects follow you across devices, encrypted. Without an account the app works in full, on one device at a time."
     },
     "chat": {
       "tagline": "Messaging with nothing in the middle",
@@ -401,7 +408,8 @@
           "title": "Imports and exports plainly",
           "body": "Standard bookmark files in and out. Bring the pile you have accumulated elsewhere."
         }
-      }
+      },
+      "account": "Sign in and your bookmarks and saved page copies are on every device and in the browser extension. Without an account they stay on the one you saved them from."
     },
     "sheets": {
       "tagline": "Spreadsheets without a copilot",
@@ -423,7 +431,8 @@
           "title": "Open formats both ways",
           "body": "Native ODS and XLSX import and export, plus CSV for everything else."
         }
-      }
+      },
+      "account": "Sign in to open the same documents everywhere, and to collaborate. Without an account the spreadsheet is complete, but the files are local to each machine."
     },
     "forms": {
       "tagline": "Forms that do not surveil respondents",
@@ -467,7 +476,8 @@
           "title": "Reports you can take away",
           "body": "CSV, ODS and PDF exports, plus a full encrypted backup on request."
         }
-      }
+      },
+      "account": "Sign in and your accounts, budgets and categories are the same on every device. Without an account each device tracks its own."
     },
     "pdf": {
       "tagline": "PDF tools that never see your document",
@@ -536,46 +546,46 @@
       }
     },
     "pulse": {
-      "tagline": "Status and uptime, out in the open",
-      "summary": "The public health dashboard for every Numori service, plus the monitoring behind it. Incidents are posted while they are happening, not summarised afterwards.",
+      "tagline": "Uptime monitoring, included in your plan",
+      "summary": "Watch your own sites and services — HTTP, TCP, ping, TLS certificates and cron heartbeats — with alerts that go where you ask. It also runs the public status page for every Numori service, which is the honest way to show a monitoring tool actually works. Included in the subscription, or self-host it.",
       "perks": {
         "1": {
-          "title": "Honest incident history",
-          "body": "Nothing is quietly edited later. Past incidents stay published, with what broke and what we changed."
+          "title": "Your monitors, at no extra cost",
+          "body": "Monitoring is normally its own subscription with its own per-check pricing. Here it is part of the one plan that covers everything else, with no separate bill and no upgrade to unlock a shorter interval."
         },
         "2": {
-          "title": "No third-party status vendor",
-          "body": "The status page does not embed someone else's tracking script to tell you our servers are up."
+          "title": "Alerts without a middleman",
+          "body": "Email, webhooks and RSS, sent from our infrastructure. No third-party status vendor, and no tracking script embedded in a page whose only job is to say a server is up."
         },
         "3": {
-          "title": "Subscribe how you like",
-          "body": "Email, RSS or webhooks. No account needed to be told a service is down."
+          "title": "Honest incident history",
+          "body": "Nothing is quietly edited later. Past incidents stay published, with what broke and what we changed — on our status page, and on yours."
         },
         "4": {
-          "title": "Useful on its own",
-          "body": "Self-host it to monitor your own services. It is a real monitoring tool, not a marketing page."
+          "title": "We watch ourselves with it",
+          "body": "Every Numori service is monitored by this, so if it stops working we find out before you do. A monitoring tool nobody depends on is a monitoring tool nobody has tested."
         }
       }
     },
     "updater": {
-      "tagline": "Updates that do not report back",
-      "summary": "The release and update service for the desktop and mobile apps. It ships signed builds and learns as little as possible about the machines it updates.",
+      "tagline": "A ready-made dashboard for over-the-air updates",
+      "summary": "Ship over-the-air updates to your Capacitor apps without building the delivery service yourself. The usual options are a paid hosted dashboard or a weekend spent writing your own; this is the third one — run it in a container, or get it with the same subscription that covers every other Numori service.",
       "perks": {
         "1": {
-          "title": "Signed and verifiable",
-          "body": "Every build is signed and reproducible, so you can confirm the binary matches the public source."
+          "title": "Self-host it in an afternoon",
+          "body": "A container image and documented configuration. The free tier of a hosted service normally means building your own distribution panel; this is that panel, already built."
         },
         "2": {
-          "title": "Update checks are not telemetry",
-          "body": "The check asks for a version number. It does not carry a device profile or a persistent identifier."
+          "title": "Channels, staged rollouts and rollback",
+          "body": "Production and beta channels, percentage rollouts, and downgrading to a previous build — the parts you would otherwise write yourself and then have to maintain."
         },
         "3": {
-          "title": "You choose when",
-          "body": "Automatic, prompted or manual. Nothing installs itself in the middle of your work."
+          "title": "Signed and verifiable",
+          "body": "Every bundle is signed, so a device can confirm an update came from you before installing it. Reproducible builds mean you can confirm it matches the public source."
         },
         "4": {
-          "title": "Roll back cleanly",
-          "body": "Previous versions stay available and downgrading is supported, because releases are occasionally wrong."
+          "title": "Update checks are not telemetry",
+          "body": "The check asks for a version number. It does not carry a device profile or a persistent identifier, so shipping updates does not mean building a tracking database of your users."
         }
       }
     },
@@ -627,10 +637,10 @@
   "pricing": {
     "meta": {
       "title": "Pricing",
-      "description": "Pay for storage, not for features. Every Numori plan unlocks every app, storage is one pool shared across all of them, and most of the apps need no subscription at all."
+      "description": "Pay for storage and for how many people share it — never for features. Every Numori account gets every app, the same support, and no platform locked behind a higher price. Most of the apps need no subscription at all."
     },
-    "title": "Pay for storage. Get everything.",
-    "subtitle": "One quota, shared by every app. Every paid plan unlocks the whole ecosystem — the only thing that changes between them is how much room you get.",
+    "title": "Pay for space and seats. Never for features.",
+    "subtitle": "Move the slider. Two things change the price: how much storage you need, and how many of you share it. Every app, every feature and the same support are in every plan, whether you pay two pounds or twenty.",
     "draftNotice": {
       "title": "These numbers are not final",
       "body": "Most of the ecosystem is still being built, so treat this page as our intent. We will publish final pricing before anyone is asked to pay, and we will not raise it on people who signed up earlier."
@@ -643,103 +653,94 @@
     },
     "perMonth": "/month",
     "billedYearly": "{total} billed yearly",
-    "noCard": "No card required",
     "storageShared": "shared across every app",
-    "forPeople": "for up to {count} people",
-    "everythingIncluded": "Every app. Every platform. No feature tiers.",
-    "tiers": {
-      "free": {
-        "name": "Free",
-        "tagline": "Enough for notes, tasks and a calendar that follow you about",
-        "monthly": "£0",
-        "yearlyMonthly": "£0",
-        "yearlyTotal": "£0",
-        "cta": "Start free",
-        "features": {
-          "1": "Every app that runs on your device, in full",
-          "2": "Hosted sync across unlimited devices",
-          "3": "End-to-end encryption on everything",
-          "4": "Full export in open formats",
-          "5": "No expiry, no card, no nagging"
-        }
-      },
-      "core": {
-        "name": "Core",
-        "tagline": "Everything unlocked, with room for years of email",
-        "monthly": "£2",
-        "yearlyMonthly": "£1.67",
-        "yearlyTotal": "£20",
-        "cta": "Join the waiting list",
-        "features": {
-          "1": "Everything in Free",
-          "2": "Mail, Drive, Chat and Forms unlocked",
-          "3": "Your own domain and unlimited aliases",
-          "4": "Roughly 25,000 photos or 40 hours of video",
-          "5": "Support from the people who wrote it"
-        }
-      },
-      "plus": {
-        "name": "Plus",
-        "tagline": "Room for a photo library and everything else",
-        "monthly": "£5",
-        "yearlyMonthly": "£4.17",
-        "yearlyTotal": "£50",
-        "badge": "Most people want this",
-        "cta": "Join the waiting list",
-        "features": {
-          "1": "Everything in Core",
-          "2": "Ten domains and unlimited aliases",
-          "3": "Version history kept for a year",
-          "4": "Roughly 125,000 photos, or a decade of documents",
-          "5": "Priority support"
-        }
-      },
-      "max": {
-        "name": "Max",
-        "tagline": "For raw photography, video, and archives you refuse to delete",
-        "monthly": "£11",
-        "yearlyMonthly": "£9.17",
-        "yearlyTotal": "£110",
-        "cta": "Join the waiting list",
-        "features": {
-          "1": "Everything in Plus",
-          "2": "Unlimited domains",
-          "3": "Version history kept indefinitely",
-          "4": "Higher upload and sharing limits",
-          "5": "Priority support"
-        }
-      }
-    },
-    "family": {
-      "name": "Family",
-      "tagline": "One bill, six people, nobody sharing an account",
-      "monthly": "£18",
-      "yearlyMonthly": "£15",
-      "yearlyTotal": "£180",
+    "everythingIncluded": "Storage and seats change the price. Features never do.",
+    "planner": {
+      "storageLabel": "How much storage do you need?",
+      "storageHint": "One pool, shared by every app. Change it whenever you like, up or down.",
+      "priceLabel": "Your price",
+      "peopleLabel": "How many people?",
+      "peopleHint": "Separate accounts, private from one another, sharing one quota and one bill. How many you can add depends on how much storage you have — about 25 GB each, because splitting a small quota twenty ways just recreates the free tier.",
+      "peopleCount": "{count} person | {count} people",
+      "peopleMax": "Up to {count} with {storage}",
+      "addPerson": "Add a person",
+      "removePerson": "Remove a person",
+      "perPerson": "{price} per extra person",
+      "storageRow": "Storage",
+      "peopleRow": "People",
+      "appsRow": "Apps and features",
+      "appsValue": "All of them",
+      "summary": "{storage} for {people}, {price} per month.",
       "cta": "Join the waiting list",
+      "ctaNote": "Nothing to pay yet — the paid services are not live."
+    },
+    "levels": {
+      "1": {
+        "label": "No account at all",
+        "body": "Install and use it. Notes, tasks, calendars, bookmarks, spreadsheets, budgets, PDF tools and the mail client all work in full, offline, with nothing to sign up for."
+      },
+      "2": {
+        "label": "Free account",
+        "body": "Adds sync. Your data, and the settings behind it, appear on every device you sign in to — encrypted, so we hold ciphertext. Includes 2 GB of shared storage, the documentation and the community forum."
+      },
+      "3": {
+        "label": "Paying",
+        "body": "Adds storage, extra accounts, direct email support, and the services that need a server of their own: {services}. Every feature is identical at every price."
+      },
+      "title": "Three levels, and only the last one costs anything",
+      "subtitle": "Most apps work before you have registered for anything. An account adds the parts that need a server to remember them. Paying adds room and our time."
+    },
+    "included": {
+      "1": "Every app, on every platform it supports",
+      "2": "Unlimited devices and unlimited sync",
+      "3": "Uptime monitoring and an update dashboard, included",
+      "4": "Complete version history, kept indefinitely",
+      "5": "End-to-end encryption throughout",
+      "6": "Full export in open formats, whenever you like",
+      "7": "Sharing, collaboration and offline use",
+      "8": "Direct email support, identical at every price",
+      "9": "Every feature we ship from now on",
+      "title": "Included at every price, including the cheapest",
+      "subtitle": "This list does not change as you move the slider. There is no version of Numori with more features in it, and no support tier above the one you are already on."
+    },
+    "noFeatureTiers": {
+      "title": "There is no higher tier to be upsold to",
+      "body": "Most suites spread features across price points so there is always a next thing to sell you: more domains here, longer version history there, “priority” support if you pay enough. We do not have a next thing. Storage is the only cost that genuinely grows when you use more of it, so storage is the only thing we charge for — and once features are not for sale, the roadmap stops being shaped by what can be withheld."
+    },
+    "support": {
+      "title": "Paying buys storage and our time",
+      "body": "Free accounts get the software, the sync and the documentation, but not our inbox. Answering email is the one cost that does not fall as we grow: servers get cheaper per user every year, and a reply never does. Advertising support we cannot staff would mean either ignoring the people who wrote in or quietly going under, so we would rather draw the line and say where it is.",
+      "paidLabel": "Every paying account",
+      "paidBody": "Direct email support from the people who wrote the code, with no priority tier to be upsold to. The same answer whether you pay the least or the most.",
+      "freeLabel": "Free accounts",
+      "freeBody": "Thorough documentation, a public issue tracker and a community forum we read. Bug reports are always welcome, from anyone, paying or not."
+    },
+    "free": {
+      "name": "Free",
+      "tagline": "Enough for notes, tasks, a calendar and bookmarks that follow you about",
+      "cta": "Start free",
       "features": {
-        "1": "Six separate accounts, each fully private from the others",
-        "2": "3 TB to divide however you like",
-        "3": "Everything in Max, for everyone on the plan",
-        "4": "One person manages the billing and nothing else"
+        "1": "Every app that runs on your device, in full",
+        "2": "Hosted sync across unlimited devices",
+        "3": "End-to-end encryption on everything",
+        "4": "Full export in open formats",
+        "5": "Documentation and the community forum",
+        "6": "No expiry, no card, no nagging"
       }
     },
     "selfHosted": {
       "name": "Self-hosted",
       "tagline": "Your hardware, your quota, our code",
-      "price": "£0",
       "priceNote": "for as long as you like",
       "cta": "Read the deployment guide",
       "features": {
-        "1": "Every feature of Max, with no licence fee",
+        "1": "Every feature, with no licence fee",
         "2": "Storage limited only by your own disks",
         "3": "Container images and documented configuration",
         "4": "AGPL-3.0, so it stays open even if we do not"
       }
     },
     "shared": {
-      "title": "One quota, not a dozen allowances",
-      "body": "Your storage is a single pool. A month of heavy photography eats into it; a quiet month gives the room back. You never have to work out which app is full.",
       "1": {
         "title": "Nothing is metered separately",
         "body": "Mail, Drive, Sheets, form responses and archived bookmarks all draw on the same number. No per-app caps to juggle."
@@ -749,48 +750,115 @@
         "body": "Attach a 2 GB video to an email or drop it in Drive — it costs the same either way, because it is the same pool."
       },
       "3": {
-        "title": "Change plan whenever",
-        "body": "Up or down, prorated, effective immediately. Going down only asks you to get under the new quota first."
-      }
+        "title": "Change it whenever",
+        "body": "Slide up or down, prorated, effective immediately. Going down only asks you to get under the new quota first."
+      },
+      "title": "One quota, not a dozen allowances",
+      "body": "Your storage is a single pool. A month of heavy photography eats into it; a quiet month gives the room back. You never have to work out which app is full."
     },
     "noSubscription": {
       "title": "{free} of the {total} apps never need a subscription",
       "body": "If an app's data lives on your device, we have no running cost to recover and no business charging you for it. These are free in full — not trials, not feature-limited, not five-notes-then-pay.",
-      "planAdds": "A plan adds hosted sync and shared storage. It does not unlock the app, because the app was never locked.",
-      "needsPlanTitle": "And {count} that genuinely do",
-      "needsPlanBody": "These need a server running while every one of your devices is asleep. A mailbox has to accept mail at three in the morning; a form has to answer a public URL. There is no honest way to give those away — so pay us a little, or run them yourself.",
-      "cta": "See what each app needs"
+      "planAdds": "Paying adds storage and direct support. It does not unlock these apps, because they were never locked.",
+      "needsPlanTitle": "And {count} services that genuinely need one",
+      "needsPlanBody": "These need a server running while every one of your devices is asleep. A shared link has to work when someone opens it; a form has to answer a public URL; an uptime check has to run at four in the morning; a device has to be able to fetch an update. There is no honest way to give those away — so pay us a little, or run them yourself.",
+      "cta": "See what each app needs",
+      "donateCta": "Use the free apps and want to help? Donations pay for the servers."
     },
     "faq": {
-      "title": "The awkward questions",
       "1": {
         "q": "Why so cheap?",
         "a": "Because we are not funding a sales team, an advertising budget or a data-science department, and because storage genuinely costs less every year. A small, well-run ecosystem does not need thirty pounds a month from you to survive."
       },
       "2": {
         "q": "What is the catch with the free tier?",
-        "a": "There isn't one, but here is the honest shape of it: 5 GB is plenty for notes, tasks, a calendar and bookmarks, and nowhere near enough for a mail archive or a photo library. The apps that need almost no storage are the ones you can use forever without paying."
+        "a": "Two things, stated plainly: 2 GB is plenty for notes, tasks, a calendar and bookmarks, and nowhere near enough for a mail archive or a photo library; and free accounts get documentation and the forum rather than our inbox. The software itself is not cut down. The apps that need almost no storage are the ones you can use forever without paying."
       },
       "3": {
+        "q": "Why is there no email support for free accounts?",
+        "a": "Because it is the one cost that does not shrink as we grow. Storage gets cheaper per gigabyte every year; a written reply takes the same twenty minutes it always did. A free tier with unlimited support either gets quietly abandoned or takes the company with it. Bug reports are a different matter — those help us, so the issue tracker is open to everyone."
+      },
+      "4": {
         "q": "Why does storage decide the price rather than features?",
         "a": "Because storage is the only thing that actually costs us more when you use more of it. Charging for features would mean inventing reasons to withhold them, and then the roadmap starts being shaped by what can be sold rather than what should exist."
       },
-      "4": {
-        "q": "What happens if I go over my quota?",
-        "a": "Nothing is deleted. Sending and uploading stop until you free some space or move up a plan, and everything already stored stays readable and exportable. Holding your data hostage over a billing threshold is not something we are willing to do."
-      },
       "5": {
+        "q": "So the cheapest paid option really has everything?",
+        "a": "Yes. Every app on every platform it supports, unlimited devices and sync, full version history, collaboration, uptime monitoring, the update dashboard and the same support. The only difference between the cheapest and the most expensive is the number of gigabytes."
+      },
+      "6": {
+        "q": "Is email hosting included?",
+        "a": "No. Numori Mail is a client and it is free — it works with whatever mailbox you already have, and a free account syncs your accounts across devices. A Numori-hosted mailbox is a separate product coming later with its own pricing. That is not a way to charge you twice: running mail is a different shape of cost from storage, driven by deliverability, reputation and abuse handling rather than gigabytes, so folding it into a storage slider would make both prices dishonest."
+      },
+      "7": {
+        "q": "What happens if I go over my quota?",
+        "a": "Nothing is deleted. Sending and uploading stop until you free some space or slide the quota up, and everything already stored stays readable and exportable. Holding your data hostage over a billing threshold is not something we are willing to do."
+      },
+      "8": {
+        "q": "Can I change how much storage I have?",
+        "a": "Whenever you like, in either direction, prorated to the day. The only condition on going down is that you get under the new quota first."
+      },
+      "9": {
         "q": "What happens if Numori shuts down?",
         "a": "Everything is AGPL-3.0 and self-hostable, and every app exports to open formats. If we disappear, you can run the whole stack yourself or take your data elsewhere. That is the point of publishing the servers too."
       },
-      "6": {
+      "10": {
         "q": "Will you add AI features later once it gets expensive not to?",
         "a": "No. It is a founding commitment rather than a current preference, and it is the sort of promise that is easy to check: watch the repositories."
       },
-      "7": {
-        "q": "Do you offer student or non-profit pricing?",
-        "a": "Yes, once billing exists. It will be a straightforward discount rather than an application process."
-      }
+      "11": {
+        "q": "How many people can share one subscription?",
+        "a": "It scales with storage, at roughly 25 GB each: four people on 100 GB, twenty on 500 GB, forty on 1 TB, up to a ceiling of fifty. The ceiling is not a technical limit — 4 TB would stretch to 163 — but past about fifty people you are an organisation that wants a data processing agreement, single sign-on and a support response time, and those are a different product rather than a bigger number on a slider."
+      },
+      "title": "The awkward questions"
+    }
+  },
+  "donate": {
+    "meta": {
+      "title": "Donate",
+      "description": "Most Numori apps are free and need no subscription. Donations pay for the servers that run the shared services, and there are no perks, tiers or badges attached."
+    },
+    "title": "Donations pay for the servers",
+    "subtitle": "{free} of the {total} apps are free and need no account, which leaves a lot of people using Numori with no way to chip in. This is that way.",
+    "intro": "Subscriptions pay the people who write the code. Donations are earmarked for the infrastructure underneath: the storage nodes, the sync relay, the build and release machinery. Separating the two means we can promise that the free apps stay free without quietly hoping they will one day be a funnel.",
+    "where": {
+      "1": {
+        "title": "Servers and bandwidth",
+        "body": "Storage nodes, the sync relay, the database, monitoring and offsite backups. This is the largest share and the one that grows with the number of free accounts."
+      },
+      "2": {
+        "title": "Translation",
+        "body": "Paying human translators instead of running the interface through a machine. It is a stated commitment, and commitments cost money."
+      },
+      "3": {
+        "title": "Accessibility audits",
+        "body": "Testing with real assistive technology and paying people who use it daily to tell us where we got it wrong."
+      },
+      "title": "Where it actually goes",
+      "body": "In rough order of size. We would rather name three concrete things than say “it helps us keep the lights on”."
+    },
+    "how": {
+      "title": "How to donate",
+      "body": "Several options because donation platforms are unevenly available and take unevenly large cuts. GitHub Sponsors and Liberapay pass on the most; PayPal is the one most people already have.",
+      "note": "Monthly is far more useful than one-off, even at a much smaller amount — a server bill is monthly too. But a single donation is genuinely welcome and there is no wrong size."
+    },
+    "methods": {
+      "recurring": "Monthly or one-off",
+      "oneOff": "One-off"
+    },
+    "noPerks": {
+      "title": "You get nothing for it, on purpose",
+      "body": "No badge, no donor tier, no early access, no name in a credits file unless you ask. Partly because rewarding donations turns a gift into a purchase, which changes how it is taxed and complicates something that should be simple. Mostly because the alternative is a second pricing ladder built out of goodwill, and one honest price list is enough."
+    },
+    "other": {
+      "1": "Report bugs. The issue tracker is open to everyone, paying or not.",
+      "2": "Translate an app into a language you actually speak.",
+      "3": "Audit the code. It is all public precisely so that someone will.",
+      "4": "Run an accessibility pass with the assistive technology you use.",
+      "5": "Tell one person who is looking for an alternative.",
+      "title": "Ways to help that cost nothing",
+      "body": "Money is the least interesting kind of contribution and often the least useful. All of these help more than a few pounds does.",
+      "cta": "Or take out a subscription"
     }
   },
   "blog": {
@@ -823,7 +891,6 @@
     "subtitle": "A short manifesto, and the reasoning we keep coming back to.",
     "intro": "Most software you rely on is engineered around a business model that needs your attention or your data. Numori is an attempt to build the same tools around a much duller model: you pay a small amount, we run the service well, and nothing else happens.",
     "manifesto": {
-      "title": "The manifesto",
       "1": {
         "title": "Privacy is an architecture, not a policy page",
         "body": "A privacy policy is a promise about what a company will choose to do. Encryption and local-first storage are statements about what it is able to do. We prefer the second kind and design so that the tempting option is not technically available to us."
@@ -846,12 +913,13 @@
       },
       "6": {
         "title": "Fair price, no dark patterns",
-        "body": "One price for everything, cancellation that takes one click, no countdown timers, no interstitials asking whether you are sure you want to leave, and no price rise aimed at people already signed up."
+        "body": "One subscription for everything, cancellation that takes one click, no countdown timers, no interstitials asking whether you are sure you want to leave, and no price rise aimed at people already signed up."
       },
       "7": {
         "title": "Leaving should be easy",
         "body": "Every app exports everything, in formats other software can read, without a support ticket. If we have to trap you to keep you, we have already failed at the actual job."
-      }
+      },
+      "title": "The manifesto"
     },
     "who": {
       "title": "Who is building it",
@@ -871,7 +939,7 @@
       "description": "Every repository in the Numori ecosystem, licensed under the AGPL-3.0: clients, servers, design system and this website."
     },
     "title": "All of it, in the open",
-    "subtitle": "Nineteen repositories under the AGPL-3.0. Clients, servers, the design system and the website you are reading.",
+    "subtitle": "{count} repositories under the AGPL-3.0. Clients, servers, the design system and the website you are reading.",
     "licence": {
       "title": "Why the AGPL-3.0",
       "body": "The AGPL closes the loophole that lets a hosted service build on open code without giving anything back. Anyone may run, modify and offer Numori as a service; they simply have to publish their changes too. It keeps the ecosystem open even if we are no longer the ones maintaining it."
@@ -890,7 +958,7 @@
     },
     "website": {
       "title": "Including this website",
-      "body": "No analytics, no trackers, no cookie banner to dismiss, because there is nothing to consent to. The site sets one cookie, only after you change language by hand, so that your choice survives a reload.",
+      "body": "No analytics, no trackers and no advertising, so there is no cookie banner to dismiss — this site sets no cookies at all. Your language is carried in the URL rather than in storage. Two things sit in your browser’s local storage and are never sent anywhere: whether you prefer the light or dark theme, and a cache of pages you have already read.",
       "cta": "Read this site's source"
     }
   },
@@ -900,11 +968,11 @@
       "subtitle": "What we collect, which is very little, and what we do with it, which is very little.",
       "placeholder": "This is placeholder text. A complete, plain-language privacy policy will be published here before any Numori service accepts a registration.",
       "summary": {
-        "title": "The short version",
-        "1": "This website sets no analytics or advertising cookies, and embeds no third-party scripts.",
-        "2": "One functional cookie stores your language preference, and only once you choose a language yourself.",
+        "1": "This website sets no cookies at all, uses no analytics or advertising, and embeds no third-party scripts.",
+        "2": "Your theme preference and a cache of pages you have read are kept in your browser’s local storage. Both stay on your device and are never transmitted to us.",
         "3": "No account is required to read anything here.",
-        "4": "Server logs are kept briefly for security and abuse prevention, then deleted."
+        "4": "Server logs are kept briefly for security and abuse prevention, then deleted.",
+        "title": "The short version"
       }
     },
     "terms": {

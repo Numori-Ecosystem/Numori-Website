@@ -31,7 +31,7 @@ propia lista de la compra.
 **Alguien tiene que pagar la inferencia.** La inferencia no es gratis y no se
 abarata por usuario a medida que creces: escala con el uso, al contrario que el
 almacenamiento, que cuesta menos por gigabyte cada año. Una empresa que añade
-funciones de IA a una suscripción de 3 € tiene tres opciones: subir el precio,
+funciones de IA a una suscripción con un precio como el nuestro tiene tres opciones: subir el precio,
 limitar la función hasta hacerla inútil, o encontrar otra forma de ganar dinero
 con quien la usa. Las tres son peores que no tener la función.
 

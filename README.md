@@ -127,6 +127,7 @@ Two steps, and the page builds itself.
   category: 'apps',               // apps | platform | developer
   status: 'planned',              // beta | development | planned
   access: 'local',                // local | subscription | infrastructure
+  account: true,                  // do key features need a (free) account?
   featured: false,                // show on the home page?
   platforms: ['web', 'android'],  // keys under `platforms.*` in the locales
   url: null,                      // live URL, or null when unshipped
@@ -173,35 +174,155 @@ changes a public claim:
 - **`infrastructure`** — always free: shared services and open-source libraries
   that are not sold to anyone.
 
+`paidProducts()` in `app/data/products.js` deliberately ignores `category` and
+matches on `access === 'subscription'` alone. Numori Updater is a developer tool
+that still needs a server, and an earlier version filtered by `category === 'apps'`,
+which silently kept a paid product off the pricing page. The "needs a plan" heading
+says "services" rather than "apps" for the same reason.
+
+Set `account: true` when a free Numori account unlocks key features — almost always
+cross-device sync — and add a matching `products.<slug>.account` sentence to every
+locale describing what signing in gains you _and_ what still works without it. It
+renders in the product page sidebar. Numori PDF is the one local app without it:
+processing happens on your machine and there is nothing worth syncing.
+
 ## Pricing model
 
-One variable: storage. Every paid plan unlocks every app, and storage is a single
-pool shared across all of them, so there is no feature matrix to maintain.
+There are **three levels, and only the third costs anything**:
 
-Plan structure lives in `app/data/plans.js` — quota, seat count, which tier is
-highlighted. Prices live in the locale files under `pricing.tiers.<key>`, because
-pounds and euros are different amounts rather than translations of one another.
-Storage sizes deliberately stay in the data file: "100 GB" is written identically
-in every language we ship, and duplicating the figures per locale is how tiers
-quietly stop matching.
+1. **No account** — the app, complete, offline, nothing to register for.
+2. **Free account** — adds cross-device sync, 2 GB of shared storage, docs and forum.
+3. **Paying** — adds storage, direct support, and the services needing a server of
+   their own (Drive, Chat, Forms).
 
-Each tier defines `monthly`, `yearlyMonthly` and `yearlyTotal`. Yearly bills ten
-months instead of twelve, and the card shows the _monthly equivalent_ with the
-annual total underneath — comparing £4.17 against £5 is the comparison someone is
-actually making; comparing £50 against £5 is not.
+Paying buys three things: **storage**, **extra accounts** and **support**. Every
+app and every feature is identical at every price, and no platform sits behind a
+higher price, so the pricing page is a **slider**, not a set of tiers.
 
-To change a tier: edit `PLANS` for the quota, and the matching
-`pricing.tiers.<key>` block in every locale for the prices and copy. Only the
-tier with `highlighted: true` may define a `badge`; the others would render the
-raw key.
+Note "every platform it supports", not "every platform" — Forms and Pulse are
+web-only, Clips and Mail have no web build, Marks has no desktop, Sheets and PDF
+have no mobile. The promise is that platforms are never paywalled, which is true;
+that every app runs everywhere is not.
 
-Quotas are not arbitrary. Hetzner SX capacity costs roughly £2.00–2.60 per TB per
-month once erasure coding and backups are counted, so a tier has to net more than
-that per TB after VAT and card fees. The current ladder nets about £14.17 (Core),
-£7.68 (Plus), £4.35 (Max) and £4.78 (Family) per TB, so every tier stays profitable
-even if a subscriber fills their quota completely. Check that figure before raising
-a quota: an earlier 4 TB tier netted £1.77/TB — below cost — and the tiers with the
-most storage attract exactly the users who will fill them.
+The claim to protect is "never for features", _not_ "storage is the only variable".
+An earlier version said the latter, and the home page went as far as promising "no
+per-seat arithmetic" while the pricing page charged £1 per extra person.
+
+Absolute claims are the recurring failure mode in this repo. Counts derived from
+data are self-correcting; a sentence containing "only" or "nothing else" is
+invisible to every check here. Before shipping a pricing or product change, grep the
+locale files **and** `content/` for: `Nothing else`, `only thing`, `per-seat`,
+`every platform`, `cookie`, and any written-out number.
+
+## Cookies and browser storage
+
+**This site sets no cookies.** `i18n.detectBrowserLanguage` is disabled specifically
+to keep that true — with `useCookie` on, @nuxtjs/i18n writes `i18n_redirected` on the
+_first_ page load, because `loadAndSetLocale` skips its early-return while
+`ctx.initial` is true. That made the site's own privacy copy false and put a
+non-consented preference cookie on a site whose entire pitch is privacy.
+
+Two localStorage entries remain, both functional and never transmitted:
+`nuxt-color-mode` (theme) and `content_*` (Nuxt Content's page cache). The privacy
+page and the open-source page describe exactly those two. If you add anything that
+writes to cookies or storage, update `legal.privacy.summary.*`,
+`openSource.website.body` and `footer.noTracking` in both locales.
+
+Re-enabling language detection means rewriting those three claims, and probably
+needing a consent mechanism.
+
+Keep levels 1 and 2 distinct in copy. `access: 'local'` answers "does it cost
+money", _not_ "does it need an account" — most local apps have key features behind
+a free account, recorded in the separate `account` flag. Conflating the two once
+produced copy claiming that _paying_ is what adds sync, which is wrong and
+undersells the free tier.
+
+Note the shape of the support rule — it is a free/paid boundary, not a paid
+gradient. Support is the same whether someone pays £1.50 or £20; a "priority"
+level above it would be the same feature-tiering mistake in a new coat. Free
+accounts get documentation, a community forum and an open issue tracker, which is
+a real offer rather than an absence, and bug reports are accepted from anyone.
+
+The free quota is 2 GB. That number is about signalling rather than cost: free
+accounts average a few hundred megabytes, so trimming the quota from 5 GB saved
+roughly £18 a month at 130,000 accounts. Removing free email support is the
+change that actually mattered — around 350 tickets a month is close to half a
+full-time person.
+
+That is deliberate. Tier cards had nothing to differentiate by — they could only
+repeat one identical feature list under four different numbers — and an earlier
+version of this page drifted into inventing differences (domain counts,
+version-history retention, "priority" support) to make the cards look distinct.
+That is precisely the feature-tiering the model exists to reject. A slider states
+the actual model and leaves nowhere to smuggle a feature difference back in.
+
+`app/data/plans.js` owns the numbers:
+
+- `STORAGE_STEPS` — the slider's stops, each `{ gb, label, price }`
+- `PRICE_PER_EXTRA_PERSON` — flat add-on for additional accounts
+- `MIN_STORAGE_PER_PERSON_GB` / `MAX_PEOPLE_CEILING` / `maxPeopleFor()` — how many
+  accounts a quota may be split between
+- `YEARLY_MONTHS_CHARGED` — 10, so paying yearly costs ten months
+- `quote({ stepIndex, people, billing })` — the single pricing function
+
+Prices are plain numbers formatted by `formatMoney()` in `app/utils/site.js`, which
+picks the currency from `CURRENCIES` per locale. Pounds and euros are priced at
+numeral parity (£2 and 2 €) rather than converted, so one number serves both
+languages and prices cannot drift between locale files. Storage labels live in the
+data too, since "100 GB" is written identically in every language we ship.
+
+Yearly shows the _monthly equivalent_ with the annual total underneath — comparing
+£4.17 against £5 is the comparison someone is actually making; comparing £50
+against £5 is not.
+
+### Seats
+
+Seats are derived from storage, not fixed: `maxPeopleFor(gb)` allows one account
+per `MIN_STORAGE_PER_PERSON_GB` (25 GB), capped at `MAX_PEOPLE_CEILING` (50). So
+100 GB splits four ways, 500 GB twenty ways, 1 TB forty ways.
+
+The 25 GB floor exists because splitting a small quota many ways just recreates the
+free tier — twenty people on 50 GB get 2.5 GB each and have no reason to pay. The
+50-seat ceiling is a _product_ boundary rather than a technical one (4 TB would
+stretch to 163): past roughly that size a customer wants a data processing
+agreement, SSO and a committed support response time, which is a different product.
+
+`quote()` clamps the seat count itself rather than trusting its caller, so a stale
+number left over from a larger quota can never be quoted or charged for. The
+planner also pushes the clamped value back up to the page when storage is reduced.
+
+### Changing a price
+
+Prices are hand-set, because no formula produces round numbers at every stop. What
+must be re-checked is the **marginal** rate. Hetzner SX capacity costs roughly
+£2.00–2.60 per TB per month once erasure coding and backups are counted, so every
+step up has to charge more per _additional_ TB than that TB costs to run:
+
+| Storage | Price | Net/TB | Marginal/TB |
+| ------- | ----- | ------ | ----------- |
+| 50 GB   | £1.50 | £20.74 | —           |
+| 100 GB  | £2    | £14.51 | £8.28       |
+| 250 GB  | £3    | £9.11  | £5.52       |
+| 500 GB  | £5    | £7.87  | £6.62       |
+| 1 TB    | £8    | £6.27  | £4.74       |
+| 2 TB    | £12   | £4.75  | £3.23       |
+| 3 TB    | £16   | £4.24  | £3.23       |
+| 4 TB    | £20   | £3.99  | £3.23       |
+
+Net figures are after 20% VAT and card fees of 2.5% + 20p. Average revenue per TB
+can look healthy while a single step is sold at a loss, so check the steps either
+side of anything you change — an earlier 4 TB tier netted £1.77/TB, below cost.
+
+### Copy that must not drift
+
+`pricing.included.*` is the list of what every _paying_ account gets. It must stay
+free of anything that varies with price. If you find yourself adding a number to
+it, that number belongs on the slider instead — and if you find yourself adding a
+second support level, stop.
+
+`pricing.support.*` states the free/paid support boundary. Keep the free side
+described as what it includes (documentation, forum, issue tracker) rather than
+what it lacks.
 
 ## Motion
 

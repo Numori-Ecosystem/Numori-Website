@@ -29,8 +29,8 @@ second is a 4 GB download to save you reading your own shopping list.
 
 **Someone has to pay for the inference.** Inference is not free and it does not
 get cheaper per user as you grow — it scales with usage, unlike storage, which
-gets cheaper per gigabyte every year. A company that adds AI features to a £3
-subscription has three options: raise the price, cap the feature so tightly it is
+gets cheaper per gigabyte every year. A company that adds AI features to a
+subscription priced like ours has three options: raise the price, cap the feature so tightly it is
 useless, or find another way to make money from the people using it. All three
 are worse than not having the feature.
 

@@ -142,6 +142,29 @@
             </p>
           </section>
 
+          <!--
+            What a free account adds, for the apps that work without one. This is a
+            separate question from whether the product costs money: most of these
+            are free either way, but markedly more useful signed in.
+          -->
+          <section v-if="product.account" :aria-labelledby="ids.account">
+            <h2
+              :id="ids.account"
+              class="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400"
+            >
+              {{ $t('access.accountLabel') }}
+            </h2>
+
+            <p class="mt-2 flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+              <Icon
+                name="mdi:cloud-sync-outline"
+                class="mt-0.5 size-4 shrink-0 text-sky-600 dark:text-sky-400"
+                aria-hidden="true"
+              />
+              {{ $t(`products.${product.slug}.account`) }}
+            </p>
+          </section>
+
           <section :aria-labelledby="ids.platforms">
             <h2
               :id="ids.platforms"
@@ -221,6 +244,7 @@ const ids = {
   source: useId(),
   status: useId(),
   access: useId(),
+  account: useId(),
   platforms: useId(),
 }
 

@@ -11,6 +11,7 @@
     "blog": "Blog",
     "about": "Nosotros",
     "openSource": "Código abierto",
+    "donate": "Donar",
     "openMenu": "Abrir el menú principal",
     "closeMenu": "Cerrar el menú principal",
     "primary": "Principal",
@@ -83,13 +84,14 @@
     "label": "Qué necesitas",
     "local": "Sin suscripción",
     "localShort": "Gratis y completa",
-    "localHint": "Funciona enteramente en tu dispositivo. Un plan solo añade sincronización alojada y almacenamiento compartido: no desbloquea nada.",
+    "localHint": "Funciona completa en tu dispositivo sin ninguna cuenta. Una cuenta gratuita añade la sincronización entre dispositivos; pagar añade almacenamiento, cuentas adicionales y soporte.",
     "subscription": "Necesita un plan",
     "subscriptionShort": "Plan o autoalojado",
     "subscriptionHint": "Esta necesita un servidor funcionando mientras tus dispositivos duermen, así que requiere un plan de pago o tu propia máquina.",
     "infrastructure": "Libre y abierto",
     "infrastructureShort": "Siempre gratis",
-    "infrastructureHint": "Infraestructura compartida y bibliotecas de código abierto. No se venden a nadie, en ningún plan."
+    "infrastructureHint": "Infraestructura compartida y bibliotecas de código abierto. No se venden a nadie, en ningún plan.",
+    "accountLabel": "Qué añade una cuenta gratuita"
   },
   "platforms": {
     "label": "Disponible en",
@@ -134,7 +136,7 @@
       },
       "priced": {
         "title": "Un precio de servicio básico",
-        "body": "Una suscripción modesta cubre todo el ecosistema. Sin planes por producto, sin cuentas por usuario y sin «consulta con ventas»."
+        "body": "Una suscripción cubre todo el ecosistema. El precio depende de cuánto almacenamiento necesitas y de cuántas personas lo comparten: sin planes por producto, sin funciones reservadas para un precio más alto y sin «consulta con ventas»."
       },
       "craft": {
         "title": "Oficio antes que novedades",
@@ -175,7 +177,7 @@
         },
         "pricing": {
           "feature": "Precio",
-          "numori": "Un precio bajo por todo",
+          "numori": "Una suscripción, todos los productos",
           "typical": "Planes por producto que se acumulan rápido"
         },
         "selfHosting": {
@@ -209,7 +211,7 @@
     },
     "index": {
       "title": "Productos y servicios",
-      "subtitle": "Dieciocho piezas, una cuenta y unas mismas reglas. La mayoría siguen en construcción, y lo indicamos en cada tarjeta.",
+      "subtitle": "{count} piezas, una cuenta y unas mismas reglas. La mayoría siguen en construcción, y lo indicamos en cada tarjeta.",
       "filterLabel": "Filtrar por estado",
       "filterAll": "Todo",
       "countAll": "Mostrando los {count} productos",
@@ -247,7 +249,8 @@
           "title": "Funciona sin conexión de verdad",
           "body": "Las aplicaciones de escritorio y móvil incluyen todo lo que necesitan. Sin red no hay modo degradado."
         }
-      }
+      },
+      "account": "Inicia sesión y todas tus notas ya estarán en tu siguiente dispositivo, cifradas de extremo a extremo. Sin cuenta la aplicación está completa, pero cada dispositivo guarda sus propias notas."
     },
     "clips": {
       "tagline": "Un portapapeles con memoria y con filtro",
@@ -269,29 +272,31 @@
           "title": "Se bloquea como un móvil",
           "body": "PIN, contraseña o biometría, más una pantalla de privacidad para que tu historial no aparezca en el selector de aplicaciones."
         }
-      }
+      },
+      "account": "Inicia sesión y tu historial del portapapeles te sigue entre equipos, cifrado. Sin cuenta cada dispositivo guarda su propio historial."
     },
     "mail": {
-      "tagline": "Correo que es solo correo",
-      "summary": "Un buzón cifrado sin ningún asistente ofreciéndose a escribir tus respuestas y sin ningún motor leyendo tu correspondencia para venderte un viaje. Protocolos estándar, formatos abiertos y tu propio dominio.",
+      "tagline": "Un cliente de correo que es solo un cliente de correo",
+      "summary": "Un cliente rápido y privado para el buzón que ya tienes: cualquier cuenta IMAP o SMTP, sea de quien sea. Sin ningún asistente ofreciéndose a escribir tus respuestas y sin ningún motor leyendo tu correspondencia. Más adelante llegará un servicio de correo alojado por Numori, con un precio aparte del almacenamiento.",
       "perks": {
         "1": {
-          "title": "Nada lee tu correo",
-          "body": "Sin resúmenes, sin respuestas sugeridas y sin clasificación por contenido. La única parte que analiza tus mensajes es tu propio cliente."
+          "title": "Funciona con el buzón que ya tienes",
+          "body": "IMAP y SMTP estándar, así que habla con tu proveedor actual, con la cuenta del trabajo o con tu propio servidor. Nada que migrar y ninguna dirección que cambiar."
         },
         "2": {
-          "title": "Cifrado donde importa",
-          "body": "Cifrado de extremo a extremo entre cuentas de Numori y cifrado basado en estándares con todo el mundo."
+          "title": "Todas tus cuentas, ya puestas en el siguiente dispositivo",
+          "body": "Configura tus buzones una vez. Inicia sesión con tu cuenta de Numori en un móvil o en un portátil nuevo y estarán todos listos y esperando, en lugar de seis rondas de nombres de servidor y números de puerto."
         },
         "3": {
-          "title": "Tu dominio, tus direcciones",
-          "body": "Dominios propios, alias de sobra y direcciones por remitente incluidos, no vendidos como extra."
+          "title": "Nada lee tu correo",
+          "body": "Sin resúmenes, sin respuestas sugeridas y sin clasificación por contenido. Lo único que analiza tus mensajes es el cliente de tu propia máquina."
         },
         "4": {
-          "title": "Sin ataduras en el protocolo",
-          "body": "Acceso por IMAP y SMTP, exportación completa del buzón y un importador que te deja entrar sin montar un proyecto de migración."
+          "title": "Cifrado con claves que tienes tú",
+          "body": "OpenPGP y S/MIME, con claves generadas y guardadas en tu dispositivo, no depositadas en un proveedor al que se le pueda exigir que las entregue."
         }
-      }
+      },
+      "account": "Inicia sesión una vez y todos los buzones que hayas configurado ya estarán listos en tu siguiente dispositivo. Sin añadir seis cuentas a mano en un móvil nuevo y sin exportar ajustes entre equipos."
     },
     "drive": {
       "tagline": "Almacenamiento que no puede leer lo que almacena",
@@ -335,7 +340,8 @@
           "title": "Compartir disponibilidad sin exponerte",
           "body": "Comparte que estás ocupado sin compartir qué estás haciendo."
         }
-      }
+      },
+      "account": "Inicia sesión y tus calendarios, y las cuentas de las que vienen, aparecen en todos tus dispositivos. Sin cuenta cada dispositivo guarda los suyos."
     },
     "tasks": {
       "tagline": "Tareas, no una filosofía de productividad",
@@ -357,7 +363,8 @@
           "title": "Encaja con el resto de la suite",
           "body": "Las tareas apuntan directamente a notas y eventos del calendario, sin una integración de terceros en medio."
         }
-      }
+      },
+      "account": "Inicia sesión y tus listas y proyectos te siguen entre dispositivos, cifrados. Sin cuenta la aplicación funciona completa, en un dispositivo a la vez."
     },
     "chat": {
       "tagline": "Mensajería sin nada en medio",
@@ -401,7 +408,8 @@
           "title": "Importa y exporta sin dramas",
           "body": "Archivos de marcadores estándar, en ambas direcciones. Trae el montón que has acumulado en otros sitios."
         }
-      }
+      },
+      "account": "Inicia sesión y tus marcadores y las copias guardadas están en todos tus dispositivos y en la extensión del navegador. Sin cuenta se quedan en el dispositivo desde el que los guardaste."
     },
     "sheets": {
       "tagline": "Hojas de cálculo sin copiloto",
@@ -423,7 +431,8 @@
           "title": "Formatos abiertos en ambos sentidos",
           "body": "Importación y exportación nativas de ODS y XLSX, más CSV para todo lo demás."
         }
-      }
+      },
+      "account": "Inicia sesión para abrir los mismos documentos en cualquier sitio y para colaborar. Sin cuenta la hoja de cálculo está completa, pero los archivos son locales de cada equipo."
     },
     "forms": {
       "tagline": "Formularios que no vigilan a quien responde",
@@ -467,7 +476,8 @@
           "title": "Informes que puedes llevarte",
           "body": "Exportación a CSV, ODS y PDF, más una copia de seguridad cifrada completa cuando la pidas."
         }
-      }
+      },
+      "account": "Inicia sesión y tus cuentas, presupuestos y categorías son las mismas en todos tus dispositivos. Sin cuenta cada dispositivo lleva las suyas."
     },
     "pdf": {
       "tagline": "Herramientas PDF que nunca ven tu documento",
@@ -536,46 +546,46 @@
       }
     },
     "pulse": {
-      "tagline": "Estado y disponibilidad, a la vista de todos",
-      "summary": "El panel público de salud de todos los servicios de Numori, y la monitorización que lo alimenta. Las incidencias se publican mientras ocurren, no se resumen después.",
+      "tagline": "Monitorización de disponibilidad, incluida en tu plan",
+      "summary": "Vigila tus propios sitios y servicios (HTTP, TCP, ping, certificados TLS y latidos de cron) con alertas que llegan donde tú digas. También hace funcionar la página pública de estado de todos los servicios de Numori, que es la forma honesta de demostrar que una herramienta de monitorización funciona de verdad. Incluida en la suscripción, o aloja la tuya.",
       "perks": {
         "1": {
-          "title": "Historial de incidencias honesto",
-          "body": "Nada se edita en silencio más tarde. Las incidencias pasadas siguen publicadas, con qué se rompió y qué cambiamos."
+          "title": "Tus monitores, sin coste añadido",
+          "body": "La monitorización suele ser una suscripción aparte con su propio precio por comprobación. Aquí forma parte del único plan que cubre todo lo demás, sin factura separada y sin mejoras que desbloqueen un intervalo más corto."
         },
         "2": {
-          "title": "Sin proveedor de estado externo",
-          "body": "La página de estado no incrusta el script de seguimiento de otra empresa para decirte que nuestros servidores funcionan."
+          "title": "Alertas sin intermediarios",
+          "body": "Correo, webhooks y RSS, enviados desde nuestra infraestructura. Sin proveedores de estado externos y sin scripts de seguimiento incrustados en una página cuyo único trabajo es decir que un servidor funciona."
         },
         "3": {
-          "title": "Suscríbete como prefieras",
-          "body": "Correo, RSS o webhooks. No hace falta cuenta para que te avisen de que un servicio está caído."
+          "title": "Historial de incidencias honesto",
+          "body": "Nada se edita en silencio más tarde. Las incidencias pasadas siguen publicadas, con qué se rompió y qué cambiamos: en nuestra página de estado y en la tuya."
         },
         "4": {
-          "title": "Útil por sí solo",
-          "body": "Alójalo tú para monitorizar tus propios servicios. Es una herramienta de monitorización real, no una página de marketing."
+          "title": "Nos vigilamos a nosotros con ella",
+          "body": "Todos los servicios de Numori están monitorizados con esto, así que si deja de funcionar nos enteramos antes que tú. Una herramienta de monitorización de la que nadie depende es una herramienta que nadie ha probado."
         }
       }
     },
     "updater": {
-      "tagline": "Actualizaciones que no informan de nada",
-      "summary": "El servicio de publicación y actualización de las aplicaciones de escritorio y móvil. Distribuye compilaciones firmadas y aprende lo menos posible sobre los equipos que actualiza.",
+      "tagline": "Un panel listo para actualizaciones over-the-air",
+      "summary": "Publica actualizaciones over-the-air para tus aplicaciones Capacitor sin construir tú el servicio de distribución. Lo habitual es un panel alojado de pago o un fin de semana escribiendo el tuyo; esta es la tercera opción: ejecútalo en un contenedor u obtenlo con la misma suscripción que cubre el resto de los servicios de Numori.",
       "perks": {
         "1": {
-          "title": "Firmado y verificable",
-          "body": "Cada compilación está firmada y es reproducible, así que puedes confirmar que el binario se corresponde con el código público."
+          "title": "Alójalo tú en una tarde",
+          "body": "Una imagen de contenedor y configuración documentada. El plan gratuito de un servicio alojado normalmente implica construirte tu propio panel de distribución; este es ese panel, ya construido."
         },
         "2": {
-          "title": "Comprobar actualizaciones no es telemetría",
-          "body": "La comprobación pide un número de versión. No lleva un perfil del dispositivo ni un identificador persistente."
+          "title": "Canales, despliegues progresivos y vuelta atrás",
+          "body": "Canales de producción y beta, despliegues por porcentaje y volver a una compilación anterior: justo las partes que si no tendrías que escribir tú y luego mantener."
         },
         "3": {
-          "title": "Tú eliges cuándo",
-          "body": "Automático, con aviso o manual. Nada se instala solo en mitad de tu trabajo."
+          "title": "Firmado y verificable",
+          "body": "Cada paquete va firmado, así que un dispositivo puede confirmar que la actualización viene de ti antes de instalarla. Las compilaciones reproducibles permiten comprobar que coincide con el código público."
         },
         "4": {
-          "title": "Vuelve atrás sin problemas",
-          "body": "Las versiones anteriores siguen disponibles y se admite volver a ellas, porque a veces una publicación sale mal."
+          "title": "Comprobar actualizaciones no es telemetría",
+          "body": "La comprobación pide un número de versión. No lleva un perfil del dispositivo ni un identificador persistente, así que publicar actualizaciones no implica construir una base de datos de seguimiento de tus usuarios."
         }
       }
     },
@@ -627,10 +637,10 @@
   "pricing": {
     "meta": {
       "title": "Precios",
-      "description": "Pagas por almacenamiento, no por funciones. Cualquier plan de Numori desbloquea todas las aplicaciones, el almacenamiento es un único espacio compartido entre todas, y la mayoría de las aplicaciones no necesitan suscripción."
+      "description": "Pagas por el almacenamiento y por cuántas personas lo comparten, nunca por funciones. Toda cuenta de Numori incluye todas las aplicaciones, el mismo soporte y ninguna plataforma reservada para un precio más alto. La mayoría de las aplicaciones no necesitan suscripción."
     },
-    "title": "Paga por almacenamiento. Llévatelo todo.",
-    "subtitle": "Un único espacio compartido por todas las aplicaciones. Cualquier plan de pago desbloquea el ecosistema entero: lo único que cambia de uno a otro es cuánto sitio tienes.",
+    "title": "Paga por espacio y cuentas. Nunca por funciones.",
+    "subtitle": "Mueve el control. Dos cosas cambian el precio: cuánto almacenamiento necesitas y cuántas personas lo comparten. Todas las aplicaciones, todas las funciones y el mismo soporte están en todos los planes, pagues dos euros o veinte.",
     "draftNotice": {
       "title": "Estas cifras no son definitivas",
       "body": "La mayor parte del ecosistema está aún en construcción, así que toma esta página como una declaración de intenciones. Publicaremos los precios definitivos antes de pedirle dinero a nadie, y no se los subiremos a quien se haya suscrito antes."
@@ -643,103 +653,94 @@
     },
     "perMonth": "/mes",
     "billedYearly": "{total} al año",
-    "noCard": "Sin tarjeta",
     "storageShared": "compartidos entre todas las aplicaciones",
-    "forPeople": "para un máximo de {count} personas",
-    "everythingIncluded": "Todas las aplicaciones. Todas las plataformas. Sin planes por función.",
-    "tiers": {
-      "free": {
-        "name": "Gratis",
-        "tagline": "De sobra para notas, tareas y un calendario que te siguen a todas partes",
-        "monthly": "0 €",
-        "yearlyMonthly": "0 €",
-        "yearlyTotal": "0 €",
-        "cta": "Empezar gratis",
-        "features": {
-          "1": "Todas las aplicaciones que funcionan en tu dispositivo, completas",
-          "2": "Sincronización alojada en dispositivos ilimitados",
-          "3": "Cifrado de extremo a extremo en todo",
-          "4": "Exportación completa en formatos abiertos",
-          "5": "Sin caducidad, sin tarjeta y sin insistencias"
-        }
-      },
-      "core": {
-        "name": "Core",
-        "tagline": "Todo desbloqueado, con sitio para años de correo",
-        "monthly": "2 €",
-        "yearlyMonthly": "1,67 €",
-        "yearlyTotal": "20 €",
-        "cta": "Apuntarme a la lista de espera",
-        "features": {
-          "1": "Todo lo del plan Gratis",
-          "2": "Mail, Drive, Chat y Forms desbloqueados",
-          "3": "Tu propio dominio y alias ilimitados",
-          "4": "Unas 25.000 fotos o 40 horas de vídeo",
-          "5": "Soporte de quienes lo han programado"
-        }
-      },
-      "plus": {
-        "name": "Plus",
-        "tagline": "Sitio para una biblioteca de fotos y para todo lo demás",
-        "monthly": "5 €",
-        "yearlyMonthly": "4,17 €",
-        "yearlyTotal": "50 €",
-        "badge": "El que quiere casi todo el mundo",
-        "cta": "Apuntarme a la lista de espera",
-        "features": {
-          "1": "Todo lo del plan Core",
-          "2": "Diez dominios y alias ilimitados",
-          "3": "Historial de versiones durante un año",
-          "4": "Unas 125.000 fotos, o una década de documentos",
-          "5": "Soporte prioritario"
-        }
-      },
-      "max": {
-        "name": "Max",
-        "tagline": "Para fotografía en RAW, vídeo y archivos que te niegas a borrar",
-        "monthly": "11 €",
-        "yearlyMonthly": "9,17 €",
-        "yearlyTotal": "110 €",
-        "cta": "Apuntarme a la lista de espera",
-        "features": {
-          "1": "Todo lo del plan Plus",
-          "2": "Dominios ilimitados",
-          "3": "Historial de versiones indefinido",
-          "4": "Límites más altos de subida y de compartición",
-          "5": "Soporte prioritario"
-        }
-      }
-    },
-    "family": {
-      "name": "Familia",
-      "tagline": "Una factura, seis personas y nadie compartiendo cuenta",
-      "monthly": "18 €",
-      "yearlyMonthly": "15 €",
-      "yearlyTotal": "180 €",
+    "everythingIncluded": "El almacenamiento y las cuentas cambian el precio. Las funciones nunca.",
+    "planner": {
+      "storageLabel": "¿Cuánto almacenamiento necesitas?",
+      "storageHint": "Un único espacio, compartido por todas las aplicaciones. Cámbialo cuando quieras, hacia arriba o hacia abajo.",
+      "priceLabel": "Tu precio",
+      "peopleLabel": "¿Cuántas personas?",
+      "peopleHint": "Cuentas independientes, privadas entre sí, que comparten un espacio y una factura. Cuántas puedes añadir depende de cuánto almacenamiento tengas: unos 25 GB por persona, porque repartir un espacio pequeño entre veinte solo recrea el plan gratuito.",
+      "peopleCount": "{count} persona | {count} personas",
+      "peopleMax": "Hasta {count} con {storage}",
+      "addPerson": "Añadir una persona",
+      "removePerson": "Quitar una persona",
+      "perPerson": "{price} por persona adicional",
+      "storageRow": "Almacenamiento",
+      "peopleRow": "Personas",
+      "appsRow": "Aplicaciones y funciones",
+      "appsValue": "Todas",
+      "summary": "{storage} para {people}, {price} al mes.",
       "cta": "Apuntarme a la lista de espera",
+      "ctaNote": "Todavía no hay nada que pagar: los servicios de pago no están activos."
+    },
+    "levels": {
+      "1": {
+        "label": "Sin ninguna cuenta",
+        "body": "Instálala y úsala. Notas, tareas, calendarios, marcadores, hojas de cálculo, presupuestos, herramientas PDF y el cliente de correo funcionan completos, sin conexión y sin registrarse en nada."
+      },
+      "2": {
+        "label": "Cuenta gratuita",
+        "body": "Añade la sincronización. Tus datos, y los ajustes que hay detrás, aparecen en todos los dispositivos en los que inicies sesión, cifrados, así que nosotros guardamos texto cifrado. Incluye 2 GB de almacenamiento compartido, la documentación y el foro de la comunidad."
+      },
+      "3": {
+        "label": "Pagando",
+        "body": "Añade almacenamiento, cuentas adicionales, soporte directo por correo y los servicios que necesitan un servidor propio: {services}. Todas las funciones son idénticas a cualquier precio."
+      },
+      "title": "Tres niveles, y solo el último cuesta algo",
+      "subtitle": "Casi todas las aplicaciones funcionan antes de que te registres en nada. Una cuenta añade las partes que necesitan un servidor que las recuerde. Pagar añade sitio y nuestro tiempo."
+    },
+    "included": {
+      "1": "Todas las aplicaciones, en todas las plataformas que admiten",
+      "2": "Dispositivos y sincronización sin límite",
+      "3": "Monitorización de disponibilidad y panel de actualizaciones, incluidos",
+      "4": "Historial de versiones completo y sin caducidad",
+      "5": "Cifrado de extremo a extremo en todo",
+      "6": "Exportación completa en formatos abiertos, cuando quieras",
+      "7": "Compartición, colaboración y uso sin conexión",
+      "8": "Soporte por correo directo, idéntico a cualquier precio",
+      "9": "Todas las funciones que publiquemos de ahora en adelante",
+      "title": "Incluido a cualquier precio, también en el más barato",
+      "subtitle": "Esta lista no cambia al mover el control. No existe una versión de Numori con más funciones dentro, ni un nivel de soporte por encima del que ya tienes."
+    },
+    "noFeatureTiers": {
+      "title": "No hay un plan superior al que vendernos",
+      "body": "Casi todas las suites reparten funciones entre distintos precios para tener siempre algo más que venderte: más dominios aquí, más historial allá, soporte «prioritario» si pagas lo suficiente. Nosotros no tenemos ese algo más. El almacenamiento es lo único que de verdad nos cuesta más cuanto más lo usas, así que es lo único que cobramos; y cuando las funciones no están en venta, la hoja de ruta deja de decidirse por lo que se puede retener."
+    },
+    "support": {
+      "title": "Pagar compra almacenamiento y nuestro tiempo",
+      "body": "Las cuentas gratuitas tienen el software, la sincronización y la documentación, pero no nuestro buzón. Responder correos es el único coste que no baja a medida que crecemos: los servidores cuestan menos por usuario cada año y una respuesta escrita nunca cuesta menos. Anunciar un soporte que no podemos atender significaría o ignorar a quien nos escribe o acabar cerrando, así que preferimos trazar la línea y decir dónde está.",
+      "paidLabel": "Toda cuenta de pago",
+      "paidBody": "Soporte por correo directo de quienes han escrito el código, sin ningún nivel «prioritario» que venderte por encima. La misma respuesta pagues lo mínimo o lo máximo.",
+      "freeLabel": "Cuentas gratuitas",
+      "freeBody": "Documentación detallada, un repositorio de incidencias público y un foro de la comunidad que leemos. Los informes de errores son siempre bienvenidos, de cualquiera, pague o no."
+    },
+    "free": {
+      "name": "Gratis",
+      "tagline": "De sobra para notas, tareas, un calendario y marcadores que te siguen a todas partes",
+      "cta": "Empezar gratis",
       "features": {
-        "1": "Seis cuentas independientes, cada una privada frente a las demás",
-        "2": "3 TB para repartir como queráis",
-        "3": "Todo lo del plan Max, para todas las personas del plan",
-        "4": "Una persona gestiona la facturación y nada más"
+        "1": "Todas las aplicaciones que funcionan en tu dispositivo, completas",
+        "2": "Sincronización alojada en dispositivos ilimitados",
+        "3": "Cifrado de extremo a extremo en todo",
+        "4": "Exportación completa en formatos abiertos",
+        "5": "Documentación y el foro de la comunidad",
+        "6": "Sin caducidad, sin tarjeta y sin insistencias"
       }
     },
     "selfHosted": {
       "name": "Autoalojado",
       "tagline": "Tu hardware, tu espacio, nuestro código",
-      "price": "0 €",
       "priceNote": "durante todo el tiempo que quieras",
       "cta": "Leer la guía de despliegue",
       "features": {
-        "1": "Todas las funciones del plan Max, sin coste de licencia",
+        "1": "Todas las funciones, sin coste de licencia",
         "2": "Almacenamiento limitado solo por tus propios discos",
         "3": "Imágenes de contenedor y configuración documentada",
         "4": "AGPL-3.0, para que siga abierto aunque nosotros no sigamos"
       }
     },
     "shared": {
-      "title": "Un único espacio, no una docena de cupos",
-      "body": "Tu almacenamiento es un solo espacio. Un mes de mucha fotografía se lo come; un mes tranquilo te lo devuelve. Nunca tienes que averiguar qué aplicación se ha llenado.",
       "1": {
         "title": "Nada se mide por separado",
         "body": "Mail, Drive, Sheets, las respuestas de formularios y los marcadores archivados salen todos de la misma cifra. Sin cupos por aplicación que hacer cuadrar."
@@ -749,48 +750,115 @@
         "body": "Adjunta un vídeo de 2 GB a un correo o déjalo en Drive: cuesta lo mismo, porque es el mismo espacio."
       },
       "3": {
-        "title": "Cambia de plan cuando quieras",
-        "body": "Hacia arriba o hacia abajo, con prorrateo y efecto inmediato. Bajar solo te pide que primero te pongas por debajo del nuevo límite."
-      }
+        "title": "Cámbialo cuando quieras",
+        "body": "Sube o baja el control, con prorrateo y efecto inmediato. Bajar solo te pide que primero te pongas por debajo del nuevo límite."
+      },
+      "title": "Un único espacio, no una docena de cupos",
+      "body": "Tu almacenamiento es un solo espacio. Un mes de mucha fotografía se lo come; un mes tranquilo te lo devuelve. Nunca tienes que averiguar qué aplicación se ha llenado."
     },
     "noSubscription": {
       "title": "{free} de las {total} aplicaciones no necesitan suscripción",
       "body": "Si los datos de una aplicación viven en tu dispositivo, no tenemos ningún coste que recuperar ni motivo para cobrarte. Estas son gratis y completas: no son pruebas, ni versiones recortadas, ni cinco-notas-y-a-pagar.",
-      "planAdds": "Un plan añade sincronización alojada y almacenamiento compartido. No desbloquea la aplicación, porque la aplicación nunca estuvo bloqueada.",
-      "needsPlanTitle": "Y {count} que sí lo necesitan de verdad",
-      "needsPlanBody": "Estas necesitan un servidor funcionando mientras todos tus dispositivos duermen. Un buzón tiene que aceptar correo a las tres de la mañana; un formulario tiene que responder en una URL pública. No hay forma honesta de regalar eso, así que págalo barato o móntalo tú.",
-      "cta": "Ver qué necesita cada aplicación"
+      "planAdds": "Pagar añade almacenamiento y soporte directo. No desbloquea estas aplicaciones, porque nunca estuvieron bloqueadas.",
+      "needsPlanTitle": "Y {count} servicios que sí lo necesitan",
+      "needsPlanBody": "Estos necesitan un servidor funcionando mientras todos tus dispositivos duermen. Un enlace compartido tiene que funcionar cuando alguien lo abre; un formulario tiene que responder en una URL pública; una comprobación de disponibilidad tiene que ejecutarse a las cuatro de la mañana; un dispositivo tiene que poder descargar una actualización. No hay forma honesta de regalar eso, así que págalo barato o móntalo tú.",
+      "cta": "Ver qué necesita cada aplicación",
+      "donateCta": "¿Usas las aplicaciones gratuitas y quieres ayudar? Las donaciones pagan los servidores."
     },
     "faq": {
-      "title": "Las preguntas incómodas",
       "1": {
         "q": "¿Por qué tan barato?",
         "a": "Porque no financiamos un equipo comercial, ni un presupuesto de publicidad, ni un departamento de ciencia de datos, y porque el almacenamiento cuesta menos cada año. Un ecosistema pequeño y bien gestionado no necesita cobrarte treinta euros al mes para sobrevivir."
       },
       "2": {
         "q": "¿Dónde está la trampa del plan gratuito?",
-        "a": "No hay trampa, pero esta es su forma real: 5 GB son de sobra para notas, tareas, un calendario y marcadores, y no llegan ni de lejos para un archivo de correo o una biblioteca de fotos. Las aplicaciones que casi no necesitan almacenamiento son precisamente las que puedes usar siempre sin pagar."
+        "a": "Dos cosas, dichas claramente: 2 GB son de sobra para notas, tareas, un calendario y marcadores, y no llegan ni de lejos para un archivo de correo o una biblioteca de fotos; y las cuentas gratuitas tienen documentación y foro en lugar de nuestro buzón. El software en sí no está recortado. Las aplicaciones que casi no necesitan almacenamiento son precisamente las que puedes usar siempre sin pagar."
       },
       "3": {
+        "q": "¿Por qué no hay soporte por correo para las cuentas gratuitas?",
+        "a": "Porque es el único coste que no se reduce cuando crecemos. El almacenamiento cuesta menos por gigabyte cada año; una respuesta escrita sigue costando los mismos veinte minutos. Un plan gratuito con soporte ilimitado acaba abandonado en silencio o se lleva por delante a la empresa. Los informes de errores son otra cosa: esos nos ayudan, así que el repositorio de incidencias está abierto a todo el mundo."
+      },
+      "4": {
         "q": "¿Por qué decide el precio el almacenamiento y no las funciones?",
         "a": "Porque el almacenamiento es lo único que de verdad nos cuesta más cuanto más lo usas. Cobrar por funciones significaría inventar motivos para no dártelas, y a partir de ahí la hoja de ruta la marca lo que se puede vender en lugar de lo que debería existir."
       },
-      "4": {
-        "q": "¿Qué pasa si me paso del límite?",
-        "a": "No se borra nada. Enviar y subir se detienen hasta que liberes espacio o subas de plan, y todo lo que ya está guardado sigue siendo legible y exportable. Retener tus datos por un umbral de facturación no es algo que estemos dispuestos a hacer."
-      },
       "5": {
+        "q": "¿La opción de pago más barata lo incluye todo de verdad?",
+        "a": "Sí. Todas las aplicaciones en todas las plataformas que admiten, dispositivos y sincronización sin límite, historial de versiones completo, colaboración, monitorización de disponibilidad, el panel de actualizaciones y el mismo soporte. La única diferencia entre la opción más barata y la más cara es el número de gigabytes."
+      },
+      "6": {
+        "q": "¿Está incluido el alojamiento de correo?",
+        "a": "No. Numori Mail es un cliente y es gratuito: funciona con el buzón que ya tengas, y una cuenta gratuita sincroniza tus cuentas entre dispositivos. Un buzón alojado por Numori será un producto aparte, más adelante y con su propio precio. No es una forma de cobrarte dos veces: gestionar correo tiene una estructura de costes distinta a la del almacenamiento, marcada por la entregabilidad, la reputación y la gestión de abusos más que por los gigabytes, así que meterlo en un control de almacenamiento haría deshonestos los dos precios."
+      },
+      "7": {
+        "q": "¿Qué pasa si me paso del límite?",
+        "a": "No se borra nada. Enviar y subir se detienen hasta que liberes espacio o subas el control, y todo lo que ya está guardado sigue siendo legible y exportable. Retener tus datos por un umbral de facturación no es algo que estemos dispuestos a hacer."
+      },
+      "8": {
+        "q": "¿Puedo cambiar cuánto almacenamiento tengo?",
+        "a": "Cuando quieras, en cualquier dirección y con prorrateo al día. La única condición para bajar es que primero te pongas por debajo del nuevo límite."
+      },
+      "9": {
         "q": "¿Qué pasa si Numori cierra?",
         "a": "Todo es AGPL-3.0 y autoalojable, y todas las aplicaciones exportan a formatos abiertos. Si desaparecemos, puedes montar el sistema entero tú o llevarte tus datos a otro sitio. Para eso publicamos también los servidores."
       },
-      "6": {
+      "10": {
         "q": "¿Añadiréis funciones de IA cuando salga caro no hacerlo?",
         "a": "No. Es un compromiso fundacional, no una preferencia del momento, y es de los que se pueden comprobar fácilmente: vigila los repositorios."
       },
-      "7": {
-        "q": "¿Hay precios para estudiantes u organizaciones sin ánimo de lucro?",
-        "a": "Sí, en cuanto exista la facturación. Será un descuento directo y no un proceso de solicitud."
-      }
+      "11": {
+        "q": "¿Cuántas personas pueden compartir una suscripción?",
+        "a": "Escala con el almacenamiento, a razón de unos 25 GB por persona: cuatro personas con 100 GB, veinte con 500 GB, cuarenta con 1 TB y hasta un tope de cincuenta. El tope no es un límite técnico (4 TB darían para 163), pero a partir de unas cincuenta personas ya eres una organización que quiere un contrato de encargado del tratamiento, inicio de sesión único y un tiempo de respuesta de soporte comprometido, y eso es otro producto, no un número más grande en un control deslizante."
+      },
+      "title": "Las preguntas incómodas"
+    }
+  },
+  "donate": {
+    "meta": {
+      "title": "Donar",
+      "description": "Casi todas las aplicaciones de Numori son gratuitas y no necesitan suscripción. Las donaciones pagan los servidores que sostienen los servicios compartidos, y no llevan asociada ninguna ventaja, nivel ni distintivo."
+    },
+    "title": "Las donaciones pagan los servidores",
+    "subtitle": "{free} de las {total} aplicaciones son gratuitas y no necesitan cuenta, así que hay mucha gente usando Numori sin ninguna forma de aportar. Esta es esa forma.",
+    "intro": "Las suscripciones pagan a quienes escriben el código. Las donaciones están destinadas a la infraestructura de debajo: los nodos de almacenamiento, el relé de sincronización y la maquinaria de compilación y publicación. Separar las dos cosas nos permite prometer que las aplicaciones gratuitas seguirán siendo gratuitas sin esperar en silencio que algún día sean un embudo.",
+    "where": {
+      "1": {
+        "title": "Servidores y ancho de banda",
+        "body": "Nodos de almacenamiento, el relé de sincronización, la base de datos, la monitorización y las copias de seguridad externas. Es la partida más grande y la que crece con el número de cuentas gratuitas."
+      },
+      "2": {
+        "title": "Traducción",
+        "body": "Pagar a traductores humanos en lugar de pasar la interfaz por una máquina. Es un compromiso declarado, y los compromisos cuestan dinero."
+      },
+      "3": {
+        "title": "Auditorías de accesibilidad",
+        "body": "Probar con tecnología asistiva real y pagar a quienes la usan a diario para que nos digan dónde nos hemos equivocado."
+      },
+      "title": "A dónde va de verdad",
+      "body": "Más o menos en orden de tamaño. Preferimos nombrar tres cosas concretas antes que decir «nos ayuda a seguir adelante»."
+    },
+    "how": {
+      "title": "Cómo donar",
+      "body": "Varias opciones porque las plataformas de donación no están disponibles en todas partes y se quedan comisiones muy distintas. GitHub Sponsors y Liberapay son las que más nos hacen llegar; PayPal es la que casi todo el mundo ya tiene.",
+      "note": "Una donación mensual es mucho más útil que una puntual, incluso por un importe bastante menor: la factura del servidor también es mensual. Pero una donación única es bienvenida de verdad y no hay ningún importe equivocado."
+    },
+    "methods": {
+      "recurring": "Mensual o puntual",
+      "oneOff": "Puntual"
+    },
+    "noPerks": {
+      "title": "No recibes nada a cambio, y es a propósito",
+      "body": "Sin distintivos, sin niveles de donante, sin acceso anticipado y sin tu nombre en un archivo de créditos salvo que lo pidas. En parte porque recompensar una donación la convierte en una compra, lo que cambia cómo tributa y complica algo que debería ser sencillo. Sobre todo porque la alternativa es una segunda escalera de precios construida con buena voluntad, y con una lista de precios honesta ya basta."
+    },
+    "other": {
+      "1": "Informa de errores. El repositorio de incidencias está abierto a todo el mundo, pague o no.",
+      "2": "Traduce una aplicación a un idioma que hables de verdad.",
+      "3": "Audita el código. Es público precisamente para que alguien lo haga.",
+      "4": "Haz una revisión de accesibilidad con la tecnología asistiva que uses.",
+      "5": "Háblale de esto a una persona que esté buscando una alternativa.",
+      "title": "Formas de ayudar que no cuestan nada",
+      "body": "El dinero es el tipo de contribución menos interesante y muchas veces el menos útil. Todo esto ayuda más que unos cuantos euros.",
+      "cta": "O contrata una suscripción"
     }
   },
   "blog": {
@@ -823,7 +891,6 @@
     "subtitle": "Un manifiesto breve y el razonamiento al que volvemos siempre.",
     "intro": "Casi todo el software del que dependes está diseñado en torno a un modelo de negocio que necesita tu atención o tus datos. Numori es un intento de construir las mismas herramientas sobre un modelo mucho más soso: pagas una cantidad pequeña, nosotros mantenemos el servicio bien y no pasa nada más.",
     "manifesto": {
-      "title": "El manifiesto",
       "1": {
         "title": "La privacidad es una arquitectura, no una página de política",
         "body": "Una política de privacidad es una promesa sobre lo que una empresa decidirá hacer. El cifrado y el almacenamiento local son afirmaciones sobre lo que es capaz de hacer. Preferimos lo segundo y diseñamos para que la opción tentadora no esté técnicamente a nuestro alcance."
@@ -846,12 +913,13 @@
       },
       "6": {
         "title": "Precio justo, sin patrones oscuros",
-        "body": "Un precio para todo, cancelación en un clic, sin cuentas atrás, sin ventanas preguntándote si estás seguro de que quieres irte y sin subidas de precio dirigidas a quien ya está suscrito."
+        "body": "Una suscripción para todo, cancelación en un clic, sin cuentas atrás, sin ventanas preguntándote si estás seguro de que quieres irte y sin subidas de precio dirigidas a quien ya está suscrito."
       },
       "7": {
         "title": "Irse debería ser fácil",
         "body": "Todas las aplicaciones lo exportan todo, en formatos que otros programas pueden leer y sin abrir un ticket. Si tenemos que atraparte para retenerte, ya hemos fracasado en el trabajo de verdad."
-      }
+      },
+      "title": "El manifiesto"
     },
     "who": {
       "title": "Quién lo está construyendo",
@@ -871,7 +939,7 @@
       "description": "Todos los repositorios del ecosistema Numori, con licencia AGPL-3.0: clientes, servidores, sistema de diseño y esta misma web."
     },
     "title": "Todo, a la vista",
-    "subtitle": "Diecinueve repositorios bajo la AGPL-3.0. Clientes, servidores, el sistema de diseño y la web que estás leyendo.",
+    "subtitle": "{count} repositorios bajo la AGPL-3.0. Clientes, servidores, el sistema de diseño y la web que estás leyendo.",
     "licence": {
       "title": "Por qué la AGPL-3.0",
       "body": "La AGPL cierra el hueco que permite a un servicio alojado construir sobre código abierto sin devolver nada. Cualquiera puede ejecutar, modificar y ofrecer Numori como servicio; simplemente tiene que publicar también sus cambios. Así el ecosistema sigue abierto aunque ya no seamos nosotros quienes lo mantengamos."
@@ -890,7 +958,7 @@
     },
     "website": {
       "title": "Esta web incluida",
-      "body": "Sin analíticas, sin rastreadores y sin banner de cookies que cerrar, porque no hay nada que consentir. El sitio guarda una única cookie, y solo después de que cambies de idioma a mano, para que tu elección sobreviva a una recarga.",
+      "body": "Sin analíticas, sin rastreadores y sin publicidad, así que no hay banner de cookies que cerrar: esta web no guarda ninguna cookie. Tu idioma viaja en la URL y no en el almacenamiento. En el almacenamiento local de tu navegador hay dos cosas que nunca salen de ahí: si prefieres el tema claro u oscuro y una caché de las páginas que ya has leído.",
       "cta": "Leer el código de esta web"
     }
   },
@@ -900,11 +968,11 @@
       "subtitle": "Qué recogemos, que es muy poco, y qué hacemos con ello, que es muy poco.",
       "placeholder": "Este texto es provisional. Publicaremos aquí una política de privacidad completa y en lenguaje claro antes de que cualquier servicio de Numori acepte un registro.",
       "summary": {
-        "title": "La versión corta",
-        "1": "Esta web no usa cookies de analítica ni de publicidad, y no incrusta scripts de terceros.",
-        "2": "Una única cookie funcional guarda tu preferencia de idioma, y solo cuando eliges el idioma tú.",
+        "1": "Esta web no guarda ninguna cookie, no usa analíticas ni publicidad y no incrusta scripts de terceros.",
+        "2": "Tu preferencia de tema y una caché de las páginas que has leído se guardan en el almacenamiento local de tu navegador. Ambas se quedan en tu dispositivo y nunca se nos envían.",
         "3": "No hace falta ninguna cuenta para leer nada de aquí.",
-        "4": "Los registros del servidor se conservan poco tiempo por seguridad y prevención de abusos, y luego se eliminan."
+        "4": "Los registros del servidor se conservan poco tiempo por seguridad y prevención de abusos, y luego se eliminan.",
+        "title": "La versión corta"
       }
     },
     "terms": {

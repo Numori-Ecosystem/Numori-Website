@@ -3,7 +3,7 @@
     <PageHeader
       wash
       :title="$t('products.index.title')"
-      :subtitle="$t('products.index.subtitle')"
+      :subtitle="$t('products.index.subtitle', { count: total })"
     >
       <UiAlert color="gray" icon="mdi:information-outline" size="sm" class="mt-8 max-w-2xl">
         {{ $t('status.honestNote') }}

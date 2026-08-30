@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PageHeader wash :title="$t('openSource.title')" :subtitle="$t('openSource.subtitle')" />
+    <PageHeader wash :title="$t('openSource.title')" :subtitle="$t('openSource.subtitle', { count: repoCount })" />
 
     <div class="container-page py-12 sm:py-16">
       <div class="reveal-stagger grid gap-6 lg:grid-cols-2">
@@ -134,6 +134,12 @@
  */
 const { t } = useI18n()
 const { all } = useProducts()
+
+/**
+ * Every product repository plus this website's own. Derived rather than written
+ * out, because "Nineteen repositories" was prose that no test could keep honest.
+ */
+const repoCount = computed(() => all.value.length + 1)
 const { public: runtime } = useRuntimeConfig()
 
 usePageSeo({

@@ -95,11 +95,26 @@ export default defineNuxtConfig({
     // Distinct URLs per language, so each locale is independently indexable.
     strategy: 'prefix_except_default',
     baseUrl: 'https://numori.app',
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'i18n_redirected',
-      redirectOn: 'root',
-    },
+
+    /*
+     * Browser-language detection is off, which means this site sets no cookies at
+     * all.
+     *
+     * With `detectBrowserLanguage.useCookie` enabled, @nuxtjs/i18n writes
+     * `i18n_redirected` on the *first* page load: `loadAndSetLocale` skips its
+     * early-return while `ctx.initial` is true, so `setCookieLocale` runs before
+     * the visitor has chosen anything. That made the site's own privacy copy
+     * false, and a preference cookie set without the user expressing a preference
+     * is not comfortably "strictly necessary" under PECR either.
+     *
+     * Turning detection off costs an automatic redirect that Google discourages
+     * anyway, and loses nothing else: the locale is in the URL under
+     * `prefix_except_default`, hreflang points search engines at the right
+     * version, and the header switcher is plain links. A Spanish visitor landing
+     * on `/` sees English until they click ES — one click, in exchange for an
+     * unqualified "no cookies" claim.
+     */
+    detectBrowserLanguage: false,
     bundle: {
       optimizeTranslationDirective: false,
     },

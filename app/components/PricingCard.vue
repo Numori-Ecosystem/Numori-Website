@@ -85,19 +85,21 @@
  * different kinds of destination (an internal page, an external guide, a waiting
  * list) and each needs different link semantics.
  *
+ * Used only for the Free and self-hosted options. The paid range is a slider
+ * (see StoragePlanner) because storage is the sole variable and a row of cards
+ * would repeat one identical feature list under different numbers.
+ *
  * @example
  * <PricingCard
- *   :name="$t('pricing.tiers.plus.name')"
- *   storage="1 TB"
+ *   :name="$t('pricing.free.name')"
+ *   storage="2 GB"
  *   :storage-note="$t('pricing.storageShared')"
- *   :tagline="$t('pricing.tiers.plus.tagline')"
- *   price="£4"
+ *   :tagline="$t('pricing.free.tagline')"
+ *   price="£0"
  *   :period="$t('pricing.perMonth')"
- *   :price-key="billing"
  *   :features="features"
- *   highlighted
  * >
- *   <template #action><ButtonLink :to="…" block>Choose</ButtonLink></template>
+ *   <template #action><ButtonLink :to="…" block>Start free</ButtonLink></template>
  * </PricingCard>
  *
  * @slot action — The plan's call to action.

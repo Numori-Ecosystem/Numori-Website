@@ -54,6 +54,7 @@ export const useNavigation = () => {
         { label: t('nav.about'), to: localePath('/about') },
         { label: t('nav.blog'), to: localePath('/blog') },
         { label: t('nav.openSource'), to: localePath('/open-source') },
+        { label: t('nav.donate'), to: localePath('/donate') },
       ],
     },
     {
