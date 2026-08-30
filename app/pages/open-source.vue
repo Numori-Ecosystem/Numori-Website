@@ -3,7 +3,7 @@
     <PageHeader wash :title="$t('openSource.title')" :subtitle="$t('openSource.subtitle')" />
 
     <div class="container-page py-12 sm:py-16">
-      <div class="grid gap-6 lg:grid-cols-2">
+      <div class="reveal-stagger grid gap-6 lg:grid-cols-2">
         <section
           :aria-labelledby="ids.licence"
           class="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-900"
@@ -36,7 +36,7 @@
       </div>
 
       <!-- ─── Repository table ──────────────────────────────────── -->
-      <section :aria-labelledby="ids.table" class="mt-14">
+      <section :aria-labelledby="ids.table" class="reveal mt-14">
         <h2 :id="ids.table" class="text-xl font-bold">{{ $t('openSource.table.caption') }}</h2>
 
         <div class="mt-6 overflow-x-auto rounded-2xl border border-gray-200 dark:border-gray-700">

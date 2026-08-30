@@ -24,7 +24,7 @@
         <tr
           v-for="row in rows"
           :key="row.key"
-          class="border-b border-gray-100 last:border-0 dark:border-gray-800"
+          class="border-b border-gray-100 transition-colors duration-200 last:border-0 hover:bg-gray-50 dark:border-gray-800 dark:hover:bg-gray-900/60"
         >
           <th scope="row" class="px-5 py-4 font-medium text-gray-900 dark:text-gray-100">
             {{ row.feature }}

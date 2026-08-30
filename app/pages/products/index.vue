@@ -23,11 +23,11 @@
             :key="option.value ?? 'all'"
             type="button"
             :aria-pressed="active === option.value ? 'true' : 'false'"
-            class="rounded-full border px-3 py-1.5 text-sm font-medium transition-colors"
+            class="rounded-full border px-3 py-1.5 text-sm font-medium transition-all duration-200 active:scale-95"
             :class="
               active === option.value
-                ? 'border-primary-500 bg-primary-500 text-white'
-                : 'border-gray-300 text-gray-700 hover:border-gray-400 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-500'
+                ? 'border-primary-500 bg-primary-500 text-white shadow-sm'
+                : 'border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-500 dark:hover:bg-gray-800'
             "
             @click="active = option.value"
           >
@@ -48,12 +48,12 @@
       <!-- ─── Grouped results ───────────────────────────────────── -->
       <div v-if="visibleGroups.length" class="mt-10 flex flex-col gap-14">
         <section v-for="group in visibleGroups" :key="group.key" :aria-labelledby="`group-${group.key}`">
-          <div class="mb-6">
+          <div class="reveal mb-6">
             <h2 :id="`group-${group.key}`" class="text-xl font-bold">{{ group.title }}</h2>
             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{{ group.description }}</p>
           </div>
 
-          <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <ul class="reveal-stagger grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             <li v-for="product in group.products" :key="product.slug">
               <ProductCard :product="product" />
             </li>

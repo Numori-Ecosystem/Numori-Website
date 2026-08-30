@@ -1,6 +1,6 @@
 <template>
   <article
-    class="group relative flex flex-col gap-3 rounded-2xl border border-gray-200 bg-white p-5 shadow-card transition duration-200 hover:border-primary-300 hover:shadow-card-hover focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-primary-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-primary-400/40 dark:focus-within:outline-primary-400"
+    class="card-interactive group relative flex h-full flex-col gap-3 rounded-2xl border border-gray-200 bg-white p-5 shadow-card hover:border-primary-300 hover:shadow-card-hover focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-primary-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-primary-400/40 dark:focus-within:outline-primary-400"
   >
     <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-500 dark:text-gray-400">
       <time :datetime="post.date">{{ formatDate(post.date) }}</time>
@@ -11,7 +11,7 @@
     <h3 class="text-lg font-semibold">
       <NuxtLink
         :to="localePath(post.path)"
-        class="rounded-2xl after:absolute after:inset-0 after:content-[''] focus-visible:outline-none"
+        class="rounded-2xl transition-colors duration-200 after:absolute after:inset-0 after:content-[''] group-hover:text-primary-700 focus-visible:outline-none dark:group-hover:text-primary-300"
       >
         {{ post.title }}
       </NuxtLink>

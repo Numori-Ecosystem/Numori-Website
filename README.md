@@ -126,6 +126,7 @@ Two steps, and the page builds itself.
   accent: 'violet',               // key from app/utils/accents.js
   category: 'apps',               // apps | platform | developer
   status: 'planned',              // beta | development | planned
+  access: 'local',                // local | subscription | infrastructure
   featured: false,                // show on the home page?
   platforms: ['web', 'android'],  // keys under `platforms.*` in the locales
   url: null,                      // live URL, or null when unshipped
@@ -158,6 +159,94 @@ looping blindly would print `products.photos.perks.5.title` on the page. Run
 
 Anything with a status other than `beta` automatically shows a "this page is a
 placeholder" notice. Please leave that in until the software actually exists.
+
+`access` decides more than a badge — the pricing page counts these to build the
+sentence "8 of the 12 apps never need a subscription", so setting it wrongly
+changes a public claim:
+
+- **`local`** — runs entirely on the device. Free in full, no account. A plan only
+  adds hosted sync and shared storage. Default for anything whose data lives on
+  your machine.
+- **`subscription`** — needs a server running while every one of the user's
+  devices is asleep. A mailbox must accept mail overnight; a form must answer a
+  public URL. Needs a paid plan or self-hosting.
+- **`infrastructure`** — always free: shared services and open-source libraries
+  that are not sold to anyone.
+
+## Pricing model
+
+One variable: storage. Every paid plan unlocks every app, and storage is a single
+pool shared across all of them, so there is no feature matrix to maintain.
+
+Plan structure lives in `app/data/plans.js` — quota, seat count, which tier is
+highlighted. Prices live in the locale files under `pricing.tiers.<key>`, because
+pounds and euros are different amounts rather than translations of one another.
+Storage sizes deliberately stay in the data file: "100 GB" is written identically
+in every language we ship, and duplicating the figures per locale is how tiers
+quietly stop matching.
+
+Each tier defines `monthly`, `yearlyMonthly` and `yearlyTotal`. Yearly bills ten
+months instead of twelve, and the card shows the _monthly equivalent_ with the
+annual total underneath — comparing £4.17 against £5 is the comparison someone is
+actually making; comparing £50 against £5 is not.
+
+To change a tier: edit `PLANS` for the quota, and the matching
+`pricing.tiers.<key>` block in every locale for the prices and copy. Only the
+tier with `highlighted: true` may define a `badge`; the others would render the
+raw key.
+
+Quotas are not arbitrary. Hetzner SX capacity costs roughly £2.00–2.60 per TB per
+month once erasure coding and backups are counted, so a tier has to net more than
+that per TB after VAT and card fees. The current ladder nets about £14.17 (Core),
+£7.68 (Plus), £4.35 (Max) and £4.78 (Family) per TB, so every tier stays profitable
+even if a subscriber fills their quota completely. Check that figure before raising
+a quota: an earlier 4 TB tier netted £1.77/TB — below cost — and the tiers with the
+most storage attract exactly the users who will fill them.
+
+## Motion
+
+Animation is opt-in per element and all of it is decorative, so the
+`prefers-reduced-motion: reduce` block at the bottom of `main.css` can safely
+neutralise the lot. That block collapses durations to `0.01ms` rather than setting
+`animation: none` — `none` would strip the final frame of any `both`-filled
+animation and leave elements that animate opacity permanently invisible.
+
+Scroll reveals are CSS-only, via `animation-timeline: view()`:
+
+```css
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: rise 1s linear both;
+      animation-timeline: view();
+    }
+  }
+}
+```
+
+No JavaScript, no IntersectionObserver, and — the point of wrapping it in
+`@supports` — a browser without scroll-driven animation support renders the
+content plainly and visibly. The conventional observer version starts at
+`opacity: 0` and needs JavaScript to reveal anything, which hides the whole page
+if the observer never fires.
+
+The vocabulary:
+
+| Class / token       | Use                                                   |
+| ------------------- | ----------------------------------------------------- |
+| `.reveal`           | Fade and rise once as the element scrolls into view   |
+| `.reveal-stagger`   | Same, on a container: children follow one another     |
+| `.card-interactive` | Hover lift, for cards                                 |
+| `animate-rise`      | On-load entrance, for above-the-fold content          |
+| `animate-rise-sm`   | Smaller on-load entrance                              |
+| `animate-scale-in`  | Pop-in, used by the pricing ribbon                    |
+| `page` transition   | Route change; see `app.pageTransition` in nuxt.config |
+| `swap` transition   | Replacing a value in place, e.g. a price changing     |
+| `disclosure`        | The mobile menu opening                               |
+
+Hero content uses `animate-*` with staggered `[animation-delay:*]` rather than
+`.reveal`, because it is already in view on load and a scroll-linked reveal would
+never fire.
 
 ## Adding a blog post
 

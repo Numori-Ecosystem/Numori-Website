@@ -1,5 +1,5 @@
 <template>
-  <UiButton v-bind="$attrs" :tag="NuxtLink" :to="to">
+  <UiButton v-bind="$attrs" tag="NuxtLink" :to="to">
     <slot />
   </UiButton>
 </template>
@@ -8,14 +8,19 @@
 /**
  * ButtonLink — a UiButton that is really a NuxtLink.
  *
- * UiButton renders `<component :is="tag">`, so handing it the NuxtLink component
- * keeps the design system's styling while producing a genuine `<a>` that routes
- * on the client and is crawlable. Using `tag="a"` with an `href` would also look
- * right but would force a full page load on every internal navigation.
+ * UiButton renders `<component :is="tag">`, so handing it `'NuxtLink'` keeps the
+ * design system's styling while producing a genuine `<a>` that routes on the
+ * client and is crawlable. Using `tag="a"` with an `href` would look identical but
+ * force a full page load on every internal navigation.
  *
- * NuxtLink is imported from `#components` rather than resolved from a string, so
- * a failure to resolve is a build error instead of an `<NuxtLink>` element that
- * silently renders as an unstyled unknown tag.
+ * The tag is passed as a **string**, not as the imported component. `<component
+ * :is>` accepts either, but UiButton declares `tag` as `String`, so passing the
+ * component object triggers a prop type warning on every instance. Resolving from
+ * a string is also the pattern the library already uses for icons — its Nuxt
+ * module provides the icon component as a bare name so `<component :is="'Icon'">`
+ * picks up whatever the host app registered globally. `NuxtLink` is registered
+ * globally by Nuxt, and Vue warns loudly in development if a string tag fails to
+ * resolve, so this is not a silent failure mode.
  *
  * All other attributes and props (variant, color, size, block, …) pass straight
  * through to UiButton.
@@ -32,8 +37,6 @@
  *
  * @slot default — Button label.
  */
-import { NuxtLink } from '#components'
-
 defineOptions({ inheritAttrs: false })
 
 defineProps({

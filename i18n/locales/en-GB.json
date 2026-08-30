@@ -79,6 +79,18 @@
       "description": "The pieces we build everything else out of, released for anyone to use."
     }
   },
+  "access": {
+    "label": "What you need",
+    "local": "No subscription needed",
+    "localShort": "Free, in full",
+    "localHint": "Runs entirely on your device. A plan only adds hosted sync and shared storage — it does not unlock anything.",
+    "subscription": "Needs a plan",
+    "subscriptionShort": "Plan or self-host",
+    "subscriptionHint": "This one needs a server running while your devices are asleep, so it needs a paid plan — or your own machine.",
+    "infrastructure": "Free and open",
+    "infrastructureShort": "Always free",
+    "infrastructureHint": "Shared infrastructure and open-source libraries. Not sold to anyone, at any tier."
+  },
   "platforms": {
     "label": "Available on",
     "web": "Web",
@@ -615,76 +627,167 @@
   "pricing": {
     "meta": {
       "title": "Pricing",
-      "description": "One low subscription for the entire Numori ecosystem, a free tier that is genuinely useful, and self-hosting that costs nothing."
+      "description": "Pay for storage, not for features. Every Numori plan unlocks every app, storage is one pool shared across all of them, and most of the apps need no subscription at all."
     },
-    "title": "One price, everything in it",
-    "subtitle": "No per-product tiers, no seat maths, no enterprise phone call. The free tier is not a trial, and self-hosting is not a downgrade.",
+    "title": "Pay for storage. Get everything.",
+    "subtitle": "One quota, shared by every app. Every paid plan unlocks the whole ecosystem — the only thing that changes between them is how much room you get.",
     "draftNotice": {
       "title": "These numbers are not final",
       "body": "Most of the ecosystem is still being built, so treat this page as our intent. We will publish final pricing before anyone is asked to pay, and we will not raise it on people who signed up earlier."
     },
-    "perMonth": "per month",
-    "perYear": "per year",
-    "billedYearly": "billed yearly",
-    "free": {
-      "name": "Free",
-      "price": "£0",
-      "tagline": "Forever, and not crippled",
-      "cta": "Start with the free tier",
-      "features": {
-        "1": "Every app, on every platform",
-        "2": "Local storage with no size limit",
-        "3": "Full export in open formats",
-        "4": "Sync across two devices",
-        "5": "1 GB in Numori Drive"
+    "billing": {
+      "label": "Billing period",
+      "monthly": "Monthly",
+      "yearly": "Yearly",
+      "save": "2 months free"
+    },
+    "perMonth": "/month",
+    "billedYearly": "{total} billed yearly",
+    "noCard": "No card required",
+    "storageShared": "shared across every app",
+    "forPeople": "for up to {count} people",
+    "everythingIncluded": "Every app. Every platform. No feature tiers.",
+    "tiers": {
+      "free": {
+        "name": "Free",
+        "tagline": "Enough for notes, tasks and a calendar that follow you about",
+        "monthly": "£0",
+        "yearlyMonthly": "£0",
+        "yearlyTotal": "£0",
+        "cta": "Start free",
+        "features": {
+          "1": "Every app that runs on your device, in full",
+          "2": "Hosted sync across unlimited devices",
+          "3": "End-to-end encryption on everything",
+          "4": "Full export in open formats",
+          "5": "No expiry, no card, no nagging"
+        }
+      },
+      "core": {
+        "name": "Core",
+        "tagline": "Everything unlocked, with room for years of email",
+        "monthly": "£2",
+        "yearlyMonthly": "£1.67",
+        "yearlyTotal": "£20",
+        "cta": "Join the waiting list",
+        "features": {
+          "1": "Everything in Free",
+          "2": "Mail, Drive, Chat and Forms unlocked",
+          "3": "Your own domain and unlimited aliases",
+          "4": "Roughly 25,000 photos or 40 hours of video",
+          "5": "Support from the people who wrote it"
+        }
+      },
+      "plus": {
+        "name": "Plus",
+        "tagline": "Room for a photo library and everything else",
+        "monthly": "£5",
+        "yearlyMonthly": "£4.17",
+        "yearlyTotal": "£50",
+        "badge": "Most people want this",
+        "cta": "Join the waiting list",
+        "features": {
+          "1": "Everything in Core",
+          "2": "Ten domains and unlimited aliases",
+          "3": "Version history kept for a year",
+          "4": "Roughly 125,000 photos, or a decade of documents",
+          "5": "Priority support"
+        }
+      },
+      "max": {
+        "name": "Max",
+        "tagline": "For raw photography, video, and archives you refuse to delete",
+        "monthly": "£11",
+        "yearlyMonthly": "£9.17",
+        "yearlyTotal": "£110",
+        "cta": "Join the waiting list",
+        "features": {
+          "1": "Everything in Plus",
+          "2": "Unlimited domains",
+          "3": "Version history kept indefinitely",
+          "4": "Higher upload and sharing limits",
+          "5": "Priority support"
+        }
       }
     },
-    "complete": {
-      "name": "Complete",
-      "price": "£3",
-      "tagline": "The whole ecosystem, one line on your statement",
-      "badge": "Most people want this",
+    "family": {
+      "name": "Family",
+      "tagline": "One bill, six people, nobody sharing an account",
+      "monthly": "£18",
+      "yearlyMonthly": "£15",
+      "yearlyTotal": "£180",
       "cta": "Join the waiting list",
       "features": {
-        "1": "Everything in Free",
-        "2": "Unlimited devices and sync",
-        "3": "500 GB in Numori Drive",
-        "4": "Custom domains and aliases in Mail",
-        "5": "Priority support from the people who wrote it"
+        "1": "Six separate accounts, each fully private from the others",
+        "2": "3 TB to divide however you like",
+        "3": "Everything in Max, for everyone on the plan",
+        "4": "One person manages the billing and nothing else"
       }
     },
     "selfHosted": {
       "name": "Self-hosted",
+      "tagline": "Your hardware, your quota, our code",
       "price": "£0",
-      "tagline": "Your servers, your rules",
+      "priceNote": "for as long as you like",
       "cta": "Read the deployment guide",
       "features": {
-        "1": "Every feature of Complete",
-        "2": "No licence fee and no user cap",
+        "1": "Every feature of Max, with no licence fee",
+        "2": "Storage limited only by your own disks",
         "3": "Container images and documented configuration",
-        "4": "Community support",
-        "5": "AGPL-3.0, so it stays open"
+        "4": "AGPL-3.0, so it stays open even if we do not"
       }
+    },
+    "shared": {
+      "title": "One quota, not a dozen allowances",
+      "body": "Your storage is a single pool. A month of heavy photography eats into it; a quiet month gives the room back. You never have to work out which app is full.",
+      "1": {
+        "title": "Nothing is metered separately",
+        "body": "Mail, Drive, Sheets, form responses and archived bookmarks all draw on the same number. No per-app caps to juggle."
+      },
+      "2": {
+        "title": "Move between apps freely",
+        "body": "Attach a 2 GB video to an email or drop it in Drive — it costs the same either way, because it is the same pool."
+      },
+      "3": {
+        "title": "Change plan whenever",
+        "body": "Up or down, prorated, effective immediately. Going down only asks you to get under the new quota first."
+      }
+    },
+    "noSubscription": {
+      "title": "{free} of the {total} apps never need a subscription",
+      "body": "If an app's data lives on your device, we have no running cost to recover and no business charging you for it. These are free in full — not trials, not feature-limited, not five-notes-then-pay.",
+      "planAdds": "A plan adds hosted sync and shared storage. It does not unlock the app, because the app was never locked.",
+      "needsPlanTitle": "And {count} that genuinely do",
+      "needsPlanBody": "These need a server running while every one of your devices is asleep. A mailbox has to accept mail at three in the morning; a form has to answer a public URL. There is no honest way to give those away — so pay us a little, or run them yourself.",
+      "cta": "See what each app needs"
     },
     "faq": {
       "title": "The awkward questions",
       "1": {
         "q": "Why so cheap?",
-        "a": "Because we are not funding a sales team, an advertising budget or a data-science department. A small, well-run ecosystem does not need thirty pounds a month from you to survive."
+        "a": "Because we are not funding a sales team, an advertising budget or a data-science department, and because storage genuinely costs less every year. A small, well-run ecosystem does not need thirty pounds a month from you to survive."
       },
       "2": {
+        "q": "What is the catch with the free tier?",
+        "a": "There isn't one, but here is the honest shape of it: 5 GB is plenty for notes, tasks, a calendar and bookmarks, and nowhere near enough for a mail archive or a photo library. The apps that need almost no storage are the ones you can use forever without paying."
+      },
+      "3": {
+        "q": "Why does storage decide the price rather than features?",
+        "a": "Because storage is the only thing that actually costs us more when you use more of it. Charging for features would mean inventing reasons to withhold them, and then the roadmap starts being shaped by what can be sold rather than what should exist."
+      },
+      "4": {
+        "q": "What happens if I go over my quota?",
+        "a": "Nothing is deleted. Sending and uploading stop until you free some space or move up a plan, and everything already stored stays readable and exportable. Holding your data hostage over a billing threshold is not something we are willing to do."
+      },
+      "5": {
         "q": "What happens if Numori shuts down?",
         "a": "Everything is AGPL-3.0 and self-hostable, and every app exports to open formats. If we disappear, you can run the whole stack yourself or take your data elsewhere. That is the point of publishing the servers too."
       },
-      "3": {
+      "6": {
         "q": "Will you add AI features later once it gets expensive not to?",
         "a": "No. It is a founding commitment rather than a current preference, and it is the sort of promise that is easy to check: watch the repositories."
       },
-      "4": {
-        "q": "Is the free tier just a trial?",
-        "a": "No. It has no expiry and it includes every application. The paid tier buys hosted sync and storage, not the software itself."
-      },
-      "5": {
+      "7": {
         "q": "Do you offer student or non-profit pricing?",
         "a": "Yes, once billing exists. It will be a straightforward discount rather than an application process."
       }

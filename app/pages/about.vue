@@ -8,12 +8,12 @@
       </p>
 
       <!-- ─── Manifesto ─────────────────────────────────────────── -->
-      <section :aria-labelledby="ids.manifesto" class="mt-14">
+      <section :aria-labelledby="ids.manifesto" class="reveal mt-14">
         <h2 :id="ids.manifesto" class="text-2xl font-bold sm:text-3xl">
           {{ $t('about.manifesto.title') }}
         </h2>
 
-        <ol class="mt-8 flex flex-col gap-10">
+        <ol class="reveal-stagger mt-8 flex flex-col gap-10">
           <li v-for="entry in manifesto" :key="entry.key" class="flex gap-5">
             <span
               class="grid size-8 shrink-0 place-items-center rounded-lg bg-primary-100 text-sm font-bold text-primary-700 dark:bg-primary-400/15 dark:text-primary-300"

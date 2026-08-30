@@ -16,11 +16,11 @@
               :key="option.tag ?? 'all'"
               type="button"
               :aria-pressed="activeTag === option.tag ? 'true' : 'false'"
-              class="rounded-full border px-3 py-1.5 text-sm font-medium transition-colors"
+              class="rounded-full border px-3 py-1.5 text-sm font-medium transition-all duration-200 active:scale-95"
               :class="
                 activeTag === option.tag
-                  ? 'border-primary-500 bg-primary-500 text-white'
-                  : 'border-gray-300 text-gray-700 hover:border-gray-400 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-500'
+                  ? 'border-primary-500 bg-primary-500 text-white shadow-sm'
+                  : 'border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-500 dark:hover:bg-gray-800'
               "
               @click="activeTag = option.tag"
             >
@@ -34,7 +34,7 @@
           {{ $t('blog.postsCount', visible.length, { count: visible.length }) }}
         </p>
 
-        <ul class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul class="reveal-stagger mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <li v-for="post in visible" :key="post.path">
             <BlogCard :post="post" />
           </li>

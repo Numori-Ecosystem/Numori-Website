@@ -25,6 +25,56 @@
     0 8px 40px -8px --alpha(var(--color-primary-400) / 35%);
 
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+
+  /* Entrance animations. Every one uses `both` so the element holds its
+     starting frame until it runs and its final frame afterwards. */
+  --animate-fade-in: fade-in 0.5s var(--ease-out-soft) both;
+  --animate-rise: rise 0.6s var(--ease-out-soft) both;
+  --animate-rise-sm: rise-sm 0.45s var(--ease-out-soft) both;
+  --animate-scale-in: scale-in 0.4s var(--ease-spring) both;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      translate: 0 1.25rem;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
+  @keyframes rise-sm {
+    from {
+      opacity: 0;
+      translate: 0 0.5rem;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      scale: 0.94;
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+    }
+  }
 }
 
 /* ─── Base ───────────────────────────────────────────────────────── */
@@ -122,7 +172,7 @@
    */
   .skip-link {
     @apply fixed left-4 top-4 z-100 -translate-y-24 rounded-lg bg-primary-500 px-4 py-2;
-    @apply text-sm font-semibold text-white shadow-lg transition-transform;
+    @apply text-sm font-semibold text-white shadow-lg transition-transform duration-200;
     @apply focus-visible:translate-y-0;
   }
 
@@ -163,6 +213,119 @@
         transparent 70%
       );
   }
+
+  /* Card hover: a small lift, and the border picks up the accent. */
+  .card-interactive {
+    @apply transition-[transform,box-shadow,border-color] duration-300;
+    transition-timing-function: var(--ease-out-soft);
+  }
+
+  .card-interactive:hover {
+    @apply -translate-y-1;
+  }
+}
+
+/* ─── Scroll-linked reveals ──────────────────────────────────────── */
+/*
+ * Elements marked `.reveal` fade and rise as they scroll into view, driven by
+ * `animation-timeline: view()` — no JavaScript and no observer.
+ *
+ * The important property of this approach is how it fails. Everything lives
+ * inside `@supports`, so a browser without scroll-driven animations simply
+ * renders the content, visible and unstyled. The usual IntersectionObserver
+ * version starts at `opacity: 0` and depends on JavaScript running to reveal
+ * anything, which hides the entire page if the observer never fires.
+ */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: rise 1s linear both;
+      animation-timeline: view();
+      /* Finish well before the element is centred, or it reads as sluggish. */
+      animation-range: entry 0% entry 55%;
+    }
+
+    /* For grids: each child reveals slightly later than the last. */
+    .reveal-stagger > * {
+      animation: rise 1s linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+
+    .reveal-stagger > *:nth-child(2) {
+      animation-range: entry 4% entry 64%;
+    }
+
+    .reveal-stagger > *:nth-child(3) {
+      animation-range: entry 8% entry 68%;
+    }
+
+    .reveal-stagger > *:nth-child(4) {
+      animation-range: entry 12% entry 72%;
+    }
+
+    .reveal-stagger > *:nth-child(n + 5) {
+      animation-range: entry 16% entry 76%;
+    }
+  }
+}
+
+/* ─── Route transitions ──────────────────────────────────────────── */
+/*
+ * Paired with `app.pageTransition` in nuxt.config.ts. Deliberately short and
+ * opacity-led: a heavy slide on every navigation gets tiring, and any transform
+ * on the outgoing page fights with scroll restoration.
+ */
+@layer components {
+  .page-enter-active,
+  .page-leave-active {
+    transition:
+      opacity 0.2s ease,
+      translate 0.2s var(--ease-out-soft);
+  }
+
+  .page-enter-from {
+    opacity: 0;
+    translate: 0 0.5rem;
+  }
+
+  .page-leave-to {
+    opacity: 0;
+  }
+
+  /* Generic in-place value swap, used by the pricing billing toggle. */
+  .swap-enter-active,
+  .swap-leave-active {
+    transition:
+      opacity 0.18s ease,
+      translate 0.18s var(--ease-out-soft);
+  }
+
+  .swap-enter-from {
+    opacity: 0;
+    translate: 0 0.4rem;
+  }
+
+  .swap-leave-to {
+    opacity: 0;
+    translate: 0 -0.4rem;
+    /* Taken out of flow so the replacement does not jump while both exist. */
+    position: absolute;
+  }
+
+  /* Mobile menu disclosure. */
+  .disclosure-enter-active,
+  .disclosure-leave-active {
+    transition:
+      opacity 0.2s ease,
+      translate 0.2s var(--ease-out-soft);
+  }
+
+  .disclosure-enter-from,
+  .disclosure-leave-to {
+    opacity: 0;
+    translate: 0 -0.5rem;
+  }
 }
 
 /* ─── Long-form content (blog, legal, manifesto) ─────────────────── */
@@ -181,7 +344,7 @@
 
   .prose-numori :where(a):not(:where(.not-prose *)) {
     @apply underline decoration-primary-400/50 decoration-2 underline-offset-2;
-    @apply hover:decoration-primary-500;
+    @apply transition-colors hover:decoration-primary-500;
   }
 
   .prose-numori :where(code):not(:where(pre *, .not-prose *)) {
@@ -204,7 +367,11 @@
 /* ─── Motion ─────────────────────────────────────────────────────── */
 /*
  * Honour the OS-level "reduce motion" setting. This is a hard requirement for
- * WCAG 2.3.3 and cheap to respect: everything below is decorative.
+ * WCAG 2.3.3 and cheap to respect: everything above is decorative.
+ *
+ * Durations are collapsed rather than set to `none` so that animations using
+ * `both` still apply their final frame — `animation: none` would strip the end
+ * state and leave anything that animates opacity invisible.
  */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -215,8 +382,10 @@
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
     scroll-behavior: auto !important;
   }
 }

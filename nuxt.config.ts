@@ -45,6 +45,10 @@ export default defineNuxtConfig({
   },
 
   app: {
+    // Short, opacity-led route transition. `out-in` avoids the two pages
+    // overlapping, which would otherwise double the page height mid-navigation.
+    pageTransition: { name: 'page', mode: 'out-in' },
+
     head: {
       titleTemplate: '%s %separator %siteName',
       templateParams: {

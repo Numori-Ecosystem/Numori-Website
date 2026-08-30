@@ -3,7 +3,7 @@
     :aria-labelledby="headingId"
     class="hero-wash border-y border-gray-200 dark:border-gray-800"
   >
-    <div class="container-page py-16 text-center sm:py-20">
+    <div class="reveal container-page py-16 text-center sm:py-20">
       <h2 :id="headingId" class="text-2xl font-bold sm:text-3xl">{{ title }}</h2>
 
       <p class="mx-auto mt-4 max-w-2xl text-base text-gray-600 sm:text-lg dark:text-gray-400">

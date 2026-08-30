@@ -1,6 +1,6 @@
 <template>
   <article
-    class="group relative flex flex-col gap-4 rounded-2xl border border-gray-200 bg-white p-5 shadow-card transition duration-200 hover:shadow-card-hover dark:border-gray-700 dark:bg-gray-900"
+    class="card-interactive group relative flex h-full flex-col gap-4 rounded-2xl border border-gray-200 bg-white p-5 shadow-card hover:shadow-card-hover dark:border-gray-700 dark:bg-gray-900"
     :class="[
       styles.ring,
       // The whole card is one link, so lift the focus ring from the anchor text
@@ -9,7 +9,12 @@
     ]"
   >
     <div class="flex items-start justify-between gap-3">
-      <ProductMark :icon="product.icon" :accent="product.accent" :size="compact ? 'sm' : 'md'" />
+      <ProductMark
+        :icon="product.icon"
+        :accent="product.accent"
+        :size="compact ? 'sm' : 'md'"
+        class="transition-transform duration-300 group-hover:scale-105"
+      />
       <StatusBadge :status="product.status" />
     </div>
 
@@ -25,18 +30,25 @@
       <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{{ product.tagline }}</p>
     </div>
 
-    <p v-if="!compact" class="mt-auto line-clamp-3 text-sm text-gray-600 dark:text-gray-400">
+    <p v-if="!compact" class="line-clamp-3 text-sm text-gray-600 dark:text-gray-400">
       {{ product.summary }}
     </p>
 
-    <p
-      class="flex items-center gap-1 text-sm font-medium transition-transform duration-200 group-hover:translate-x-0.5"
-      :class="styles.text"
-      aria-hidden="true"
-    >
-      {{ $t('common.learnMore') }}
-      <Icon name="mdi:arrow-right" class="size-4" />
-    </p>
+    <div class="mt-auto flex flex-wrap items-center justify-between gap-3 pt-1">
+      <AccessBadge :access="product.access" />
+
+      <p
+        class="flex items-center gap-1 text-sm font-medium"
+        :class="styles.text"
+        aria-hidden="true"
+      >
+        {{ $t('common.learnMore') }}
+        <Icon
+          name="mdi:arrow-right"
+          class="size-4 transition-transform duration-300 group-hover:translate-x-1"
+        />
+      </p>
+    </div>
   </article>
 </template>
 

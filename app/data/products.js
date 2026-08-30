@@ -32,14 +32,30 @@ export const STATUSES = ['beta', 'development', 'planned']
 export const CATEGORIES = ['apps', 'platform', 'developer']
 
 /**
+ * What it takes to use a product.
+ *
+ * - `local` — fully functional on-device with no account and no subscription.
+ *   A plan only adds hosted sync and the shared storage quota. This is the
+ *   default for anything whose data lives on your machine.
+ * - `subscription` — needs infrastructure we have to run continuously, so it
+ *   needs a paid plan or your own server. A mailbox has to receive mail while
+ *   your laptop is shut; a form has to answer a public URL. There is no honest
+ *   way to give those away.
+ * - `infrastructure` — always free: shared services and open-source libraries
+ *   that are not sold to anyone.
+ */
+export const ACCESS_LEVELS = ['local', 'subscription', 'infrastructure']
+
+/**
  * @typedef {object} Product
  * @property {string} slug Stable URL segment and translation key.
  * @property {string} name Brand name. Deliberately not translated.
  * @property {string} repo Repository name within the GitHub organisation.
  * @property {string} icon MDI icon name, rendered through @nuxt/icon.
- * @property {string} accent Accent palette key; see ACCENTS in ProductIcon.vue.
+ * @property {string} accent Accent palette key; see ACCENTS in app/utils/accents.js.
  * @property {'apps'|'platform'|'developer'} category
  * @property {'beta'|'development'|'planned'} status
+ * @property {'local'|'subscription'|'infrastructure'} access
  * @property {boolean} featured Whether it appears on the home page.
  * @property {string[]} platforms Platform keys, translated via `platforms.<key>`.
  * @property {string|null} url Live product URL, or null when not yet shipped.
@@ -57,6 +73,7 @@ export const products = [
     accent: 'primary',
     category: 'apps',
     status: 'beta',
+    access: 'local',
     featured: true,
     platforms: ['web', 'android', 'ios', 'macos', 'windows', 'linux'],
     url: 'https://notes.numori.app',
@@ -70,6 +87,7 @@ export const products = [
     accent: 'amber',
     category: 'apps',
     status: 'beta',
+    access: 'local',
     featured: true,
     platforms: ['android', 'ios', 'macos', 'windows', 'linux'],
     url: null,
@@ -83,6 +101,8 @@ export const products = [
     accent: 'sky',
     category: 'apps',
     status: 'planned',
+    // A mailbox has to accept mail while every one of your devices is offline.
+    access: 'subscription',
     featured: true,
     platforms: ['web', 'android', 'ios', 'macos', 'windows', 'linux'],
     url: null,
@@ -96,6 +116,8 @@ export const products = [
     accent: 'teal',
     category: 'apps',
     status: 'planned',
+    // Drive is the storage quota, so it cannot exist without one.
+    access: 'subscription',
     featured: true,
     platforms: ['web', 'android', 'ios', 'macos', 'windows', 'linux'],
     url: null,
@@ -109,6 +131,7 @@ export const products = [
     accent: 'rose',
     category: 'apps',
     status: 'planned',
+    access: 'local',
     featured: true,
     platforms: ['web', 'android', 'ios', 'macos', 'windows', 'linux'],
     url: null,
@@ -122,6 +145,7 @@ export const products = [
     accent: 'success',
     category: 'apps',
     status: 'planned',
+    access: 'local',
     featured: true,
     platforms: ['web', 'android', 'ios', 'macos', 'windows', 'linux'],
     url: null,
@@ -135,6 +159,8 @@ export const products = [
     accent: 'violet',
     category: 'apps',
     status: 'planned',
+    // Messages have to be held for a recipient who is not online.
+    access: 'subscription',
     featured: false,
     platforms: ['web', 'android', 'ios', 'macos', 'windows', 'linux'],
     url: null,
@@ -148,6 +174,7 @@ export const products = [
     accent: 'orange',
     category: 'apps',
     status: 'planned',
+    access: 'local',
     featured: false,
     platforms: ['web', 'android', 'ios', 'browser'],
     url: null,
@@ -161,6 +188,7 @@ export const products = [
     accent: 'success',
     category: 'apps',
     status: 'planned',
+    access: 'local',
     featured: false,
     platforms: ['web', 'macos', 'windows', 'linux'],
     url: null,
@@ -174,6 +202,8 @@ export const products = [
     accent: 'indigo',
     category: 'apps',
     status: 'planned',
+    // A form is a public URL that has to stay up and collect replies.
+    access: 'subscription',
     featured: false,
     platforms: ['web'],
     url: null,
@@ -187,6 +217,7 @@ export const products = [
     accent: 'teal',
     category: 'apps',
     status: 'planned',
+    access: 'local',
     featured: false,
     platforms: ['web', 'android', 'ios', 'macos', 'windows', 'linux'],
     url: null,
@@ -200,6 +231,7 @@ export const products = [
     accent: 'error',
     category: 'apps',
     status: 'planned',
+    access: 'local',
     featured: false,
     platforms: ['web', 'macos', 'windows', 'linux'],
     url: null,
@@ -215,6 +247,7 @@ export const products = [
     accent: 'sky',
     category: 'platform',
     status: 'planned',
+    access: 'infrastructure',
     featured: false,
     platforms: ['service'],
     url: null,
@@ -228,6 +261,7 @@ export const products = [
     accent: 'violet',
     category: 'platform',
     status: 'development',
+    access: 'infrastructure',
     featured: false,
     platforms: ['service', 'selfHosted'],
     url: null,
@@ -241,6 +275,7 @@ export const products = [
     accent: 'success',
     category: 'platform',
     status: 'planned',
+    access: 'infrastructure',
     featured: false,
     platforms: ['web', 'service'],
     url: null,
@@ -254,6 +289,7 @@ export const products = [
     accent: 'gray',
     category: 'platform',
     status: 'planned',
+    access: 'infrastructure',
     featured: false,
     platforms: ['service'],
     url: null,
@@ -269,6 +305,7 @@ export const products = [
     accent: 'primary',
     category: 'developer',
     status: 'development',
+    access: 'infrastructure',
     featured: false,
     platforms: ['library'],
     url: null,
@@ -282,6 +319,7 @@ export const products = [
     accent: 'gray',
     category: 'developer',
     status: 'planned',
+    access: 'infrastructure',
     featured: false,
     platforms: ['library'],
     url: null,
@@ -298,3 +336,18 @@ export const findProduct = (slug) => products.find((product) => product.slug ===
 /** Products in a category, preserving catalogue order. */
 export const productsByCategory = (category) =>
   products.filter((product) => product.category === category)
+
+/** Products with a given access level, preserving catalogue order. */
+export const productsByAccess = (access) => products.filter((product) => product.access === access)
+
+/**
+ * Apps that never require a subscription. Used on the pricing page, where the
+ * count is quoted in prose — deriving it here means the sentence cannot drift
+ * out of step with the catalogue.
+ */
+export const freeApps = () =>
+  products.filter((product) => product.category === 'apps' && product.access === 'local')
+
+/** Apps that need a paid plan or self-hosting. */
+export const paidApps = () =>
+  products.filter((product) => product.category === 'apps' && product.access === 'subscription')

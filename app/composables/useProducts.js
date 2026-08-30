@@ -25,6 +25,7 @@ export const useProducts = () => {
     tagline: t(`products.${product.slug}.tagline`),
     summary: t(`products.${product.slug}.summary`),
     statusLabel: t(`status.${product.status}`),
+    accessLabel: t(`access.${product.access}`),
     categoryLabel: t(`categories.${product.category}.short`),
     to: localePath(`/products/${product.slug}`),
     // `repo` stays the repository *name* (e.g. 'Numori-Notes'); the full URL is

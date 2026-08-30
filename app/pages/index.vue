@@ -2,27 +2,40 @@
   <div>
     <!-- ─── Hero ──────────────────────────────────────────────── -->
     <section class="hero-wash border-b border-gray-200 dark:border-gray-800">
+      <!--
+        The hero animates on load rather than on scroll: it is already in view, so
+        a scroll-linked reveal would never fire. Staggered delays let it assemble
+        top-down instead of arriving all at once.
+      -->
       <div class="container-page py-20 text-center sm:py-28">
         <p
-          class="mb-5 inline-flex items-center gap-2 rounded-full border border-primary-200 bg-primary-50 px-3 py-1 text-sm font-medium text-primary-700 dark:border-primary-400/30 dark:bg-primary-400/10 dark:text-primary-300"
+          class="mb-5 inline-flex animate-rise-sm items-center gap-2 rounded-full border border-primary-200 bg-primary-50 px-3 py-1 text-sm font-medium text-primary-700 dark:border-primary-400/30 dark:bg-primary-400/10 dark:text-primary-300"
         >
           <Icon name="mdi:code-braces" class="size-4" aria-hidden="true" />
           {{ $t('home.hero.eyebrow') }}
         </p>
 
-        <h1 class="mx-auto max-w-3xl text-4xl font-bold tracking-tight sm:text-6xl">
+        <h1
+          class="mx-auto max-w-3xl animate-rise text-4xl font-bold tracking-tight [animation-delay:60ms] sm:text-6xl"
+        >
           {{ $t('home.hero.title') }}
         </h1>
 
-        <p class="mx-auto mt-6 max-w-2xl text-lg text-gray-600 sm:text-xl dark:text-gray-400">
+        <p
+          class="mx-auto mt-6 max-w-2xl animate-rise text-lg text-gray-600 [animation-delay:140ms] sm:text-xl dark:text-gray-400"
+        >
           {{ $t('home.hero.subtitle') }}
         </p>
 
-        <p class="mt-5 text-sm font-semibold text-gray-700 dark:text-gray-300">
+        <p
+          class="mt-5 animate-rise text-sm font-semibold text-gray-700 [animation-delay:220ms] dark:text-gray-300"
+        >
           {{ $t('home.hero.note') }}
         </p>
 
-        <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
+        <div
+          class="mt-10 flex animate-rise flex-wrap items-center justify-center gap-3 [animation-delay:300ms]"
+        >
           <ButtonLink :to="localePath('/products')" size="lg">
             {{ $t('home.hero.ctaPrimary') }}
           </ButtonLink>
@@ -39,11 +52,12 @@
       <SectionHeading
         :id="ids.principles"
         centred
+        class="reveal"
         :title="$t('home.principles.title')"
         :subtitle="$t('home.principles.subtitle')"
       />
 
-      <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <ul class="reveal-stagger grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         <li v-for="principle in principles" :key="principle.key">
           <PrincipleCard
             :icon="principle.icon"
@@ -62,11 +76,12 @@
       <div class="container-page">
         <SectionHeading
           :id="ids.products"
+          class="reveal"
           :title="$t('home.products.title')"
           :subtitle="$t('home.products.subtitle')"
         />
 
-        <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul class="reveal-stagger grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <li v-for="product in featured" :key="product.slug">
             <ProductCard :product="product" />
           </li>
@@ -84,11 +99,13 @@
     <section :aria-labelledby="ids.comparison" class="container-page py-section">
       <SectionHeading
         :id="ids.comparison"
+        class="reveal"
         :title="$t('home.comparison.title')"
         :subtitle="$t('home.comparison.subtitle')"
       />
 
       <ComparisonTable
+        class="reveal"
         :caption="$t('home.comparison.caption')"
         :rows="comparisonRows"
         :feature-column-label="$t('categories.label')"
@@ -106,11 +123,12 @@
       <div class="container-page">
         <SectionHeading
           :id="ids.blog"
+          class="reveal"
           :title="$t('home.blog.title')"
           :subtitle="$t('home.blog.subtitle')"
         />
 
-        <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul class="reveal-stagger grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <li v-for="post in posts" :key="post.path">
             <BlogCard :post="post" />
           </li>

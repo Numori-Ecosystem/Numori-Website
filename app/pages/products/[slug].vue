@@ -16,6 +16,7 @@
 
       <div class="mt-6 flex flex-wrap items-center gap-2">
         <StatusBadge :status="product.status" size="sm" />
+        <AccessBadge :access="product.access" size="sm" />
         <UiBadge color="gray" size="sm">{{ product.categoryLabel }}</UiBadge>
       </div>
 
@@ -58,13 +59,15 @@
 
           <!-- ─── Perks ───────────────────────────────────────────── -->
           <section :aria-labelledby="ids.perks" class="mt-14">
-            <h2 :id="ids.perks" class="text-2xl font-bold">{{ $t('products.page.perks') }}</h2>
+            <h2 :id="ids.perks" class="reveal text-2xl font-bold">
+              {{ $t('products.page.perks') }}
+            </h2>
 
-            <ul class="mt-6 grid gap-5 sm:grid-cols-2">
+            <ul class="reveal-stagger mt-6 grid gap-5 sm:grid-cols-2">
               <li
                 v-for="perk in perks"
                 :key="perk.title"
-                class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-900"
+                class="card-interactive rounded-2xl border border-gray-200 bg-white p-5 hover:border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-gray-600"
               >
                 <h3 class="text-base font-semibold">{{ perk.title }}</h3>
                 <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
@@ -112,6 +115,30 @@
 
             <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
               {{ $t(`status.${product.status}Hint`) }}
+            </p>
+          </section>
+
+          <section :aria-labelledby="ids.access">
+            <h2
+              :id="ids.access"
+              class="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400"
+            >
+              {{ $t('access.label') }}
+            </h2>
+
+            <p class="mt-3">
+              <AccessBadge :access="product.access" size="sm" />
+            </p>
+
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              {{ $t(`access.${product.access}Hint`) }}
+            </p>
+
+            <p v-if="product.access !== 'infrastructure'" class="mt-3">
+              <ButtonLink :to="localePath('/pricing')" variant="text" size="sm">
+                {{ $t('nav.pricing') }}
+                <Icon name="mdi:arrow-right" class="ml-1 size-4" aria-hidden="true" />
+              </ButtonLink>
             </p>
           </section>
 
@@ -193,6 +220,7 @@ const ids = {
   perks: useId(),
   source: useId(),
   status: useId(),
+  access: useId(),
   platforms: useId(),
 }
 

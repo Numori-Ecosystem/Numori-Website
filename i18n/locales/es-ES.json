@@ -79,6 +79,18 @@
       "description": "Las piezas con las que construimos todo lo demás, publicadas para quien quiera usarlas."
     }
   },
+  "access": {
+    "label": "Qué necesitas",
+    "local": "Sin suscripción",
+    "localShort": "Gratis y completa",
+    "localHint": "Funciona enteramente en tu dispositivo. Un plan solo añade sincronización alojada y almacenamiento compartido: no desbloquea nada.",
+    "subscription": "Necesita un plan",
+    "subscriptionShort": "Plan o autoalojado",
+    "subscriptionHint": "Esta necesita un servidor funcionando mientras tus dispositivos duermen, así que requiere un plan de pago o tu propia máquina.",
+    "infrastructure": "Libre y abierto",
+    "infrastructureShort": "Siempre gratis",
+    "infrastructureHint": "Infraestructura compartida y bibliotecas de código abierto. No se venden a nadie, en ningún plan."
+  },
   "platforms": {
     "label": "Disponible en",
     "web": "Web",
@@ -615,76 +627,167 @@
   "pricing": {
     "meta": {
       "title": "Precios",
-      "description": "Una suscripción baja para todo el ecosistema Numori, un plan gratuito que sirve de verdad y autoalojamiento sin coste."
+      "description": "Pagas por almacenamiento, no por funciones. Cualquier plan de Numori desbloquea todas las aplicaciones, el almacenamiento es un único espacio compartido entre todas, y la mayoría de las aplicaciones no necesitan suscripción."
     },
-    "title": "Un precio, con todo dentro",
-    "subtitle": "Sin planes por producto, sin cuentas por usuario y sin llamadas comerciales. El plan gratuito no es una prueba y el autoalojamiento no es una versión reducida.",
+    "title": "Paga por almacenamiento. Llévatelo todo.",
+    "subtitle": "Un único espacio compartido por todas las aplicaciones. Cualquier plan de pago desbloquea el ecosistema entero: lo único que cambia de uno a otro es cuánto sitio tienes.",
     "draftNotice": {
       "title": "Estas cifras no son definitivas",
       "body": "La mayor parte del ecosistema está aún en construcción, así que toma esta página como una declaración de intenciones. Publicaremos los precios definitivos antes de pedirle dinero a nadie, y no se los subiremos a quien se haya suscrito antes."
     },
-    "perMonth": "al mes",
-    "perYear": "al año",
-    "billedYearly": "facturado anualmente",
-    "free": {
-      "name": "Gratis",
-      "price": "0 €",
-      "tagline": "Para siempre, y sin recortes",
-      "cta": "Empezar con el plan gratuito",
-      "features": {
-        "1": "Todas las aplicaciones, en todas las plataformas",
-        "2": "Almacenamiento local sin límite de tamaño",
-        "3": "Exportación completa en formatos abiertos",
-        "4": "Sincronización entre dos dispositivos",
-        "5": "1 GB en Numori Drive"
+    "billing": {
+      "label": "Periodo de facturación",
+      "monthly": "Mensual",
+      "yearly": "Anual",
+      "save": "2 meses gratis"
+    },
+    "perMonth": "/mes",
+    "billedYearly": "{total} al año",
+    "noCard": "Sin tarjeta",
+    "storageShared": "compartidos entre todas las aplicaciones",
+    "forPeople": "para un máximo de {count} personas",
+    "everythingIncluded": "Todas las aplicaciones. Todas las plataformas. Sin planes por función.",
+    "tiers": {
+      "free": {
+        "name": "Gratis",
+        "tagline": "De sobra para notas, tareas y un calendario que te siguen a todas partes",
+        "monthly": "0 €",
+        "yearlyMonthly": "0 €",
+        "yearlyTotal": "0 €",
+        "cta": "Empezar gratis",
+        "features": {
+          "1": "Todas las aplicaciones que funcionan en tu dispositivo, completas",
+          "2": "Sincronización alojada en dispositivos ilimitados",
+          "3": "Cifrado de extremo a extremo en todo",
+          "4": "Exportación completa en formatos abiertos",
+          "5": "Sin caducidad, sin tarjeta y sin insistencias"
+        }
+      },
+      "core": {
+        "name": "Core",
+        "tagline": "Todo desbloqueado, con sitio para años de correo",
+        "monthly": "2 €",
+        "yearlyMonthly": "1,67 €",
+        "yearlyTotal": "20 €",
+        "cta": "Apuntarme a la lista de espera",
+        "features": {
+          "1": "Todo lo del plan Gratis",
+          "2": "Mail, Drive, Chat y Forms desbloqueados",
+          "3": "Tu propio dominio y alias ilimitados",
+          "4": "Unas 25.000 fotos o 40 horas de vídeo",
+          "5": "Soporte de quienes lo han programado"
+        }
+      },
+      "plus": {
+        "name": "Plus",
+        "tagline": "Sitio para una biblioteca de fotos y para todo lo demás",
+        "monthly": "5 €",
+        "yearlyMonthly": "4,17 €",
+        "yearlyTotal": "50 €",
+        "badge": "El que quiere casi todo el mundo",
+        "cta": "Apuntarme a la lista de espera",
+        "features": {
+          "1": "Todo lo del plan Core",
+          "2": "Diez dominios y alias ilimitados",
+          "3": "Historial de versiones durante un año",
+          "4": "Unas 125.000 fotos, o una década de documentos",
+          "5": "Soporte prioritario"
+        }
+      },
+      "max": {
+        "name": "Max",
+        "tagline": "Para fotografía en RAW, vídeo y archivos que te niegas a borrar",
+        "monthly": "11 €",
+        "yearlyMonthly": "9,17 €",
+        "yearlyTotal": "110 €",
+        "cta": "Apuntarme a la lista de espera",
+        "features": {
+          "1": "Todo lo del plan Plus",
+          "2": "Dominios ilimitados",
+          "3": "Historial de versiones indefinido",
+          "4": "Límites más altos de subida y de compartición",
+          "5": "Soporte prioritario"
+        }
       }
     },
-    "complete": {
-      "name": "Completo",
-      "price": "3 €",
-      "tagline": "Todo el ecosistema en una línea de tu extracto",
-      "badge": "El que quiere casi todo el mundo",
+    "family": {
+      "name": "Familia",
+      "tagline": "Una factura, seis personas y nadie compartiendo cuenta",
+      "monthly": "18 €",
+      "yearlyMonthly": "15 €",
+      "yearlyTotal": "180 €",
       "cta": "Apuntarme a la lista de espera",
       "features": {
-        "1": "Todo lo del plan gratuito",
-        "2": "Dispositivos y sincronización sin límite",
-        "3": "500 GB en Numori Drive",
-        "4": "Dominios propios y alias en Mail",
-        "5": "Soporte prioritario de quienes lo han programado"
+        "1": "Seis cuentas independientes, cada una privada frente a las demás",
+        "2": "3 TB para repartir como queráis",
+        "3": "Todo lo del plan Max, para todas las personas del plan",
+        "4": "Una persona gestiona la facturación y nada más"
       }
     },
     "selfHosted": {
       "name": "Autoalojado",
+      "tagline": "Tu hardware, tu espacio, nuestro código",
       "price": "0 €",
-      "tagline": "Tus servidores, tus normas",
+      "priceNote": "durante todo el tiempo que quieras",
       "cta": "Leer la guía de despliegue",
       "features": {
-        "1": "Todas las funciones del plan Completo",
-        "2": "Sin coste de licencia y sin límite de usuarios",
+        "1": "Todas las funciones del plan Max, sin coste de licencia",
+        "2": "Almacenamiento limitado solo por tus propios discos",
         "3": "Imágenes de contenedor y configuración documentada",
-        "4": "Soporte de la comunidad",
-        "5": "AGPL-3.0, para que siga siendo abierto"
+        "4": "AGPL-3.0, para que siga abierto aunque nosotros no sigamos"
       }
+    },
+    "shared": {
+      "title": "Un único espacio, no una docena de cupos",
+      "body": "Tu almacenamiento es un solo espacio. Un mes de mucha fotografía se lo come; un mes tranquilo te lo devuelve. Nunca tienes que averiguar qué aplicación se ha llenado.",
+      "1": {
+        "title": "Nada se mide por separado",
+        "body": "Mail, Drive, Sheets, las respuestas de formularios y los marcadores archivados salen todos de la misma cifra. Sin cupos por aplicación que hacer cuadrar."
+      },
+      "2": {
+        "title": "Muévete entre aplicaciones sin pensarlo",
+        "body": "Adjunta un vídeo de 2 GB a un correo o déjalo en Drive: cuesta lo mismo, porque es el mismo espacio."
+      },
+      "3": {
+        "title": "Cambia de plan cuando quieras",
+        "body": "Hacia arriba o hacia abajo, con prorrateo y efecto inmediato. Bajar solo te pide que primero te pongas por debajo del nuevo límite."
+      }
+    },
+    "noSubscription": {
+      "title": "{free} de las {total} aplicaciones no necesitan suscripción",
+      "body": "Si los datos de una aplicación viven en tu dispositivo, no tenemos ningún coste que recuperar ni motivo para cobrarte. Estas son gratis y completas: no son pruebas, ni versiones recortadas, ni cinco-notas-y-a-pagar.",
+      "planAdds": "Un plan añade sincronización alojada y almacenamiento compartido. No desbloquea la aplicación, porque la aplicación nunca estuvo bloqueada.",
+      "needsPlanTitle": "Y {count} que sí lo necesitan de verdad",
+      "needsPlanBody": "Estas necesitan un servidor funcionando mientras todos tus dispositivos duermen. Un buzón tiene que aceptar correo a las tres de la mañana; un formulario tiene que responder en una URL pública. No hay forma honesta de regalar eso, así que págalo barato o móntalo tú.",
+      "cta": "Ver qué necesita cada aplicación"
     },
     "faq": {
       "title": "Las preguntas incómodas",
       "1": {
         "q": "¿Por qué tan barato?",
-        "a": "Porque no financiamos un equipo comercial, ni un presupuesto de publicidad, ni un departamento de ciencia de datos. Un ecosistema pequeño y bien gestionado no necesita cobrarte treinta euros al mes para sobrevivir."
+        "a": "Porque no financiamos un equipo comercial, ni un presupuesto de publicidad, ni un departamento de ciencia de datos, y porque el almacenamiento cuesta menos cada año. Un ecosistema pequeño y bien gestionado no necesita cobrarte treinta euros al mes para sobrevivir."
       },
       "2": {
+        "q": "¿Dónde está la trampa del plan gratuito?",
+        "a": "No hay trampa, pero esta es su forma real: 5 GB son de sobra para notas, tareas, un calendario y marcadores, y no llegan ni de lejos para un archivo de correo o una biblioteca de fotos. Las aplicaciones que casi no necesitan almacenamiento son precisamente las que puedes usar siempre sin pagar."
+      },
+      "3": {
+        "q": "¿Por qué decide el precio el almacenamiento y no las funciones?",
+        "a": "Porque el almacenamiento es lo único que de verdad nos cuesta más cuanto más lo usas. Cobrar por funciones significaría inventar motivos para no dártelas, y a partir de ahí la hoja de ruta la marca lo que se puede vender en lugar de lo que debería existir."
+      },
+      "4": {
+        "q": "¿Qué pasa si me paso del límite?",
+        "a": "No se borra nada. Enviar y subir se detienen hasta que liberes espacio o subas de plan, y todo lo que ya está guardado sigue siendo legible y exportable. Retener tus datos por un umbral de facturación no es algo que estemos dispuestos a hacer."
+      },
+      "5": {
         "q": "¿Qué pasa si Numori cierra?",
         "a": "Todo es AGPL-3.0 y autoalojable, y todas las aplicaciones exportan a formatos abiertos. Si desaparecemos, puedes montar el sistema entero tú o llevarte tus datos a otro sitio. Para eso publicamos también los servidores."
       },
-      "3": {
+      "6": {
         "q": "¿Añadiréis funciones de IA cuando salga caro no hacerlo?",
         "a": "No. Es un compromiso fundacional, no una preferencia del momento, y es de los que se pueden comprobar fácilmente: vigila los repositorios."
       },
-      "4": {
-        "q": "¿El plan gratuito es solo una prueba?",
-        "a": "No. No caduca e incluye todas las aplicaciones. El plan de pago compra sincronización y almacenamiento alojados, no el software."
-      },
-      "5": {
+      "7": {
         "q": "¿Hay precios para estudiantes u organizaciones sin ánimo de lucro?",
         "a": "Sí, en cuanto exista la facturación. Será un descuento directo y no un proceso de solicitud."
       }

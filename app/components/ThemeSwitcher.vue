@@ -6,9 +6,25 @@
       icon-only
       :title="label"
       :aria-label="label"
+      class="group"
       @click="toggle"
     >
-      <Icon :name="isDark ? 'mdi:weather-sunny' : 'mdi:weather-night'" class="size-5" />
+      <!--
+        The two icons cross-fade and rotate rather than swapping instantly, so the
+        change of state reads as one control turning over.
+      -->
+      <span class="grid size-5 place-items-center">
+        <Icon
+          name="mdi:weather-sunny"
+          class="col-start-1 row-start-1 size-5 transition-all duration-300"
+          :class="isDark ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-50 opacity-0'"
+        />
+        <Icon
+          name="mdi:weather-night"
+          class="col-start-1 row-start-1 size-5 transition-all duration-300"
+          :class="isDark ? 'rotate-90 scale-50 opacity-0' : 'rotate-0 scale-100 opacity-100'"
+        />
+      </span>
     </UiButton>
 
     <template #fallback>
