@@ -110,24 +110,23 @@
 /**
  * Donations page.
  *
- * Exists because most of the apps are free and need no subscription, which leaves
- * a lot of people using Numori with no way to contribute. Subscriptions pay the
+ * Exists because no app needs a subscription, which leaves a lot of people using
+ * Numori with no way to contribute at all. Subscriptions pay the
  * people; donations are earmarked for the infrastructure, and the page says so
  * rather than gesturing at "supporting the project".
  *
  * There are deliberately no donor tiers, perks or badges — see
  * `app/data/donations.js` for why that matters beyond taste.
  */
-import { freeApps, products as catalogue } from '~/data/products'
+import { noAccountApps, products as catalogue } from '~/data/products'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
 const { public: runtime } = useRuntimeConfig()
 
 // Derived from the catalogue so the headline cannot drift when a product's
-// access level changes — which is exactly what happened when Mail moved from
-// needing a subscription to being a plain client.
-const freeCount = computed(() => freeApps().length)
+// access level changes — which has now happened twice.
+const freeCount = computed(() => noAccountApps().length)
 const appCount = computed(() => catalogue.filter((product) => product.category === 'apps').length)
 
 usePageSeo({

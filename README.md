@@ -126,8 +126,8 @@ Two steps, and the page builds itself.
   accent: 'violet',               // key from app/utils/accents.js
   category: 'apps',               // apps | platform | developer
   status: 'planned',              // beta | development | planned
-  access: 'local',                // local | subscription | infrastructure
-  account: true,                  // do key features need a (free) account?
+  access: 'local',                // local | account | infrastructure
+  syncsWithAccount: true,         // does a free account add sync?
   featured: false,                // show on the home page?
   platforms: ['web', 'android'],  // keys under `platforms.*` in the locales
   url: null,                      // live URL, or null when unshipped
@@ -168,19 +168,22 @@ changes a public claim:
 - **`local`** — runs entirely on the device. Free in full, no account. A plan only
   adds hosted sync and shared storage. Default for anything whose data lives on
   your machine.
-- **`subscription`** — needs a server running while every one of the user's
-  devices is asleep. A mailbox must accept mail overnight; a form must answer a
-  public URL. Needs a paid plan or self-hosting.
+- **`account`** — needs a Numori account, and a **free** one is enough. Runs on a
+  server that stays awake while the user's devices do not, so it has to know whose
+  data is whose. Draws on the same free quota as everything else.
 - **`infrastructure`** — always free: shared services and open-source libraries
   that are not sold to anyone.
 
-`paidProducts()` in `app/data/products.js` deliberately ignores `category` and
-matches on `access === 'subscription'` alone. Numori Updater is a developer tool
-that still needs a server, and an earlier version filtered by `category === 'apps'`,
-which silently kept a paid product off the pricing page. The "needs a plan" heading
-says "services" rather than "apps" for the same reason.
+**No product requires payment.** `access` answers "does it need an account", not
+"does it cost money". An earlier version had a `subscription` value where `account`
+now sits, and the pricing page announced that five services "genuinely need" a plan.
+They never did — that was the most misleading thing on the site.
 
-Set `account: true` when a free Numori account unlocks key features — almost always
+`accountProducts()` deliberately ignores `category` and matches on
+`access === 'account'` alone, because Numori Updater is a developer tool that also
+runs on a server; filtering by category would leave it out.
+
+Set `syncsWithAccount: true` when a free Numori account adds key features — almost always
 cross-device sync — and add a matching `products.<slug>.account` sentence to every
 locale describing what signing in gains you _and_ what still works without it. It
 renders in the product page sidebar. Numori PDF is the one local app without it:
@@ -191,9 +194,10 @@ processing happens on your machine and there is nothing worth syncing.
 There are **three levels, and only the third costs anything**:
 
 1. **No account** — the app, complete, offline, nothing to register for.
-2. **Free account** — adds cross-device sync, 2 GB of shared storage, docs and forum.
-3. **Paying** — adds storage, direct support, and the services needing a server of
-   their own (Drive, Chat, Forms).
+2. **Free account** — adds cross-device sync **and the five server-backed apps**
+   (Drive, Chat, Forms, Pulse, Updater), 2 GB of shared storage, docs and forum.
+3. **Paying** — adds storage, direct support and **extra seats**. Multi-seat is the
+   only capability genuinely reserved for paid accounts; no app or feature is.
 
 Paying buys three things: **storage**, **extra accounts** and **support**. Every
 app and every feature is identical at every price, and no platform sits behind a
@@ -231,11 +235,10 @@ writes to cookies or storage, update `legal.privacy.summary.*`,
 Re-enabling language detection means rewriting those three claims, and probably
 needing a consent mechanism.
 
-Keep levels 1 and 2 distinct in copy. `access: 'local'` answers "does it cost
-money", _not_ "does it need an account" — most local apps have key features behind
-a free account, recorded in the separate `account` flag. Conflating the two once
-produced copy claiming that _paying_ is what adds sync, which is wrong and
-undersells the free tier.
+Keep all three levels distinct in copy, and keep `access` and `syncsWithAccount`
+distinct from each other: `access: 'account'` means the app cannot run without one,
+while `syncsWithAccount` means it runs fine without one but syncs with one. Both
+have been conflated with payment at some point, each time understating the free tier.
 
 Note the shape of the support rule — it is a free/paid boundary, not a paid
 gradient. Support is the same whether someone pays £1.50 or £20; a "priority"
@@ -323,6 +326,27 @@ second support level, stop.
 `pricing.support.*` states the free/paid support boundary. Keep the free side
 described as what it includes (documentation, forum, issue tracker) rather than
 what it lacks.
+
+## Donations
+
+Most people will never pay: no app needs a subscription and nine of the thirteen
+need no account, so donations are the only way most users can contribute. The page
+is `/donate`, and it is linked from four places — the header (an accent button in
+the actions group, not a nav link), the mobile menu, a dedicated band on the home
+page, and the footer.
+
+`nav.donate` is deliberately kept out of `useNavigation().primary`. It is an action
+rather than a section, so it renders as a button; adding it to the list would have
+made it the least prominent of six equal links.
+
+Methods live in `app/data/donations.js`, ported from the "Support the Project" panel
+in Numori Notes (`components/AboutModal.vue`) — if you add a platform, add it there
+too.
+
+**No donor tiers, badges or perks, deliberately.** A donation given in return for
+something is a sale, which changes its VAT treatment and turns a gift into a
+transaction. It is also a second pricing ladder built out of goodwill, and one
+honest price list is enough.
 
 ## Motion
 

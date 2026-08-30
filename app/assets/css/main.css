@@ -214,6 +214,30 @@
       );
   }
 
+  /*
+   * Hides a number input's native spinner arrows.
+   *
+   * Used on the pricing seats field, which supplies its own translated −/+
+   * buttons — the browser's arrows are a duplicate control sitting right next to
+   * them, and on WebKit they are too small to hit reliably anyway.
+   *
+   * No accessibility cost: the element is still `type="number"`, so Up/Down arrow
+   * keys, `min`/`max` clamping and numeric keyboards on mobile all still work.
+   * This is deliberately a named class rather than a rule on `input[type=number]`,
+   * so a future form can keep its spinners.
+   */
+  .no-spinner {
+    appearance: textfield;
+    -moz-appearance: textfield;
+  }
+
+  .no-spinner::-webkit-outer-spin-button,
+  .no-spinner::-webkit-inner-spin-button {
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
   /* Card hover: a small lift, and the border picks up the accent. */
   .card-interactive {
     @apply transition-[transform,box-shadow,border-color] duration-300;

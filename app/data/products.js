@@ -34,22 +34,24 @@ export const CATEGORIES = ['apps', 'platform', 'developer']
 /**
  * What it takes to use a product.
  *
- * - `local` — fully functional on-device with no account and no subscription.
- *   This is the default for anything whose data lives on your machine.
+ * **No product requires a paid subscription.** Paying adds storage, direct
+ * support and extra seats — never access to an app. So this axis is about
+ * *accounts*, not payment.
  *
- *   Note that `local` is about *payment*, not about accounts. Most local apps
- *   have key features that need a free Numori account — chiefly cross-device
- *   sync — and that is recorded separately in the `account` flag below. Conflating
- *   the two made the copy claim that paying is what adds sync, which is wrong:
- *   there are three levels, and only the third costs anything.
- * - `subscription` — needs infrastructure we have to run continuously, so it
- *   needs a paid plan or your own server. A mailbox has to receive mail while
- *   your laptop is shut; a form has to answer a public URL. There is no honest
- *   way to give those away.
- * - `infrastructure` — always free: shared services and open-source libraries
- *   that are not sold to anyone.
+ * - `local` — works in full with no account at all. The default for anything whose
+ *   data lives on your machine. Many are better signed in, because a free account
+ *   adds sync; that is the separate `syncsWithAccount` flag below.
+ * - `account` — needs a Numori account, and a **free** one is enough. These run on
+ *   a server that stays awake while your devices do not, so it has to know whose
+ *   data is whose. They draw on the same free quota as everything else.
+ * - `infrastructure` — not sold to anyone: shared services and open-source
+ *   libraries.
+ *
+ * This axis previously had a `subscription` value where `account` now sits, which
+ * produced a pricing page announcing that five services "genuinely need" a plan.
+ * They never did.
  */
-export const ACCESS_LEVELS = ['local', 'subscription', 'infrastructure']
+export const ACCESS_LEVELS = ['local', 'account', 'infrastructure']
 
 /**
  * @typedef {object} Product
@@ -60,11 +62,11 @@ export const ACCESS_LEVELS = ['local', 'subscription', 'infrastructure']
  * @property {string} accent Accent palette key; see ACCENTS in app/utils/accents.js.
  * @property {'apps'|'platform'|'developer'} category
  * @property {'beta'|'development'|'planned'} status
- * @property {'local'|'subscription'|'infrastructure'} access
- * @property {boolean} [account] Whether a free Numori account unlocks key
- *   features — almost always cross-device sync. Independent of `access`: an app
- *   can be free, need no account to be useful, and still be markedly better with
- *   one. When true, `products.<slug>.account` must exist in every locale.
+ * @property {'local'|'account'|'infrastructure'} access
+ * @property {boolean} [syncsWithAccount] Whether a free Numori account adds key
+ *   features — almost always cross-device sync. Distinct from `access: 'account'`,
+ *   which means the app cannot run without one at all. When true,
+ *   `products.<slug>.account` must exist in every locale.
  * @property {boolean} featured Whether it appears on the home page.
  * @property {string[]} platforms Platform keys, translated via `platforms.<key>`.
  * @property {string|null} url Live product URL, or null when not yet shipped.
@@ -83,7 +85,7 @@ export const products = [
     category: 'apps',
     status: 'beta',
     access: 'local',
-    account: true,
+    syncsWithAccount: true,
     featured: true,
     platforms: ['web', 'android', 'ios', 'macos', 'windows', 'linux'],
     url: 'https://notes.numori.app',
@@ -98,7 +100,7 @@ export const products = [
     category: 'apps',
     status: 'beta',
     access: 'local',
-    account: true,
+    syncsWithAccount: true,
     featured: true,
     platforms: ['android', 'ios', 'macos', 'windows', 'linux'],
     url: null,
@@ -117,7 +119,7 @@ export const products = [
     // mailbox is a separate product with its own pricing, and when it exists it
     // will be its own catalogue entry rather than a paid tier of this one.
     access: 'local',
-    account: true,
+    syncsWithAccount: true,
     featured: true,
     // Deliberately no 'web': a browser cannot speak IMAP, so a webmail version
     // would need our server to proxy it, which would make it a hosted service.
@@ -133,8 +135,8 @@ export const products = [
     accent: 'teal',
     category: 'apps',
     status: 'planned',
-    // Drive is the storage quota, so it cannot exist without one.
-    access: 'subscription',
+    // Drive is the storage quota itself, so it needs an account to attach it to.
+    access: 'account',
     featured: true,
     platforms: ['web', 'android', 'ios', 'macos', 'windows', 'linux'],
     url: null,
@@ -149,7 +151,7 @@ export const products = [
     category: 'apps',
     status: 'planned',
     access: 'local',
-    account: true,
+    syncsWithAccount: true,
     featured: true,
     platforms: ['web', 'android', 'ios', 'macos', 'windows', 'linux'],
     url: null,
@@ -164,7 +166,7 @@ export const products = [
     category: 'apps',
     status: 'planned',
     access: 'local',
-    account: true,
+    syncsWithAccount: true,
     featured: true,
     platforms: ['web', 'android', 'ios', 'macos', 'windows', 'linux'],
     url: null,
@@ -178,8 +180,9 @@ export const products = [
     accent: 'violet',
     category: 'apps',
     status: 'planned',
-    // Messages have to be held for a recipient who is not online.
-    access: 'subscription',
+    // Messages have to be held for a recipient who is offline, so a server is
+    // involved and it needs to know whose messages these are.
+    access: 'account',
     featured: false,
     platforms: ['web', 'android', 'ios', 'macos', 'windows', 'linux'],
     url: null,
@@ -194,7 +197,7 @@ export const products = [
     category: 'apps',
     status: 'planned',
     access: 'local',
-    account: true,
+    syncsWithAccount: true,
     featured: false,
     platforms: ['web', 'android', 'ios', 'browser'],
     url: null,
@@ -209,7 +212,7 @@ export const products = [
     category: 'apps',
     status: 'planned',
     access: 'local',
-    account: true,
+    syncsWithAccount: true,
     featured: false,
     platforms: ['web', 'macos', 'windows', 'linux'],
     url: null,
@@ -223,8 +226,8 @@ export const products = [
     accent: 'indigo',
     category: 'apps',
     status: 'planned',
-    // A form is a public URL that has to stay up and collect replies.
-    access: 'subscription',
+    // A form is a public URL that has to stay up and collect replies for someone.
+    access: 'account',
     featured: false,
     platforms: ['web'],
     url: null,
@@ -239,7 +242,7 @@ export const products = [
     category: 'apps',
     status: 'planned',
     access: 'local',
-    account: true,
+    syncsWithAccount: true,
     featured: false,
     platforms: ['web', 'android', 'ios', 'macos', 'windows', 'linux'],
     url: null,
@@ -301,8 +304,8 @@ export const products = [
     // that a monitoring tool works.
     category: 'apps',
     status: 'planned',
-    // Checks have to run while your machine is off, so it needs a server.
-    access: 'subscription',
+    // Checks run while your machine is off, so a server does the work on your behalf.
+    access: 'account',
     featured: false,
     platforms: ['web', 'service', 'selfHosted'],
     url: null,
@@ -351,7 +354,8 @@ export const products = [
     status: 'planned',
     // Distributing updates needs a server that is always reachable. Self-hosting
     // is a first-class option, which is why 'selfHosted' is listed.
-    access: 'subscription',
+    // A free account is enough to use the hosted one.
+    access: 'account',
     featured: false,
     platforms: ['service', 'selfHosted'],
     url: null,
@@ -373,18 +377,16 @@ export const productsByCategory = (category) =>
 export const productsByAccess = (access) => products.filter((product) => product.access === access)
 
 /**
- * Apps that never require a subscription. Used on the pricing page, where the
- * count is quoted in prose — deriving it here means the sentence cannot drift
- * out of step with the catalogue.
+ * Apps usable with no account whatsoever. The pricing page quotes this count in
+ * prose, so deriving it keeps the sentence honest.
  */
-export const freeApps = () =>
+export const noAccountApps = () =>
   products.filter((product) => product.category === 'apps' && product.access === 'local')
 
 /**
- * Everything that needs a paid plan or self-hosting, across all categories.
+ * Everything that needs an account — a free one — across all categories.
  *
  * Not restricted to `category === 'apps'`, because Numori Updater is a developer
- * tool that still needs a server — filtering by category would have quietly left
- * a paid product off the pricing page.
+ * tool that also runs on a server; filtering by category would leave it out.
  */
-export const paidProducts = () => products.filter((product) => product.access === 'subscription')
+export const accountProducts = () => products.filter((product) => product.access === 'account')

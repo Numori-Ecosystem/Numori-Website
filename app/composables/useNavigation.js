@@ -18,6 +18,22 @@ export const useNavigation = () => {
   ]
 
   /**
+   * Donate is deliberately not in `primary`.
+   *
+   * It is an action, not a section of the site, so the header renders it as an
+   * accent-styled button rather than a sixth identical link — which is both more
+   * prominent and keeps the navigation list to the five content pages. Nine of the
+   * thirteen apps need no account and none needs payment, so for most people this
+   * is the only way to contribute anything.
+   */
+  const donate = computed(() => ({
+    key: 'donate',
+    label: t('nav.donate'),
+    to: localePath('/donate'),
+    current: isCurrent('/donate'),
+  }))
+
+  /**
    * Marks an item as current when the route is the item's page *or* anything
    * below it, so `/products/notes` still highlights "Products". NuxtLink's own
    * `aria-current` only fires on an exact match, which would leave every detail
@@ -76,5 +92,5 @@ export const useNavigation = () => {
     },
   ])
 
-  return { primary, footer, isCurrent }
+  return { primary, donate, footer, isCurrent }
 }

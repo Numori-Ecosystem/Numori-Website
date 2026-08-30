@@ -92,7 +92,7 @@
                 :max="current.maxPeople"
                 step="1"
                 :aria-describedby="peopleHintId"
-                class="w-14 rounded-md border-0 bg-transparent text-center text-base font-semibold tabular-nums"
+                class="no-spinner w-14 rounded-md border-0 bg-transparent text-center text-base font-semibold tabular-nums"
                 @change="setPeople($event.target.value)"
               >
 

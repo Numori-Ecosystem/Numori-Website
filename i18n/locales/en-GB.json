@@ -82,12 +82,12 @@
   },
   "access": {
     "label": "What you need",
-    "local": "No subscription needed",
-    "localShort": "Free, in full",
-    "localHint": "Works in full on your device with no account at all. A free account adds sync across devices; paying adds storage, extra accounts and support.",
-    "subscription": "Needs a plan",
-    "subscriptionShort": "Plan or self-host",
-    "subscriptionHint": "This one needs a server running while your devices are asleep, so it needs a paid plan — or your own machine.",
+    "local": "No account needed",
+    "localShort": "No account",
+    "localHint": "Works in full with no account at all. A free account adds sync across devices; paying adds storage, extra seats and support.",
+    "account": "Free account",
+    "accountShort": "Free account",
+    "accountHint": "Runs on a server, so it needs an account to know whose data is whose — a free one is enough. It draws on the same free quota as everything else.",
     "infrastructure": "Free and open",
     "infrastructureShort": "Always free",
     "infrastructureHint": "Shared infrastructure and open-source libraries. Not sold to anyone, at any tier.",
@@ -196,6 +196,11 @@
       "title": "From the blog",
       "subtitle": "Progress reports, decisions we had to argue about, and the occasional opinion.",
       "empty": "The first posts are being written. Check back shortly."
+    },
+    "donate": {
+      "title": "Most people will never pay us a penny",
+      "body": "No app needs a subscription and nine of the thirteen need no account at all, so for most of the people using Numori there is nothing to buy. Donations pay for the servers those free apps run on — the storage nodes, the sync relay, the build machinery. No perks, no donor tiers, no name in a credits file unless you ask.",
+      "cta": "Ways to donate"
     },
     "cta": {
       "title": "Read the code before you trust the pitch",
@@ -681,11 +686,11 @@
       },
       "2": {
         "label": "Free account",
-        "body": "Adds sync. Your data, and the settings behind it, appear on every device you sign in to — encrypted, so we hold ciphertext. Includes 2 GB of shared storage, the documentation and the community forum."
+        "body": "Adds sync, and the apps that run on a server: {services}. Your data and settings appear on every device you sign in to, encrypted. Includes 2 GB of shared storage, the documentation and the community forum."
       },
       "3": {
         "label": "Paying",
-        "body": "Adds storage, extra accounts, direct email support, and the services that need a server of their own: {services}. Every feature is identical at every price."
+        "body": "Adds storage, direct email support, and extra seats so other people can share your quota. It adds no apps and no features — every one of those is already in the free tier."
       },
       "title": "Three levels, and only the last one costs anything",
       "subtitle": "Most apps work before you have registered for anything. An account adds the parts that need a server to remember them. Paying adds room and our time."
@@ -700,6 +705,7 @@
       "7": "Sharing, collaboration and offline use",
       "8": "Direct email support, identical at every price",
       "9": "Every feature we ship from now on",
+      "10": "Extra seats, as many as your storage allows",
       "title": "Included at every price, including the cheapest",
       "subtitle": "This list does not change as you move the slider. There is no version of Numori with more features in it, and no support tier above the one you are already on."
     },
@@ -757,12 +763,13 @@
       "body": "Your storage is a single pool. A month of heavy photography eats into it; a quiet month gives the room back. You never have to work out which app is full."
     },
     "noSubscription": {
-      "title": "{free} of the {total} apps never need a subscription",
-      "body": "If an app's data lives on your device, we have no running cost to recover and no business charging you for it. These are free in full — not trials, not feature-limited, not five-notes-then-pay.",
-      "planAdds": "Paying adds storage and direct support. It does not unlock these apps, because they were never locked.",
-      "needsPlanTitle": "And {count} services that genuinely need one",
-      "needsPlanBody": "These need a server running while every one of your devices is asleep. A shared link has to work when someone opens it; a form has to answer a public URL; an uptime check has to run at four in the morning; a device has to be able to fetch an update. There is no honest way to give those away — so pay us a little, or run them yourself.",
-      "cta": "See what each app needs",
+      "title": "Every one of the {total} apps works without paying",
+      "body": "Not a trial, not feature-limited, not five-notes-then-pay. Paying adds room, support and the ability to share your quota with other people. It has never added an app.",
+      "noAccountTitle": "{count} need no account at all",
+      "noAccountBody": "Install and use them. Their data lives on your device, so there is nothing for us to know about you.",
+      "accountTitle": "{count} need an account, and a free one is enough",
+      "accountBody": "These run on a server that stays awake while your devices do not, so they need to know whose data is whose. A free account covers that, and they draw on your free quota like everything else.",
+      "planAdds": "So what does paying add? More storage, direct email support, and extra seats to share your quota with. Multi-seat is the one thing genuinely reserved for paid accounts.",
       "donateCta": "Use the free apps and want to help? Donations pay for the servers."
     },
     "faq": {
@@ -783,8 +790,8 @@
         "a": "Because storage is the only thing that actually costs us more when you use more of it. Charging for features would mean inventing reasons to withhold them, and then the roadmap starts being shaped by what can be sold rather than what should exist."
       },
       "5": {
-        "q": "So the cheapest paid option really has everything?",
-        "a": "Yes. Every app on every platform it supports, unlimited devices and sync, full version history, collaboration, uptime monitoring, the update dashboard and the same support. The only difference between the cheapest and the most expensive is the number of gigabytes."
+        "q": "So the free tier really has every app?",
+        "a": "Yes, every one. Nine work with no account at all; five need an account and a free account is enough. What the free tier limits is room — 2 GB — and it gives you documentation and the forum rather than our inbox, and a single seat. No app and no feature is held back."
       },
       "6": {
         "q": "Is email hosting included?",
@@ -819,7 +826,7 @@
       "description": "Most Numori apps are free and need no subscription. Donations pay for the servers that run the shared services, and there are no perks, tiers or badges attached."
     },
     "title": "Donations pay for the servers",
-    "subtitle": "{free} of the {total} apps are free and need no account, which leaves a lot of people using Numori with no way to chip in. This is that way.",
+    "subtitle": "None of the {total} apps need a subscription, and {free} do not even need an account. That leaves a lot of people using Numori with no way to chip in. This is that way.",
     "intro": "Subscriptions pay the people who write the code. Donations are earmarked for the infrastructure underneath: the storage nodes, the sync relay, the build and release machinery. Separating the two means we can promise that the free apps stay free without quietly hoping they will one day be a funnel.",
     "where": {
       "1": {

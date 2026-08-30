@@ -147,7 +147,7 @@
             separate question from whether the product costs money: most of these
             are free either way, but markedly more useful signed in.
           -->
-          <section v-if="product.account" :aria-labelledby="ids.account">
+          <section v-if="product.syncsWithAccount" :aria-labelledby="ids.account">
             <h2
               :id="ids.account"
               class="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400"

@@ -82,12 +82,12 @@
   },
   "access": {
     "label": "Qué necesitas",
-    "local": "Sin suscripción",
-    "localShort": "Gratis y completa",
-    "localHint": "Funciona completa en tu dispositivo sin ninguna cuenta. Una cuenta gratuita añade la sincronización entre dispositivos; pagar añade almacenamiento, cuentas adicionales y soporte.",
-    "subscription": "Necesita un plan",
-    "subscriptionShort": "Plan o autoalojado",
-    "subscriptionHint": "Esta necesita un servidor funcionando mientras tus dispositivos duermen, así que requiere un plan de pago o tu propia máquina.",
+    "local": "Sin cuenta",
+    "localShort": "Sin cuenta",
+    "localHint": "Funciona completa sin ninguna cuenta. Una cuenta gratuita añade la sincronización entre dispositivos; pagar añade almacenamiento, cuentas adicionales y soporte.",
+    "account": "Cuenta gratuita",
+    "accountShort": "Cuenta gratuita",
+    "accountHint": "Funciona en un servidor, así que necesita una cuenta para saber de quién son los datos, y basta con una gratuita. Consume del mismo espacio gratuito que todo lo demás.",
     "infrastructure": "Libre y abierto",
     "infrastructureShort": "Siempre gratis",
     "infrastructureHint": "Infraestructura compartida y bibliotecas de código abierto. No se venden a nadie, en ningún plan.",
@@ -196,6 +196,11 @@
       "title": "Del blog",
       "subtitle": "Informes de avance, decisiones que nos costó discutir y alguna opinión de vez en cuando.",
       "empty": "Estamos escribiendo las primeras entradas. Vuelve pronto."
+    },
+    "donate": {
+      "title": "La mayoría no nos pagará nunca ni un céntimo",
+      "body": "Ninguna aplicación necesita suscripción y nueve de las trece no necesitan ni cuenta, así que para casi toda la gente que usa Numori no hay nada que comprar. Las donaciones pagan los servidores en los que funcionan esas aplicaciones gratuitas: los nodos de almacenamiento, el relé de sincronización y la maquinaria de compilación. Sin ventajas, sin niveles de donante y sin tu nombre en un archivo de créditos salvo que lo pidas.",
+      "cta": "Formas de donar"
     },
     "cta": {
       "title": "Lee el código antes de creerte el discurso",
@@ -681,11 +686,11 @@
       },
       "2": {
         "label": "Cuenta gratuita",
-        "body": "Añade la sincronización. Tus datos, y los ajustes que hay detrás, aparecen en todos los dispositivos en los que inicies sesión, cifrados, así que nosotros guardamos texto cifrado. Incluye 2 GB de almacenamiento compartido, la documentación y el foro de la comunidad."
+        "body": "Añade la sincronización y las aplicaciones que funcionan en un servidor: {services}. Tus datos y ajustes aparecen en todos los dispositivos en los que inicies sesión, cifrados. Incluye 2 GB de almacenamiento compartido, la documentación y el foro de la comunidad."
       },
       "3": {
         "label": "Pagando",
-        "body": "Añade almacenamiento, cuentas adicionales, soporte directo por correo y los servicios que necesitan un servidor propio: {services}. Todas las funciones son idénticas a cualquier precio."
+        "body": "Añade almacenamiento, soporte directo por correo y cuentas adicionales para que otras personas compartan tu espacio. No añade aplicaciones ni funciones: todas están ya en el plan gratuito."
       },
       "title": "Tres niveles, y solo el último cuesta algo",
       "subtitle": "Casi todas las aplicaciones funcionan antes de que te registres en nada. Una cuenta añade las partes que necesitan un servidor que las recuerde. Pagar añade sitio y nuestro tiempo."
@@ -700,6 +705,7 @@
       "7": "Compartición, colaboración y uso sin conexión",
       "8": "Soporte por correo directo, idéntico a cualquier precio",
       "9": "Todas las funciones que publiquemos de ahora en adelante",
+      "10": "Cuentas adicionales, tantas como permita tu almacenamiento",
       "title": "Incluido a cualquier precio, también en el más barato",
       "subtitle": "Esta lista no cambia al mover el control. No existe una versión de Numori con más funciones dentro, ni un nivel de soporte por encima del que ya tienes."
     },
@@ -757,12 +763,13 @@
       "body": "Tu almacenamiento es un solo espacio. Un mes de mucha fotografía se lo come; un mes tranquilo te lo devuelve. Nunca tienes que averiguar qué aplicación se ha llenado."
     },
     "noSubscription": {
-      "title": "{free} de las {total} aplicaciones no necesitan suscripción",
-      "body": "Si los datos de una aplicación viven en tu dispositivo, no tenemos ningún coste que recuperar ni motivo para cobrarte. Estas son gratis y completas: no son pruebas, ni versiones recortadas, ni cinco-notas-y-a-pagar.",
-      "planAdds": "Pagar añade almacenamiento y soporte directo. No desbloquea estas aplicaciones, porque nunca estuvieron bloqueadas.",
-      "needsPlanTitle": "Y {count} servicios que sí lo necesitan",
-      "needsPlanBody": "Estos necesitan un servidor funcionando mientras todos tus dispositivos duermen. Un enlace compartido tiene que funcionar cuando alguien lo abre; un formulario tiene que responder en una URL pública; una comprobación de disponibilidad tiene que ejecutarse a las cuatro de la mañana; un dispositivo tiene que poder descargar una actualización. No hay forma honesta de regalar eso, así que págalo barato o móntalo tú.",
-      "cta": "Ver qué necesita cada aplicación",
+      "title": "Las {total} aplicaciones funcionan sin pagar",
+      "body": "No es una prueba, ni una versión recortada, ni cinco-notas-y-a-pagar. Pagar añade sitio, soporte y la posibilidad de compartir tu espacio con otras personas. Nunca ha añadido una aplicación.",
+      "noAccountTitle": "{count} no necesitan ninguna cuenta",
+      "noAccountBody": "Instálalas y úsalas. Sus datos viven en tu dispositivo, así que no hay nada que tengamos que saber de ti.",
+      "accountTitle": "{count} necesitan una cuenta, y basta con una gratuita",
+      "accountBody": "Estas funcionan en un servidor que sigue despierto cuando tus dispositivos no lo están, así que necesitan saber de quién son los datos. Una cuenta gratuita lo cubre, y consumen de tu espacio gratuito como todo lo demás.",
+      "planAdds": "¿Y qué añade pagar? Más almacenamiento, soporte directo por correo y cuentas adicionales para compartir tu espacio. Lo multicuenta es lo único reservado de verdad a las cuentas de pago.",
       "donateCta": "¿Usas las aplicaciones gratuitas y quieres ayudar? Las donaciones pagan los servidores."
     },
     "faq": {
@@ -783,8 +790,8 @@
         "a": "Porque el almacenamiento es lo único que de verdad nos cuesta más cuanto más lo usas. Cobrar por funciones significaría inventar motivos para no dártelas, y a partir de ahí la hoja de ruta la marca lo que se puede vender en lugar de lo que debería existir."
       },
       "5": {
-        "q": "¿La opción de pago más barata lo incluye todo de verdad?",
-        "a": "Sí. Todas las aplicaciones en todas las plataformas que admiten, dispositivos y sincronización sin límite, historial de versiones completo, colaboración, monitorización de disponibilidad, el panel de actualizaciones y el mismo soporte. La única diferencia entre la opción más barata y la más cara es el número de gigabytes."
+        "q": "¿El plan gratuito tiene de verdad todas las aplicaciones?",
+        "a": "Sí, todas. Nueve funcionan sin ninguna cuenta; cinco necesitan una cuenta y basta con la gratuita. Lo que limita el plan gratuito es el sitio (2 GB), y te da documentación y foro en lugar de nuestro buzón, además de una sola cuenta. No se retiene ninguna aplicación ni ninguna función."
       },
       "6": {
         "q": "¿Está incluido el alojamiento de correo?",
@@ -819,7 +826,7 @@
       "description": "Casi todas las aplicaciones de Numori son gratuitas y no necesitan suscripción. Las donaciones pagan los servidores que sostienen los servicios compartidos, y no llevan asociada ninguna ventaja, nivel ni distintivo."
     },
     "title": "Las donaciones pagan los servidores",
-    "subtitle": "{free} de las {total} aplicaciones son gratuitas y no necesitan cuenta, así que hay mucha gente usando Numori sin ninguna forma de aportar. Esta es esa forma.",
+    "subtitle": "Ninguna de las {total} aplicaciones necesita suscripción, y {free} no necesitan ni cuenta. Eso deja a mucha gente usando Numori sin ninguna forma de aportar. Esta es esa forma.",
     "intro": "Las suscripciones pagan a quienes escriben el código. Las donaciones están destinadas a la infraestructura de debajo: los nodos de almacenamiento, el relé de sincronización y la maquinaria de compilación y publicación. Separar las dos cosas nos permite prometer que las aplicaciones gratuitas seguirán siendo gratuitas sin esperar en silencio que algún día sean un embudo.",
     "where": {
       "1": {

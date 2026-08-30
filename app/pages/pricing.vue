@@ -227,12 +227,19 @@
         <SectionHeading
           :id="ids.free"
           class="reveal"
-          :title="$t('pricing.noSubscription.title', { free: freeCount, total: appCount })"
+          :title="$t('pricing.noSubscription.title', { total: appCount })"
           :subtitle="$t('pricing.noSubscription.body')"
         />
 
+        <h3 class="reveal text-lg font-semibold">
+          {{ $t('pricing.noSubscription.noAccountTitle', { count: noAccountCount }) }}
+        </h3>
+        <p class="reveal mb-6 mt-2 max-w-3xl text-sm text-gray-600 dark:text-gray-400">
+          {{ $t('pricing.noSubscription.noAccountBody') }}
+        </p>
+
         <ul class="reveal-stagger grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <li v-for="product in freeProducts" :key="product.slug">
+          <li v-for="product in noAccountProducts" :key="product.slug">
             <NuxtLink
               :to="product.to"
               class="card-interactive group flex items-center gap-3 rounded-xl border border-gray-200 bg-white p-3.5 hover:border-success-300 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-success-400/40"
@@ -253,29 +260,22 @@
           </li>
         </ul>
 
-        <p class="mt-6 max-w-3xl text-sm text-gray-600 dark:text-gray-400">
-          {{ $t('pricing.noSubscription.planAdds') }}
-        </p>
-
-        <p class="mt-4">
-          <ButtonLink :to="localePath('/donate')" variant="text">
-            {{ $t('pricing.noSubscription.donateCta') }}
-            <Icon name="mdi:heart-outline" class="ml-1 size-4" aria-hidden="true" />
-          </ButtonLink>
-        </p>
-
-        <!-- The other side of the honest version. -->
-        <div class="reveal mt-14">
-          <h3 class="text-xl font-bold">
-            {{ $t('pricing.noSubscription.needsPlanTitle', { count: paidCount }) }}
+        <!--
+          The second group is "needs a free account", not "needs paying". Styled in
+          the accent colour rather than a warning colour, because needing an account
+          is not a downgrade.
+        -->
+        <div class="reveal mt-12">
+          <h3 class="text-lg font-semibold">
+            {{ $t('pricing.noSubscription.accountTitle', { count: accountCount }) }}
           </h3>
 
-          <p class="mt-3 max-w-3xl leading-relaxed text-gray-600 dark:text-gray-400">
-            {{ $t('pricing.noSubscription.needsPlanBody') }}
+          <p class="mt-2 max-w-3xl text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+            {{ $t('pricing.noSubscription.accountBody') }}
           </p>
 
           <ul class="reveal-stagger mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            <li v-for="product in paidProducts" :key="product.slug">
+            <li v-for="product in accountProducts" :key="product.slug">
               <NuxtLink
                 :to="product.to"
                 class="card-interactive group flex items-center gap-3 rounded-xl border border-gray-200 bg-white p-3.5 hover:border-primary-300 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-primary-400/40"
@@ -283,8 +283,8 @@
                 <ProductMark :icon="product.icon" :accent="product.accent" size="sm" />
                 <span class="min-w-0">
                   <span class="block truncate text-sm font-semibold">{{ product.name }}</span>
-                  <span class="block text-xs text-gray-500 dark:text-gray-400">
-                    {{ $t('access.subscriptionShort') }}
+                  <span class="block text-xs text-primary-700 dark:text-primary-400">
+                    {{ $t('access.accountShort') }}
                   </span>
                 </span>
                 <Icon
@@ -295,6 +295,22 @@
               </NuxtLink>
             </li>
           </ul>
+        </div>
+
+
+        <div
+          class="reveal mt-12 rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-900"
+        >
+          <p class="max-w-3xl leading-relaxed text-gray-700 dark:text-gray-300">
+            {{ $t('pricing.noSubscription.planAdds') }}
+          </p>
+
+          <p class="mt-4">
+            <ButtonLink :to="localePath('/donate')" variant="text">
+              {{ $t('pricing.noSubscription.donateCta') }}
+              <Icon name="mdi:heart-outline" class="ml-1 size-4" aria-hidden="true" />
+            </ButtonLink>
+          </p>
         </div>
       </div>
     </section>
@@ -351,7 +367,11 @@
  * the paid curve.
  */
 import { DEFAULT_STEP_INDEX, FREE_STORAGE } from '~/data/plans'
-import { freeApps, paidProducts as paidProductList, products as catalogue } from '~/data/products'
+import {
+  accountProducts as accountProductList,
+  noAccountApps,
+  products as catalogue,
+} from '~/data/products'
 import { formatMoney } from '~/utils/site'
 
 const { t, locale } = useI18n()
@@ -394,7 +414,7 @@ const LEVEL_ICONS = ['mdi:cellphone', 'mdi:cloud-sync-outline', 'mdi:heart-outli
  * needing a plan. Deriving it means the sentence cannot drift again.
  */
 const paidServiceNames = computed(() => {
-  const names = paidProductList().map((product) => product.name.replace(/^Numori\s+/, ''))
+  const names = accountProductList().map((product) => product.name.replace(/^Numori\s+/, ''))
   return new Intl.ListFormat(locale.value, { style: 'long', type: 'conjunction' }).format(names)
 })
 
@@ -440,10 +460,10 @@ const sharedPoints = computed(() =>
 
 // Counts are derived from the catalogue so the prose ("8 of the 12 apps…")
 // cannot drift out of step with the product list.
-const freeProducts = computed(() => freeApps().map(decorate))
-const paidProducts = computed(() => paidProductList().map(decorate))
-const freeCount = computed(() => freeProducts.value.length)
-const paidCount = computed(() => paidProducts.value.length)
+const noAccountProducts = computed(() => noAccountApps().map(decorate))
+const accountProducts = computed(() => accountProductList().map(decorate))
+const noAccountCount = computed(() => noAccountProducts.value.length)
+const accountCount = computed(() => accountProducts.value.length)
 const appCount = computed(() => catalogue.filter((product) => product.category === 'apps').length)
 
 const FAQ_COUNT = 11

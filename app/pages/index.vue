@@ -154,6 +154,33 @@
         {{ $t('home.cta.secondary') }}
       </ButtonLink>
     </CtaBand>
+
+    <!-- ─── Donations ─────────────────────────────────────────── -->
+    <!--
+      Most visitors will never pay us: no app requires a subscription and nine of
+      the thirteen need no account. So the home page asks once, plainly, and
+      explains what the money is actually for.
+    -->
+    <section :aria-labelledby="ids.donate" class="container-page py-section">
+      <div
+        class="reveal flex flex-col items-start gap-6 rounded-2xl border border-primary-200 bg-primary-50 p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between dark:border-primary-400/30 dark:bg-primary-400/5"
+      >
+        <div class="max-w-2xl">
+          <h2 :id="ids.donate" class="flex items-center gap-2 text-xl font-bold sm:text-2xl">
+            <Icon name="mdi:heart-outline" class="size-6 text-primary-500" aria-hidden="true" />
+            {{ $t('home.donate.title') }}
+          </h2>
+          <p class="mt-3 leading-relaxed text-gray-700 dark:text-gray-300">
+            {{ $t('home.donate.body') }}
+          </p>
+        </div>
+
+        <ButtonLink :to="localePath('/donate')" size="lg" class="shrink-0">
+          {{ $t('home.donate.cta') }}
+          <Icon name="mdi:arrow-right" class="ml-2 size-4" aria-hidden="true" />
+        </ButtonLink>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -178,6 +205,7 @@ usePageSeo({
  */
 const ids = {
   principles: useId(),
+  donate: useId(),
   products: useId(),
   comparison: useId(),
   blog: useId(),

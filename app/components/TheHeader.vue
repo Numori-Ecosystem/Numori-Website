@@ -39,6 +39,22 @@
       </nav>
 
       <div class="ml-auto flex items-center gap-2 lg:ml-0">
+        <!--
+          Donate sits with the actions rather than in the nav list: it is something
+          to do, not somewhere to go, and an accent button is far more visible than
+          a sixth link would be.
+        -->
+        <ButtonLink
+          :to="donate.to"
+          class="hidden lg:inline-flex"
+          variant="outline"
+          size="sm"
+          :aria-current="donate.current ? 'page' : undefined"
+        >
+          <Icon name="mdi:heart-outline" class="mr-1.5 size-4" aria-hidden="true" />
+          {{ donate.label }}
+        </ButtonLink>
+
         <LocaleSwitcher class="hidden sm:block" />
         <ThemeSwitcher />
 
@@ -90,7 +106,19 @@
             </li>
           </ul>
 
-          <div class="mt-4 border-t border-gray-200 pt-4 sm:hidden dark:border-gray-800">
+          <div class="mt-4 border-t border-gray-200 pt-4 dark:border-gray-800">
+            <ButtonLink
+              :to="donate.to"
+              block
+              variant="outline"
+              :aria-current="donate.current ? 'page' : undefined"
+            >
+              <Icon name="mdi:heart-outline" class="mr-1.5 size-4" aria-hidden="true" />
+              {{ donate.label }}
+            </ButtonLink>
+          </div>
+
+          <div class="mt-4 sm:hidden">
             <LocaleSwitcher />
           </div>
         </nav>
@@ -116,7 +144,7 @@
  */
 const localePath = useLocalePath()
 const route = useRoute()
-const { primary } = useNavigation()
+const { primary, donate } = useNavigation()
 
 const open = ref(false)
 const toggleRef = ref(null)

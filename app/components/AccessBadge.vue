@@ -7,15 +7,16 @@
 
 <script setup>
 /**
- * AccessBadge — states what it takes to use a product: nothing, a plan, or
- * neither because it is shared infrastructure.
+ * AccessBadge — states what it takes to use a product: nothing at all, a free
+ * account, or neither because it is shared infrastructure.
  *
- * This is the single most useful thing to put on a product card, given the
- * pricing model: most of the apps need no subscription at all, and that is worth
- * saying on the app's own page rather than only on the pricing page.
+ * Note that none of the values mean "paid". No Numori app requires a
+ * subscription; paying adds storage, seats and support. So this badge answers
+ * "do I need an account?", not "do I need to pay?" — an earlier version conflated
+ * the two and told visitors that five services needed a plan.
  *
- * A screen-reader-only prefix names what the value refers to, since "No
- * subscription needed" next to a status pill is ambiguous out of context.
+ * A screen-reader-only prefix names what the value refers to, since "Free account"
+ * next to a status pill is ambiguous out of context.
  *
  * @example
  * <AccessBadge access="local" />
@@ -27,7 +28,7 @@ const props = defineProps({
   /**
    * Access level. Must match a key in `access.*` in the locale files.
    * @type {string}
-   * @values 'local' | 'subscription' | 'infrastructure'
+   * @values 'local' | 'account' | 'infrastructure'
    */
   access: { type: String, required: true },
 
@@ -40,10 +41,14 @@ const props = defineProps({
   size: { type: String, default: 'xs' },
 })
 
-/** UiBadge accepts 'primary' | 'gray' | 'red' | 'green' | 'amber'. */
+/**
+ * UiBadge accepts 'primary' | 'gray' | 'red' | 'green' | 'amber'.
+ * Green for "needs nothing", primary for "needs a free account" — deliberately
+ * not a warning colour, because needing an account is not a downgrade.
+ */
 const STYLES = {
   local: { colour: 'green', icon: 'mdi:cellphone-check' },
-  subscription: { colour: 'primary', icon: 'mdi:cloud-outline' },
+  account: { colour: 'primary', icon: 'mdi:account-outline' },
   infrastructure: { colour: 'gray', icon: 'mdi:code-braces' },
 }
 
