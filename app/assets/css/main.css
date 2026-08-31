@@ -11,6 +11,24 @@
 
 @plugin '@tailwindcss/typography';
 
+/*
+ * Scan Numori UI's own component sources so Tailwind generates every utility
+ * they use — not just the ones this site happens to use too.
+ *
+ * numori-ui/css ships `@source` declarations, but they resolve against the
+ * package stylesheet inside node_modules; Tailwind skips node_modules (and it
+ * is a symlink here, being a `file:` dependency), so those sources never take
+ * effect. The result is component-only utilities — the numpad's max-w-[264px],
+ * ListMenuItem's h-[18px] — going ungenerated. Harmless on the marketing pages,
+ * but very visible in the UI manual, whose live previews render every component.
+ *
+ * numori-ui is a sibling package (see the `file:../numori-ui` dependency), so we
+ * point Tailwind straight at its real source. The path is relative to this file:
+ * four levels up from app/assets/css/ is the workspace root, then into numori-ui.
+ */
+@source "../../../../numori-ui/src/components/**/*.vue";
+@source "../../../../numori-ui/src/icons/**/*.vue";
+
 /* ─── Tokens specific to the website ─────────────────────────────── */
 @theme {
   /* Long-form reading measure, used by the blog and legal pages. */

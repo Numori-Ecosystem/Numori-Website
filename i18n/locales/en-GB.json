@@ -1024,5 +1024,62 @@
     "rights": "© {year} Numori. Released under the AGPL-3.0.",
     "builtWith": "This website is open source too.",
     "noTracking": "No trackers. No analytics. No cookie banner, because there is nothing to consent to."
+  },
+  "ui": {
+    "copy": "Copy",
+    "copied": "Copied",
+    "previewUnavailable": "Preview unavailable.",
+    "nav": {
+      "title": "Contents",
+      "gettingStarted": "Getting started",
+      "overview": "Overview",
+      "install": "Installation",
+      "styling": "Styling",
+      "icons": "Icons",
+      "treeShaking": "Tree-shaking"
+    },
+    "overview": {
+      "browseAll": "Browse all components",
+      "installIntro": "Numori UI needs Tailwind CSS v4 — the components are utility classes compiled by your app's Tailwind build. Everything else is optional.",
+      "installNuxt": "The Nuxt module registers every component, so a tag such as UiButton works with no import, and only the components you reference are bundled.",
+      "installNuxtDone": "That is the whole setup: every component is registered, and only what you use is shipped.",
+      "installVite": "In a plain Vite and Vue app, the plugin auto-imports components where they are referenced — no app.use, no import statements.",
+      "anyVue": "Any Vue app",
+      "installPlain": "With no build-tool integration, import what you use — or register a chosen set globally so unused components are still dropped.",
+      "stylingIntro": "Styling is Tailwind CSS v4, and is deliberately not shipped as compiled CSS. The components inherit your app's Tailwind build, so there is one stylesheet, no duplication, and every token is overridable.",
+      "stylingTokens": "A warm neutral scale plus four semantic ramps, available as utilities (bg-primary-600) and as CSS variables (var(--color-primary-600)).",
+      "stylingDark": "Dark mode is driven by a toggleable .dark class on the html element, not the prefers-color-scheme default.",
+      "stylingOverride": "Redeclare any token after the import to rebrand — every component picks it up, since they all reference tokens rather than literal colours.",
+      "iconsIntro": "Icons render as inline SVG from a small bundled subset of Material Design Icons — no runtime, no network requests. If your app already has an icon system, hand rendering over to it; in Nuxt, name a globally registered component so every icon goes through Nuxt Icon.",
+      "treeShakingIntro": "You ship only what you use. The build emits one module per component and declares sideEffects, so referencing three components ships three. The Nuxt module and Vite plugin are already optimal; only app.use(NumoriUI) bundles everything, so reach for createNumoriUI when size matters.",
+      "componentsTitle": "Components",
+      "componentsSubtitle": "{count} components, grouped by what they do."
+    },
+    "index": {
+      "title": "Components",
+      "subtitle": "Every component Numori UI ships — {count} in total, grouped by what they do."
+    },
+    "meta": {
+      "indexTitle": "Numori UI components",
+      "indexDescription": "Every component in the Numori UI library, with live examples and a full props, events and slots reference."
+    },
+    "component": {
+      "examples": "Examples",
+      "props": "Props",
+      "noProps": "This component takes no props.",
+      "name": "Name",
+      "type": "Type",
+      "default": "Default",
+      "description": "Description",
+      "required": "required",
+      "events": "Events",
+      "event": "Event",
+      "payload": "Payload",
+      "slots": "Slots",
+      "slot": "Slot",
+      "prev": "Previous",
+      "next": "Next",
+      "pager": "Component pagination"
+    }
   }
 }

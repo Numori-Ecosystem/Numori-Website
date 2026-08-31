@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
+  devtools: { enabled: false },
 
   // Server-rendered and fully prerenderable. Unlike the Numori apps (which are
   // client-only SPAs), this is a content site: crawlers must see real HTML.
@@ -28,6 +28,16 @@ export default defineNuxtConfig({
   // numori-ui's own `tailwind` option stays off and we own the CSS entry.
   vite: {
     plugins: [tailwindcss()],
+  },
+
+  // The Numori UI manual renders live component previews by compiling the exact
+  // template string it also shows as source, so a single catalogue entry is both
+  // the demo and the documented code. That needs Vue's runtime template
+  // compiler, which the default runtime-only build omits. It ships the compiler
+  // to both the client and the prerenderer; the cost is a larger vendor chunk,
+  // paid only because the docs genuinely compile templates at runtime.
+  vue: {
+    runtimeCompiler: true,
   },
 
   numoriUi: {

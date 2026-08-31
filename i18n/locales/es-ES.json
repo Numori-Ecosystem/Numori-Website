@@ -1024,5 +1024,62 @@
     "rights": "© {year} Numori. Publicado bajo la licencia AGPL-3.0.",
     "builtWith": "Esta web también es de código abierto.",
     "noTracking": "Sin rastreadores. Sin analíticas. Sin banner de cookies, porque no hay nada que consentir."
+  },
+  "ui": {
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "previewUnavailable": "Vista previa no disponible.",
+    "nav": {
+      "title": "Contenido",
+      "gettingStarted": "Primeros pasos",
+      "overview": "Introducción",
+      "install": "Instalación",
+      "styling": "Estilos",
+      "icons": "Iconos",
+      "treeShaking": "Tree-shaking"
+    },
+    "overview": {
+      "browseAll": "Ver todos los componentes",
+      "installIntro": "Numori UI necesita Tailwind CSS v4: los componentes son clases utilitarias que compila el Tailwind de tu aplicación. Todo lo demás es opcional.",
+      "installNuxt": "El módulo de Nuxt registra todos los componentes, así que una etiqueta como UiButton funciona sin importar nada, y solo se empaquetan los componentes que usas.",
+      "installNuxtDone": "Con eso está toda la configuración: cada componente queda registrado y solo se incluye lo que usas.",
+      "installVite": "En una aplicación con Vite y Vue, el plugin importa los componentes de forma automática allí donde se usan: sin app.use ni sentencias de importación.",
+      "anyVue": "Cualquier aplicación Vue",
+      "installPlain": "Sin integración con herramientas de compilación, importa lo que uses, o registra un conjunto concreto de forma global para que los componentes no usados sigan descartándose.",
+      "stylingIntro": "El estilo es Tailwind CSS v4 y, deliberadamente, no se distribuye como CSS compilado. Los componentes heredan el Tailwind de tu aplicación, así que hay una sola hoja de estilos, sin duplicación, y todos los tokens se pueden sobrescribir.",
+      "stylingTokens": "Una escala neutra cálida más cuatro rampas semánticas, disponibles como utilidades (bg-primary-600) y como variables CSS (var(--color-primary-600)).",
+      "stylingDark": "El modo oscuro se controla con una clase .dark conmutable en el elemento html, no con el valor por defecto de prefers-color-scheme.",
+      "stylingOverride": "Vuelve a declarar cualquier token después del import para personalizar la marca: todos los componentes lo adoptan, ya que referencian tokens en lugar de colores literales.",
+      "iconsIntro": "Los iconos se dibujan como SVG en línea a partir de un pequeño subconjunto incluido de Material Design Icons, sin runtime ni peticiones de red. Si tu aplicación ya tiene un sistema de iconos, delégale el renderizado; en Nuxt, indica un componente registrado globalmente para que cada icono pase por Nuxt Icon.",
+      "treeShakingIntro": "Solo se empaqueta lo que usas. La compilación genera un módulo por componente y declara sideEffects, de modo que referenciar tres componentes incluye tres. El módulo de Nuxt y el plugin de Vite ya son óptimos; solo app.use(NumoriUI) lo empaqueta todo, así que usa createNumoriUI cuando el tamaño importe.",
+      "componentsTitle": "Componentes",
+      "componentsSubtitle": "{count} componentes, agrupados por lo que hacen."
+    },
+    "index": {
+      "title": "Componentes",
+      "subtitle": "Todos los componentes que incluye Numori UI: {count} en total, agrupados por lo que hacen."
+    },
+    "meta": {
+      "indexTitle": "Componentes de Numori UI",
+      "indexDescription": "Todos los componentes de la biblioteca Numori UI, con ejemplos en vivo y una referencia completa de props, eventos y slots."
+    },
+    "component": {
+      "examples": "Ejemplos",
+      "props": "Props",
+      "noProps": "Este componente no admite props.",
+      "name": "Nombre",
+      "type": "Tipo",
+      "default": "Por defecto",
+      "description": "Descripción",
+      "required": "obligatorio",
+      "events": "Eventos",
+      "event": "Evento",
+      "payload": "Datos",
+      "slots": "Slots",
+      "slot": "Slot",
+      "prev": "Anterior",
+      "next": "Siguiente",
+      "pager": "Paginación de componentes"
+    }
   }
 }
