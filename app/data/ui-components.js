@@ -3054,6 +3054,406 @@ export const uiComponents = [
       },
     ],
   },
+
+  // ── Added in 0.3.0 ──────────────────────────────────────────────
+  {
+    slug: 'theme-toggle',
+    base: 'ThemeToggle',
+    name: 'UiThemeToggle',
+    category: 'actions',
+    icon: 'mdi:theme-light-dark',
+    summary: 'A stateless light/dark toggle button.',
+    description:
+      'An icon button that flips between light and dark. Deliberately stateless: it shows the state you pass as isDark and emits toggle, leaving persistence to the host (@nuxtjs/color-mode, VueUse, or two hand-written lines). The sun and moon share a cell and cross-fade with a quarter turn. Because dark mode depends on a client-only preference, wrap it in <ClientOnly> when server-rendering to avoid a hydration mismatch.',
+    props: [
+      {
+        name: 'isDark',
+        type: 'boolean',
+        default: 'false',
+        values: null,
+        description: 'Whether the dark theme is active; chooses which glyph shows.',
+      },
+      {
+        name: 'label',
+        type: 'string',
+        default: "'Toggle theme'",
+        values: null,
+        description:
+          'Accessible name and tooltip; describe the action, e.g. "Switch to dark mode".',
+      },
+    ],
+    events: [
+      {
+        name: 'toggle',
+        payload: 'none',
+        description: 'Emitted when the button is pressed; the parent flips the theme.',
+      },
+    ],
+    slots: [],
+    examples: [
+      {
+        title: 'Light / dark',
+        description: 'It renders the state you give it and emits toggle for you to flip.',
+        code: `<UiThemeToggle
+  :is-dark="state.dark"
+  :label="state.dark ? 'Switch to light mode' : 'Switch to dark mode'"
+  @toggle="state.dark = !state.dark"
+/>`,
+      },
+    ],
+  },
+  {
+    slug: 'spinner',
+    base: 'Spinner',
+    name: 'UiSpinner',
+    category: 'feedback',
+    icon: 'mdi:loading',
+    summary: 'A spinning icon for loading states.',
+    description:
+      'The loading glyph UiButton uses, as a standalone primitive. Colour is inherited via text-*, like any icon. Decorative by default and hidden from assistive technology; give it a label and it becomes a live status region that announces on its own.',
+    props: [
+      {
+        name: 'size',
+        type: 'string',
+        default: "'md'",
+        values: ['xs', 'sm', 'md', 'lg', 'xl'],
+        description: 'Diameter of the spinner.',
+      },
+      {
+        name: 'label',
+        type: 'string',
+        default: "''",
+        values: null,
+        description:
+          'Accessible label; when set, the spinner is announced as a live status region.',
+      },
+      {
+        name: 'icon',
+        type: 'string',
+        default: "'mdi:loading'",
+        values: null,
+        description: 'MDI glyph to spin; pass another (e.g. mdi:sync) for a different look.',
+      },
+    ],
+    events: [],
+    slots: [],
+    examples: [
+      {
+        title: 'Sizes',
+        description: 'Five sizes from xs to xl; colour is inherited from the text colour.',
+        code: `<div class="flex items-center gap-4 text-primary-600 dark:text-primary-400">
+  <UiSpinner size="xs" />
+  <UiSpinner size="sm" />
+  <UiSpinner size="md" />
+  <UiSpinner size="lg" />
+  <UiSpinner size="xl" />
+</div>`,
+      },
+      {
+        title: 'Labelled',
+        description: 'A label turns it into a live status region for when it stands alone.',
+        code: `<UiSpinner size="lg" label="Syncing" class="text-primary-600 dark:text-primary-400" />`,
+      },
+    ],
+  },
+  {
+    slug: 'toast',
+    base: 'Toast',
+    name: 'UiToast',
+    category: 'feedback',
+    icon: 'mdi:message-badge-outline',
+    summary: 'A stack of transient, self-dismissing messages.',
+    description:
+      'Renders and animates a list of messages, teleported to the top of the screen so it floats above everything. Presentational only: the host owns the list and its timing and mutates a reactive array. Each entry is { id, message, type?, icon? }; type picks the colour, defaulting to a neutral pill. The container ignores pointer events so it never blocks the UI, and each pill is a polite status region.',
+    props: [
+      {
+        name: 'toasts',
+        type: 'array',
+        default: '[]',
+        values: null,
+        description:
+          'Messages to show, each `{ id, message, type?, icon? }` with a stable, unique id.',
+      },
+      {
+        name: 'position',
+        type: 'string',
+        default: "'top'",
+        values: ['top', 'bottom'],
+        description: 'Where the stack anchors on screen.',
+      },
+    ],
+    events: [],
+    slots: [],
+    examples: [
+      {
+        title: 'Message types',
+        description:
+          'The stack teleports to the top of the screen. Toggle a set of the four types on and off.',
+        code: `<div>
+  <UiButton
+    @click="state.toasts = state.toasts?.length ? [] : [
+      { id: 1, message: 'Saved', type: 'success', icon: 'mdi:check' },
+      { id: 2, message: 'Heads up', type: 'warning' },
+      { id: 3, message: 'Something went wrong', type: 'error' },
+      { id: 4, message: 'Just so you know', type: 'info' },
+    ]"
+  >
+    Toggle toasts
+  </UiButton>
+  <UiToast :toasts="state.toasts || []" />
+</div>`,
+      },
+    ],
+  },
+  {
+    slug: 'banner',
+    base: 'Banner',
+    name: 'UiBanner',
+    category: 'feedback',
+    icon: 'mdi:alert-box-outline',
+    summary: 'A full-width status strip that slides in above the content.',
+    description:
+      'The shape shared by the offline notice, the email-verification prompt and the update prompt: a thin, edge-to-edge bar that expands into view, states one thing with an optional icon, and collapses away when the condition clears. Driven by show, with a semantic colour, an optional message slot, top safe-area padding by default, and optional clickable / dismissible affordances that emit click and dismiss.',
+    props: [
+      {
+        name: 'show',
+        type: 'boolean',
+        default: 'false',
+        values: null,
+        description: 'Whether the banner is shown; toggling it runs the slide-in / collapse-out.',
+      },
+      {
+        name: 'color',
+        type: 'string',
+        default: "'info'",
+        values: ['info', 'success', 'warning', 'error', 'neutral'],
+        description: 'Colour of the bar.',
+      },
+      {
+        name: 'icon',
+        type: 'string',
+        default: "''",
+        values: null,
+        description: 'Optional MDI icon shown before the message.',
+      },
+      {
+        name: 'message',
+        type: 'string',
+        default: "''",
+        values: null,
+        description: 'Message text; ignored when the default slot is used.',
+      },
+      {
+        name: 'clickable',
+        type: 'boolean',
+        default: 'false',
+        values: null,
+        description: 'Makes the whole bar a button that emits click.',
+      },
+      {
+        name: 'dismissible',
+        type: 'boolean',
+        default: 'false',
+        values: null,
+        description: 'Adds a close control that emits dismiss.',
+      },
+      {
+        name: 'dismissLabel',
+        type: 'string',
+        default: "'Dismiss'",
+        values: null,
+        description: 'Accessible label for the dismiss control.',
+      },
+      {
+        name: 'safeArea',
+        type: 'boolean',
+        default: 'true',
+        values: null,
+        description:
+          'Pads for the top safe-area inset, for a banner pinned to the top of the screen.',
+      },
+    ],
+    events: [
+      {
+        name: 'click',
+        payload: 'none',
+        description: 'Emitted when a clickable banner is pressed.',
+      },
+      {
+        name: 'dismiss',
+        payload: 'none',
+        description: 'Emitted when the close control of a dismissible banner is pressed.',
+      },
+    ],
+    slots: [{ name: 'default', description: 'Banner content, in place of the message prop.' }],
+    examples: [
+      {
+        title: 'Colours',
+        description: 'Full-width strips in the semantic colours.',
+        code: `<div class="flex flex-col gap-2">
+  <UiBanner show :safe-area="false" color="info" icon="mdi:information-outline" message="A new version is available" />
+  <UiBanner show :safe-area="false" color="success" icon="mdi:check-circle" message="Everything is up to date" />
+  <UiBanner show :safe-area="false" color="warning" icon="mdi:wifi-off" message="You're offline — changes will sync when you reconnect" />
+  <UiBanner show :safe-area="false" color="error" icon="mdi:alert-circle" message="Sync failed — retrying" />
+</div>`,
+      },
+      {
+        title: 'Clickable and dismissible',
+        description: 'Emits click when pressed and dismiss from the close control.',
+        code: `<div>
+  <UiButton class="mb-2" size="sm" @click="state.gone = false">Reset</UiButton>
+  <UiBanner
+    :show="!state.gone"
+    :safe-area="false"
+    color="info"
+    icon="mdi:email-alert-outline"
+    message="Your email is not verified — tap here to verify"
+    clickable
+    dismissible
+    @dismiss="state.gone = true"
+  />
+</div>`,
+      },
+    ],
+  },
+  {
+    slug: 'code-block',
+    base: 'CodeBlock',
+    name: 'UiCodeBlock',
+    category: 'display',
+    icon: 'mdi:code-tags',
+    summary: 'A static, copyable code snippet.',
+    description:
+      'For code that documents itself rather than runs: install commands, config, imports. A copy button fades in on hover or keyboard focus and confirms with a tick. An optional label renders a filename or language caption across the top. The copy uses the async Clipboard API and fails silently where it is unavailable; the button labels are props, so no language is baked in.',
+    props: [
+      {
+        name: 'code',
+        type: 'string',
+        default: '—',
+        required: true,
+        values: null,
+        description: 'The snippet text.',
+      },
+      {
+        name: 'label',
+        type: 'string',
+        default: "''",
+        values: null,
+        description: 'Optional filename/language caption shown above the block.',
+      },
+      {
+        name: 'copyLabel',
+        type: 'string',
+        default: "'Copy'",
+        values: null,
+        description: 'Label for the copy button at rest.',
+      },
+      {
+        name: 'copiedLabel',
+        type: 'string',
+        default: "'Copied'",
+        values: null,
+        description: 'Label shown briefly after a successful copy.',
+      },
+    ],
+    events: [],
+    slots: [],
+    examples: [
+      {
+        title: 'With a caption',
+        description: 'An optional label names the file or language.',
+        code: `<UiCodeBlock label="Terminal" code="npm install numori-ui" />`,
+      },
+      {
+        title: 'Bare',
+        description: 'Without a label, just the snippet and a copy button on hover.',
+        code: `<UiCodeBlock code="import { UiButton } from 'numori-ui'" />`,
+      },
+    ],
+  },
+  {
+    slug: 'comparison-table',
+    base: 'ComparisonTable',
+    name: 'UiComparisonTable',
+    category: 'display',
+    icon: 'mdi:table-check',
+    summary: 'An accessible two-way comparison table.',
+    description:
+      'A feature-by-feature comparison built on a real table (caption, scope headers), with one column accented for the common "us versus the usual way" layout. Data-driven from a rows array; the leading tick and dash icons are decorative, so the cell text carries the meaning. It scrolls horizontally on narrow screens rather than crushing the columns.',
+    props: [
+      {
+        name: 'caption',
+        type: 'string',
+        default: '—',
+        required: true,
+        values: null,
+        description: 'Table summary for assistive technology; rendered visually hidden.',
+      },
+      {
+        name: 'rows',
+        type: 'array',
+        default: '—',
+        required: true,
+        values: null,
+        description: 'Rows to render, each `{ key?, feature, primary, secondary }`.',
+      },
+      {
+        name: 'primaryLabel',
+        type: 'string',
+        default: '—',
+        required: true,
+        values: null,
+        description: 'Heading for the accented (primary) column.',
+      },
+      {
+        name: 'secondaryLabel',
+        type: 'string',
+        default: '—',
+        required: true,
+        values: null,
+        description: 'Heading for the comparison (secondary) column.',
+      },
+      {
+        name: 'featureLabel',
+        type: 'string',
+        default: "'Feature'",
+        values: null,
+        description: 'Accessible name for the otherwise-blank first column.',
+      },
+      {
+        name: 'primaryIcon',
+        type: 'string',
+        default: "'mdi:check-circle'",
+        values: null,
+        description: 'MDI icon marking each primary-column cell.',
+      },
+      {
+        name: 'secondaryIcon',
+        type: 'string',
+        default: "'mdi:minus-circle-outline'",
+        values: null,
+        description: 'MDI icon marking each secondary-column cell.',
+      },
+    ],
+    events: [],
+    slots: [],
+    examples: [
+      {
+        title: 'Two-way comparison',
+        description: 'A captioned table with one column accented.',
+        code: `<UiComparisonTable
+  caption="How Numori compares"
+  primary-label="Numori"
+  secondary-label="The usual suite"
+  :rows="[
+    { key: 'oss', feature: 'Open source', primary: 'The whole ecosystem', secondary: 'The client, sometimes' },
+    { key: 'sync', feature: 'Sync', primary: 'End-to-end encrypted', secondary: 'Readable on the server' },
+    { key: 'ai', feature: 'AI training', primary: 'Never', secondary: 'On by default' },
+  ]"
+/>`,
+      },
+    ],
+  },
 ]
 
 /** Look up a component doc by its URL slug. Returns undefined when unknown. */

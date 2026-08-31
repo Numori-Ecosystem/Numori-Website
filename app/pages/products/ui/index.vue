@@ -56,9 +56,9 @@
             {{ $t('ui.overview.installNuxt') }}
           </p>
           <div class="mt-4 flex flex-col gap-4">
-            <CodeBlock :code="snippets.installNuxtDeps" label="Terminal" />
-            <CodeBlock :code="snippets.nuxtConfig" label="nuxt.config.ts" />
-            <CodeBlock :code="snippets.cssImport" label="assets/css/main.css" />
+            <UiCodeBlock :copy-label="$t('ui.copy')" :copied-label="$t('ui.copied')" :code="snippets.installNuxtDeps" label="Terminal" />
+            <UiCodeBlock :copy-label="$t('ui.copy')" :copied-label="$t('ui.copied')" :code="snippets.nuxtConfig" label="nuxt.config.ts" />
+            <UiCodeBlock :copy-label="$t('ui.copy')" :copied-label="$t('ui.copied')" :code="snippets.cssImport" label="assets/css/main.css" />
           </div>
           <p class="mt-4 text-sm text-gray-600 dark:text-gray-400">
             {{ $t('ui.overview.installNuxtDone') }}
@@ -69,7 +69,7 @@
             {{ $t('ui.overview.installVite') }}
           </p>
           <div class="mt-4">
-            <CodeBlock :code="snippets.viteConfig" label="vite.config.js" />
+            <UiCodeBlock :copy-label="$t('ui.copy')" :copied-label="$t('ui.copied')" :code="snippets.viteConfig" label="vite.config.js" />
           </div>
 
           <h3 class="mt-10 text-lg font-semibold">{{ $t('ui.overview.anyVue') }}</h3>
@@ -77,7 +77,7 @@
             {{ $t('ui.overview.installPlain') }}
           </p>
           <div class="mt-4">
-            <CodeBlock :code="snippets.plainVue" label="main.js" />
+            <UiCodeBlock :copy-label="$t('ui.copy')" :copied-label="$t('ui.copied')" :code="snippets.plainVue" label="main.js" />
           </div>
         </section>
 
@@ -93,7 +93,7 @@
             <li>{{ $t('ui.overview.stylingOverride') }}</li>
           </ul>
           <div class="mt-4">
-            <CodeBlock :code="snippets.override" label="assets/css/main.css" />
+            <UiCodeBlock :copy-label="$t('ui.copy')" :copied-label="$t('ui.copied')" :code="snippets.override" label="assets/css/main.css" />
           </div>
         </section>
 
@@ -104,7 +104,7 @@
             {{ $t('ui.overview.iconsIntro') }}
           </p>
           <div class="mt-4">
-            <CodeBlock :code="snippets.icons" label="nuxt.config.ts" />
+            <UiCodeBlock :copy-label="$t('ui.copy')" :copied-label="$t('ui.copied')" :code="snippets.icons" label="nuxt.config.ts" />
           </div>
         </section>
 

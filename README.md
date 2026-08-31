@@ -14,7 +14,7 @@ cookie banner.
   build step. See [Content database](#content-database) if you would rather use
   the default driver.
 - [`numori-ui`](https://www.npmjs.com/package/numori-ui) — the design system. It
-  is consumed from the npm registry (`"numori-ui": "^0.2.0"`), so a plain
+  is consumed from the npm registry (`"numori-ui": "^0.3.0"`), so a plain
   `npm install` pulls it in; no sibling checkout is required.
 
 To work on the design system and this site together, link a local checkout:
@@ -97,6 +97,11 @@ compose those primitives rather than hand-rolling markup:
 - `BreadcrumbTrail` wraps `UiBreadcrumb` (routing its links through `NuxtLink`).
 - `BillingToggle` wraps `UiSegmented`.
 - `ProductMark` wraps `UiIconTile`, adding the per-product accent.
+- `UiThemeToggle`, `UiCodeBlock` and `UiComparisonTable` are used directly. They
+  began life here as `ThemeSwitcher`, `CodeBlock` and `ComparisonTable`; once they
+  had earned their place they graduated into the design system, and the local
+  copies were removed. The header wires `UiThemeToggle` (stateless) to
+  `@nuxtjs/color-mode` and wraps it in `<ClientOnly>` to avoid a hydration mismatch.
 
 What stays bespoke is deliberate: `LocaleSwitcher` is real anchor links (for SEO
 and no-JS), not a button group, and `PageHeader` is a page-level composition. When

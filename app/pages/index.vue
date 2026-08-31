@@ -104,13 +104,15 @@
         :subtitle="$t('home.comparison.subtitle')"
       />
 
-      <ComparisonTable
+      <UiComparisonTable
         class="reveal"
         :caption="$t('home.comparison.caption')"
         :rows="comparisonRows"
-        :feature-column-label="$t('categories.label')"
-        :numori-column-label="$t('home.comparison.columnNumori')"
-        :typical-column-label="$t('home.comparison.columnTypical')"
+        :feature-label="$t('categories.label')"
+        :primary-label="$t('home.comparison.columnNumori')"
+        :secondary-label="$t('home.comparison.columnTypical')"
+        primary-icon="mdi:check-circle"
+        secondary-icon="mdi:minus-circle-outline"
       />
     </section>
 
@@ -227,8 +229,8 @@ const comparisonRows = computed(() =>
   COMPARISON_KEYS.map((key) => ({
     key,
     feature: t(`home.comparison.rows.${key}.feature`),
-    numori: t(`home.comparison.rows.${key}.numori`),
-    typical: t(`home.comparison.rows.${key}.typical`),
+    primary: t(`home.comparison.rows.${key}.numori`),
+    secondary: t(`home.comparison.rows.${key}.typical`),
   })),
 )
 

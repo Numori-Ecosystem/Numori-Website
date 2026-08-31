@@ -97,6 +97,21 @@ export default defineNuxtConfig({
     clientBundle: {
       scan: true,
       includeCustomCollections: true,
+      // The scanner only sees this app's own source, not node_modules, so the
+      // glyphs that live *inside* numori-ui components (their loading spinner,
+      // copy button, comparison ticks, theme toggle) are listed explicitly.
+      // Without this they render server-side but would be missing from the
+      // live component previews, which mount on the client.
+      icons: [
+        'mdi:loading',
+        'mdi:content-copy',
+        'mdi:check',
+        'mdi:check-circle',
+        'mdi:minus-circle-outline',
+        'mdi:weather-sunny',
+        'mdi:weather-night',
+        'mdi:close',
+      ],
     },
   },
 

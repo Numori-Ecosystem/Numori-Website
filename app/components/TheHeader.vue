@@ -60,7 +60,16 @@
         </ButtonLink>
 
         <LocaleSwitcher class="hidden sm:block" />
-        <ThemeSwitcher />
+        <ClientOnly>
+          <UiThemeToggle :is-dark="isDark" :label="themeLabel" @toggle="toggleTheme" />
+          <template #fallback>
+            <!--
+              The stored theme is only known on the client, so the server cannot
+              pick an icon without risking a hydration mismatch. Reserve the space.
+            -->
+            <div class="size-9" aria-hidden="true" />
+          </template>
+        </ClientOnly>
 
         <UiButton
           ref="toggleRef"
@@ -149,6 +158,17 @@
 const localePath = useLocalePath()
 const route = useRoute()
 const { primary, donate } = useNavigation()
+
+// Theme toggle wiring. UiThemeToggle is stateless — it takes the current state
+// and emits `toggle` — so the colour-mode plumbing lives here. @nuxtjs/color-mode
+// (classSuffix '') reflects the choice as the `dark` class numori-ui keys to.
+const colorMode = useColorMode()
+const { t } = useI18n()
+const isDark = computed(() => colorMode.value === 'dark')
+const themeLabel = computed(() => (isDark.value ? t('theme.toLight') : t('theme.toDark')))
+const toggleTheme = () => {
+  colorMode.preference = isDark.value ? 'light' : 'dark'
+}
 
 const open = ref(false)
 const toggleRef = ref(null)

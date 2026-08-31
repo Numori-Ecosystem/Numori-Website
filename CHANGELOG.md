@@ -8,8 +8,21 @@ deployed site, so changes land under **Unreleased** rather than versioned tags.
 
 ### Changed
 
+- **Upgraded to Numori UI 0.3.0 and adopted its new components.** Three local
+  components graduated into the design system and were removed here in favour of
+  the shared versions (behaviour and appearance preserved):
+  - `ThemeSwitcher` → `UiThemeToggle`. The shared component is stateless, so the
+    header now owns the `@nuxtjs/color-mode` wiring and keeps the `<ClientOnly>`
+    guard against a hydration mismatch.
+  - `CodeBlock` → `UiCodeBlock` (copy-button labels passed through from the
+    `ui.copy` / `ui.copied` locale keys) across the UI manual.
+  - `ComparisonTable` → `UiComparisonTable` on the home page; the comparison rows
+    now map to the component's `primary` / `secondary` shape.
+- The UI manual catalogue (`app/data/ui-components.js`) documents the six new
+  Numori UI components: `UiToast`, `UiBanner`, `UiSpinner`, `UiThemeToggle`,
+  `UiCodeBlock` and `UiComparisonTable`. The component count updates automatically.
 - **Consume Numori UI from the npm registry.** The dependency moved from a local
-  `file:../numori-ui` link to `"numori-ui": "^0.2.0"`, so a plain `npm install`
+  `file:../numori-ui` link to `"numori-ui": "^0.3.0"`, so a plain `npm install`
   pulls the published package — no sibling checkout required. A local checkout can
   still be linked for design-system work (see the README).
 - **Tailwind `@source` now points at `node_modules/numori-ui/src`** instead of a
