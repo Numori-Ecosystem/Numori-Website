@@ -1340,7 +1340,7 @@ export const uiComponents = [
         title: 'PIN entry',
         description:
           'You hold the value; the numpad emits digit and delete. can-delete enables the backspace key, and capture-keyboard lets the physical number keys and Backspace drive it too — try typing.',
-        code: `<div class="mx-auto max-w-xs">
+        code: `<div class="mx-auto w-72">
   <p class="mb-3 text-center font-mono text-2xl tracking-[0.4em]">{{ state.pin || '····' }}</p>
   <UiNumpad
     capture-keyboard
@@ -1354,7 +1354,7 @@ export const uiComponents = [
         title: 'Bottom-left slot',
         description:
           'Fill the empty cell beside 0 with your own control, such as a biometric unlock.',
-        code: `<div class="mx-auto max-w-xs">
+        code: `<div class="mx-auto w-72">
   <UiNumpad
     :can-delete="!!state.pin2"
     @digit="state.pin2 = (state.pin2 || '') + $event"
