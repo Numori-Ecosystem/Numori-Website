@@ -421,10 +421,18 @@
   background-color: transparent !important;
 }
 
+/* `defaultColor: false` emits no `color`, only `--shiki-light` / `--shiki-dark`
+   variables, so both palettes must be wired explicitly: light by default, dark
+   under the toggled `.dark` class. */
+.code-source :where(pre.shiki),
+.code-source :where(pre.shiki span) {
+  color: var(--shiki-light);
+  background-color: transparent !important;
+}
+
 .dark .code-source :where(pre.shiki),
 .dark .code-source :where(pre.shiki span) {
   color: var(--shiki-dark) !important;
-  background-color: transparent !important;
 }
 
 /* ─── Motion ─────────────────────────────────────────────────────── */

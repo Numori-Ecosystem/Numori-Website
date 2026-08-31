@@ -17,6 +17,12 @@ deployed site, so changes land under **Unreleased** rather than versioned tags.
   used `overflow-hidden`, which cut off `UiTooltip` and `UiDropdown` (both
   position absolutely rather than teleporting). The clip is now scoped to the
   source pane, so overlays escape the demo area in full.
+- **Missing icons in the UI manual previews.** The live previews mount on the
+  client, so their icons must be in the client bundle, but they live as strings
+  in `app/data/ui-components.js`, which @nuxt/icon's scanner does not read — so
+  only a handful were bundled and the rest 404'd on the static deploy. The build
+  now extracts every icon the catalogue references and adds them to the client
+  bundle, keeping the list in step with the examples.
 
 ### Changed
 

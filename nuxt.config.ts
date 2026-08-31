@@ -1,4 +1,18 @@
+import { readFileSync } from 'node:fs'
 import tailwindcss from '@tailwindcss/vite'
+
+// Icons used by the UI-manual live previews. Those demos are compiled and mounted
+// on the client, so their `<UiIcon>`s must be in the client bundle — but they live
+// as strings inside `app/data/ui-components.js`, which @nuxt/icon's scanner does
+// not read. Extract them here so the list stays in step with the catalogue and no
+// preview icon 404s on the static (server-less) deploy.
+const previewIcons = [
+  ...new Set(
+    readFileSync(new URL('./app/data/ui-components.js', import.meta.url), 'utf8').match(
+      /mdi:[a-z0-9-]+/g,
+    ) ?? [],
+  ),
+]
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -101,7 +115,8 @@ export default defineNuxtConfig({
       // glyphs that live *inside* numori-ui components (their loading spinner,
       // copy button, comparison ticks, theme toggle) are listed explicitly.
       // Without this they render server-side but would be missing from the
-      // live component previews, which mount on the client.
+      // live component previews, which mount on the client. `previewIcons` adds
+      // every icon the manual's examples reference (see the note above).
       icons: [
         'mdi:loading',
         'mdi:content-copy',
@@ -111,6 +126,7 @@ export default defineNuxtConfig({
         'mdi:weather-sunny',
         'mdi:weather-night',
         'mdi:close',
+        ...previewIcons,
       ],
     },
   },
