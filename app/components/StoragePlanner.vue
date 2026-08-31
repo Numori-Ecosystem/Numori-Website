@@ -64,7 +64,7 @@
                 variant="ghost"
                 color="gray"
                 size="sm"
-                shape="circle"
+                shape="pill"
                 icon-only
                 :disabled="effectivePeople <= 1"
                 :aria-label="$t('pricing.planner.removePerson')"
@@ -100,7 +100,7 @@
                 variant="ghost"
                 color="gray"
                 size="sm"
-                shape="circle"
+                shape="pill"
                 icon-only
                 :disabled="effectivePeople >= current.maxPeople"
                 :aria-label="$t('pricing.planner.addPerson')"

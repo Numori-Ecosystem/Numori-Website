@@ -104,15 +104,12 @@
         :subtitle="$t('home.comparison.subtitle')"
       />
 
-      <UiComparisonTable
+      <UiTable
         class="reveal"
         :caption="$t('home.comparison.caption')"
+        hide-caption
+        :columns="comparisonColumns"
         :rows="comparisonRows"
-        :feature-label="$t('categories.label')"
-        :primary-label="$t('home.comparison.columnNumori')"
-        :secondary-label="$t('home.comparison.columnTypical')"
-        primary-icon="mdi:check-circle"
-        secondary-icon="mdi:minus-circle-outline"
       />
     </section>
 
@@ -224,6 +221,21 @@ const principles = [
 ]
 
 const COMPARISON_KEYS = ['source', 'ai', 'tracking', 'pricing', 'selfHosting', 'export']
+
+const comparisonColumns = computed(() => [
+  { key: 'feature', header: true },
+  {
+    key: 'primary',
+    label: t('home.comparison.columnNumori'),
+    highlight: true,
+    icon: 'mdi:check-circle',
+  },
+  {
+    key: 'secondary',
+    label: t('home.comparison.columnTypical'),
+    icon: 'mdi:minus-circle-outline',
+  },
+])
 
 const comparisonRows = computed(() =>
   COMPARISON_KEYS.map((key) => ({

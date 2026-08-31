@@ -409,6 +409,24 @@
   }
 }
 
+/* ─── Code previews (UI manual) ──────────────────────────────────── */
+/*
+ * Shiki output for the live component previews. Shiki sets each token's colour
+ * inline (with a `--shiki-dark` CSS variable alongside), so the container only
+ * needs to lay the block out, drop Shiki's own background in favour of the
+ * card's, and swap to the dark palette under `.dark`.
+ */
+.code-source :where(pre.shiki) {
+  @apply overflow-x-auto p-4 pr-24 text-[13px] leading-relaxed;
+  background-color: transparent !important;
+}
+
+.dark .code-source :where(pre.shiki),
+.dark .code-source :where(pre.shiki span) {
+  color: var(--shiki-dark) !important;
+  background-color: transparent !important;
+}
+
 /* ─── Motion ─────────────────────────────────────────────────────── */
 /*
  * Honour the OS-level "reduce motion" setting. This is a hard requirement for

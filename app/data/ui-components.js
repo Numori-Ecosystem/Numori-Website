@@ -85,7 +85,7 @@ export const uiComponents = [
     icon: 'mdi:gesture-tap-button',
     summary: 'Versatile button with variants, colours, sizes and shapes.',
     description:
-      'Renders as any element (button, anchor, div) with eight visual variants, six colour themes, five sizes and five shapes. Includes a loading state, icon-only mode and full accessibility attributes. External Tailwind classes are merged with tailwind-merge so they override the internals.',
+      'Renders as any element (button, anchor, div) with eight visual variants, six colour themes, five sizes and three shapes. Includes a loading state, icon-only mode and full accessibility attributes. External Tailwind classes are merged with tailwind-merge so they override the internals.',
     props: [
       {
         name: 'tag',
@@ -126,8 +126,8 @@ export const uiComponents = [
         name: 'shape',
         type: 'string',
         default: "'round'",
-        values: ['round', 'pill', 'square', 'circle', 'none'],
-        description: 'Border-radius shape.',
+        values: ['round', 'pill', 'square'],
+        description: 'Border-radius shape. For a circular icon button, use pill with icon-only.',
       },
       {
         name: 'disabled',
@@ -272,12 +272,12 @@ export const uiComponents = [
       {
         title: 'Shapes',
         description:
-          'Five shapes: round, pill, square, circle and none. Circle pairs with icon-only.',
+          'Three shapes: round, pill and square. For a circular icon button, pair pill with icon-only.',
         code: `<div class="flex flex-wrap items-center gap-3">
   <UiButton shape="round">Round</UiButton>
   <UiButton shape="pill">Pill</UiButton>
   <UiButton shape="square">Square</UiButton>
-  <UiButton shape="circle" icon-only aria-label="Add">
+  <UiButton shape="pill" icon-only aria-label="Add">
     <UiIcon name="mdi:plus" class="w-5 h-5" />
   </UiButton>
 </div>`,
@@ -301,107 +301,6 @@ export const uiComponents = [
       },
     ],
   },
-  {
-    slug: 'buttons-group',
-    base: 'ButtonsGroup',
-    name: 'UiButtonsGroup',
-    category: 'actions',
-    icon: 'mdi:view-column-outline',
-    summary: 'Segmented single-select toggle group.',
-    description:
-      'A segmented control for choosing one option from a small set. Supports an icon-only toolbar mode and a text-based tab mode with automatic sizing. Bind the selection with v-model.',
-    props: [
-      {
-        name: 'modelValue',
-        type: 'string | number | boolean',
-        default: "''",
-        values: null,
-        description: 'The selected option value (v-model).',
-      },
-      {
-        name: 'options',
-        type: 'array',
-        default: '—',
-        required: true,
-        values: null,
-        description: 'Options as `{ value, label?, icon?, title? }`.',
-      },
-      {
-        name: 'variant',
-        type: 'string',
-        default: "'toolbar'",
-        values: ['toolbar', 'tabs'],
-        description: "'toolbar' for inline icons, 'tabs' for full-width labels.",
-      },
-      {
-        name: 'iconClass',
-        type: 'string',
-        default: "'w-5 h-5'",
-        values: null,
-        description: 'Class applied to option icons.',
-      },
-      {
-        name: 'size',
-        type: 'string',
-        default: "'md'",
-        values: ['xs', 'sm', 'md'],
-        description: 'Control size.',
-      },
-      {
-        name: 'block',
-        type: 'boolean',
-        default: 'undefined',
-        values: null,
-        description: 'Full width. Defaults to true for tabs, false for toolbar.',
-      },
-    ],
-    events: [
-      {
-        name: 'update:modelValue',
-        payload: 'string | number | boolean',
-        description: 'Emitted with the chosen option value.',
-      },
-    ],
-    slots: [],
-    examples: [
-      {
-        title: 'Tabs',
-        description: 'Full-width labelled segments.',
-        code: `<UiButtonsGroup
-  v-model="state.tab"
-  variant="tabs"
-  :options="[
-    { value: 'all', label: 'All' },
-    { value: 'active', label: 'Active' },
-    { value: 'done', label: 'Done' },
-  ]"
-/>`,
-      },
-      {
-        title: 'Icon toolbar',
-        description: 'Icon-only segments with a title for each.',
-        code: `<UiButtonsGroup
-  v-model="state.tool"
-  :options="[
-    { value: 'bold', icon: 'mdi:format-bold', title: 'Bold' },
-    { value: 'italic', icon: 'mdi:format-italic', title: 'Italic' },
-    { value: 'underline', icon: 'mdi:format-underline', title: 'Underline' },
-  ]"
-/>`,
-      },
-      {
-        title: 'Toolbar sizes',
-        description:
-          'The toolbar variant takes size xs, sm or md. Options can combine an icon with a label.',
-        code: `<div class="flex flex-col items-start gap-3">
-  <UiButtonsGroup v-model="state.v1" size="xs" :options="[{ value: 'grid', icon: 'mdi:view-grid' }, { value: 'list', icon: 'mdi:view-list' }]" />
-  <UiButtonsGroup v-model="state.v2" size="sm" :options="[{ value: 'grid', icon: 'mdi:view-grid', label: 'Grid' }, { value: 'list', icon: 'mdi:view-list', label: 'List' }]" />
-  <UiButtonsGroup v-model="state.v3" size="md" :options="[{ value: 'grid', icon: 'mdi:view-grid' }, { value: 'list', icon: 'mdi:view-list' }]" />
-</div>`,
-      },
-    ],
-  },
-
   // ── Forms ───────────────────────────────────────────────────────
   {
     slug: 'input',
@@ -935,7 +834,13 @@ export const uiComponents = [
         values: null,
         description: 'Disables the option.',
       },
-      { name: 'size', type: 'string', default: "'md'", values: null, description: 'Control size.' },
+      {
+        name: 'size',
+        type: 'string',
+        default: "'md'",
+        values: ['sm', 'md', 'lg'],
+        description: 'Control size (shares the checkbox scale).',
+      },
     ],
     events: [
       {
@@ -962,6 +867,15 @@ export const uiComponents = [
   <label class="flex items-center gap-2 opacity-70">
     <UiRadio v-model="state.plan" value="enterprise" disabled /> Enterprise (disabled)
   </label>
+</div>`,
+      },
+      {
+        title: 'Sizes',
+        description: 'Three sizes: sm, md and lg, matching UiCheckbox.',
+        code: `<div class="flex items-center gap-6">
+  <label class="flex items-center gap-2"><UiRadio v-model="state.s" value="a" size="sm" /> Small</label>
+  <label class="flex items-center gap-2"><UiRadio v-model="state.s" value="b" size="md" /> Medium</label>
+  <label class="flex items-center gap-2"><UiRadio v-model="state.s" value="c" size="lg" /> Large</label>
 </div>`,
       },
     ],
@@ -2501,6 +2415,18 @@ export const uiComponents = [
   </div>
 </div>`,
       },
+      {
+        title: 'Weights',
+        description: 'Three colour weights: light, medium and dark.',
+        code: `<div class="flex flex-col gap-1">
+  <p class="text-sm text-gray-500">light</p>
+  <UiDivider color="light" />
+  <p class="text-sm text-gray-500">medium</p>
+  <UiDivider color="medium" />
+  <p class="text-sm text-gray-500">dark</p>
+  <UiDivider color="dark" />
+</div>`,
+      },
     ],
   },
   {
@@ -2628,9 +2554,9 @@ export const uiComponents = [
     name: 'UiSegmented',
     category: 'actions',
     icon: 'mdi:toggle-switch-off-outline',
-    summary: 'Segmented single-select control with a sliding pill.',
+    summary: 'Segmented single-select control with an animated sliding indicator.',
     description:
-      'Pick one of a few named options from a row of buttons, with a pill that slides to the active choice. It is a group of aria-pressed toggle buttons, not a switch, because the choice is between named options rather than on/off. Bind the selection with v-model; label it with aria-label or aria-labelledby.',
+      'Pick one of a few named options from a row of segments, with an indicator that slides to the active choice. It is a group of aria-pressed toggle buttons, not a switch, because the choice is between named options rather than on/off. Its variant prop mirrors UiButton — solid, outline and ghost — so the two read as one family, and it covers both tab-style and icon-toolbar layouts (the role formerly held by the separate buttons group). Bind the selection with v-model; label it with aria-label or aria-labelledby.',
     props: [
       {
         name: 'modelValue',
@@ -2645,7 +2571,16 @@ export const uiComponents = [
         default: '—',
         required: true,
         values: null,
-        description: 'Options as `{ value, label, icon?, disabled? }`.',
+        description:
+          'Options as `{ value, label?, icon?, disabled?, title? }`. Provide label for text segments, icon for icon-only segments, or both; title sets the native tooltip.',
+      },
+      {
+        name: 'variant',
+        type: 'string',
+        default: "'solid'",
+        values: ['solid', 'outline', 'ghost'],
+        description:
+          'Active-segment appearance, matching UiButton: solid fills the indicator (white label), outline and ghost tint it (accent label).',
       },
       {
         name: 'size',
@@ -2658,8 +2593,16 @@ export const uiComponents = [
         name: 'shape',
         type: 'string',
         default: "'pill'",
-        values: ['pill', 'rounded'],
-        description: 'Corner shape of the track and pill.',
+        values: ['pill', 'round', 'square'],
+        description: 'Corner shape of the track, indicator and segments (matches UiButton).',
+      },
+      {
+        name: 'block',
+        type: 'boolean',
+        default: 'false',
+        values: null,
+        description:
+          'Full-width mode; the control fills its container and segments share the width equally.',
       },
       {
         name: 'ariaLabel',
@@ -2680,7 +2623,7 @@ export const uiComponents = [
     examples: [
       {
         title: 'Billing period',
-        description: 'Two named options; the pill slides to the active one.',
+        description: 'Two named options; the indicator slides to the active one.',
         code: `<UiSegmented
   v-model="state.billing"
   aria-label="Billing period"
@@ -2691,23 +2634,44 @@ export const uiComponents = [
 />`,
       },
       {
-        title: 'With icons',
-        description: 'Each option can carry a leading icon.',
+        title: 'Variants',
+        description: 'solid, outline and ghost mirror the equivalent UiButton variants.',
+        code: `<div class="flex flex-col items-start gap-3">
+  <UiSegmented v-model="state.v1" aria-label="Solid" :options="[{ value: 'day', label: 'Day' }, { value: 'week', label: 'Week' }, { value: 'month', label: 'Month' }]" />
+  <UiSegmented v-model="state.v2" variant="outline" aria-label="Outline" :options="[{ value: 'day', label: 'Day' }, { value: 'week', label: 'Week' }, { value: 'month', label: 'Month' }]" />
+  <UiSegmented v-model="state.v3" variant="ghost" aria-label="Ghost" :options="[{ value: 'day', label: 'Day' }, { value: 'week', label: 'Week' }, { value: 'month', label: 'Month' }]" />
+</div>`,
+      },
+      {
+        title: 'Icon toolbar',
+        description:
+          'Icon-only segments with a title on each; square corners suit a toolbar. Options can carry an icon and no label.',
         code: `<UiSegmented
-  v-model="state.view"
-  aria-label="View"
+  v-model="state.tool"
+  variant="outline"
+  shape="square"
+  aria-label="Format"
   :options="[
-    { value: 'grid', label: 'Grid', icon: 'mdi:view-grid' },
-    { value: 'list', label: 'List', icon: 'mdi:view-list' },
+    { value: 'bold', icon: 'mdi:format-bold', title: 'Bold' },
+    { value: 'italic', icon: 'mdi:format-italic', title: 'Italic' },
+    { value: 'underline', icon: 'mdi:format-underline', title: 'Underline' },
   ]"
 />`,
       },
       {
-        title: 'Sizes and shape',
-        description: 'Two sizes (sm, md) and a squarer rounded shape.',
+        title: 'Sizes, shapes and a disabled option',
+        description:
+          'Two sizes (sm, md), three shapes (pill, round, square), and per-option disabled.',
         code: `<div class="flex flex-col items-start gap-3">
-  <UiSegmented v-model="state.a" size="sm" aria-label="Small" :options="[{ value: 'day', label: 'Day' }, { value: 'week', label: 'Week' }, { value: 'month', label: 'Month' }]" />
-  <UiSegmented v-model="state.b" shape="rounded" aria-label="Rounded" :options="[{ value: 'on', label: 'On' }, { value: 'off', label: 'Off' }]" />
+  <UiSegmented v-model="state.a" size="sm" shape="round" aria-label="Small" :options="[{ value: 'day', label: 'Day' }, { value: 'week', label: 'Week' }, { value: 'month', label: 'Month' }]" />
+  <UiSegmented v-model="state.b" aria-label="Disabled option" :options="[{ value: 'on', label: 'On' }, { value: 'off', label: 'Off' }, { value: 'auto', label: 'Auto', disabled: true }]" />
+</div>`,
+      },
+      {
+        title: 'Full width',
+        description: 'block stretches the control to fill its container.',
+        code: `<div class="max-w-sm">
+  <UiSegmented v-model="state.tab" block variant="ghost" aria-label="Filter" :options="[{ value: 'all', label: 'All' }, { value: 'active', label: 'Active' }, { value: 'done', label: 'Done' }]" />
 </div>`,
       },
     ],
@@ -3372,22 +3336,23 @@ export const uiComponents = [
     ],
   },
   {
-    slug: 'comparison-table',
-    base: 'ComparisonTable',
-    name: 'UiComparisonTable',
+    slug: 'table',
+    base: 'Table',
+    name: 'UiTable',
     category: 'display',
-    icon: 'mdi:table-check',
-    summary: 'An accessible two-way comparison table.',
+    icon: 'mdi:table',
+    summary: 'A data table with a built-in comparison mode.',
     description:
-      'A feature-by-feature comparison built on a real table (caption, scope headers), with one column accented for the common "us versus the usual way" layout. Data-driven from a rows array; the leading tick and dash icons are decorative, so the cell text carries the meaning. It scrolls horizontally on narrow screens rather than crushing the columns.',
+      'A general, accessible data table driven by columns and rows: each column names a key, and each row is an object keyed by those keys. It renders a real <table> (caption, scope headers) that scrolls horizontally on narrow screens rather than crushing its columns. Comparison is a configuration rather than a separate component — mark the label column header, give the featured column highlight, and hand each value column an icon — which reproduces the old comparison table. The #cell scoped slot takes over any cell.',
     props: [
       {
-        name: 'caption',
-        type: 'string',
+        name: 'columns',
+        type: 'array',
         default: '—',
         required: true,
         values: null,
-        description: 'Table summary for assistive technology; rendered visually hidden.',
+        description:
+          'Column definitions, left to right, each `{ key, label?, align?, header?, highlight?, icon?, width? }`. header renders the column as row headers (`<th scope="row">`); highlight accent-tints it; icon shows a leading MDI icon before each value; align is left/center/right.',
       },
       {
         name: 'rows',
@@ -3395,62 +3360,93 @@ export const uiComponents = [
         default: '—',
         required: true,
         values: null,
-        description: 'Rows to render, each `{ key?, feature, primary, secondary }`.',
+        description: 'Row objects, each keyed by the column `key`s.',
       },
       {
-        name: 'primaryLabel',
+        name: 'caption',
         type: 'string',
-        default: '—',
-        required: true,
+        default: "''",
         values: null,
-        description: 'Heading for the accented (primary) column.',
+        description: 'Table caption, rendered as a real `<caption>`. Visible by default.',
       },
       {
-        name: 'secondaryLabel',
-        type: 'string',
-        default: '—',
-        required: true,
+        name: 'hideCaption',
+        type: 'boolean',
+        default: 'false',
         values: null,
-        description: 'Heading for the comparison (secondary) column.',
+        description: 'Keep the caption for assistive technology but hide it visually.',
       },
       {
-        name: 'featureLabel',
+        name: 'rowKey',
         type: 'string',
-        default: "'Feature'",
+        default: "'key'",
         values: null,
-        description: 'Accessible name for the otherwise-blank first column.',
-      },
-      {
-        name: 'primaryIcon',
-        type: 'string',
-        default: "'mdi:check-circle'",
-        values: null,
-        description: 'MDI icon marking each primary-column cell.',
-      },
-      {
-        name: 'secondaryIcon',
-        type: 'string',
-        default: "'mdi:minus-circle-outline'",
-        values: null,
-        description: 'MDI icon marking each secondary-column cell.',
+        description: 'Row field used as the v-for key; falls back to the row index.',
       },
     ],
     events: [],
-    slots: [],
+    slots: [
+      { name: 'caption', description: 'Rich caption content (overrides the caption prop).' },
+      { name: 'cell', description: 'Custom cell content. Scope: `{ row, column, value }`.' },
+    ],
     examples: [
       {
-        title: 'Two-way comparison',
-        description: 'A captioned table with one column accented.',
-        code: `<UiComparisonTable
-  caption="How Numori compares"
-  primary-label="Numori"
-  secondary-label="The usual suite"
+        title: 'Data table',
+        description:
+          'Columns name a key; rows are objects keyed by those keys. Align a column right.',
+        code: `<UiTable
+  caption="Team"
+  :columns="[
+    { key: 'name', label: 'Name' },
+    { key: 'role', label: 'Role' },
+    { key: 'commits', label: 'Commits', align: 'right' },
+  ]"
   :rows="[
-    { key: 'oss', feature: 'Open source', primary: 'The whole ecosystem', secondary: 'The client, sometimes' },
-    { key: 'sync', feature: 'Sync', primary: 'End-to-end encrypted', secondary: 'Readable on the server' },
-    { key: 'ai', feature: 'AI training', primary: 'Never', secondary: 'On by default' },
+    { key: 'ada', name: 'Ada Lovelace', role: 'Engineer', commits: 128 },
+    { key: 'grace', name: 'Grace Hopper', role: 'Lead', commits: 342 },
   ]"
 />`,
+      },
+      {
+        title: 'Comparison mode',
+        description:
+          'Mark the label column header, the featured column highlight, and give each value column an icon — the old comparison table as a configuration.',
+        code: `<UiTable
+  caption="How Numori compares"
+  hide-caption
+  :columns="[
+    { key: 'feature', label: 'Feature', header: true },
+    { key: 'numori', label: 'Numori', highlight: true, icon: 'mdi:check-circle' },
+    { key: 'usual', label: 'The usual suite', icon: 'mdi:minus-circle-outline' },
+  ]"
+  :rows="[
+    { key: 'oss', feature: 'Open source', numori: 'The whole ecosystem', usual: 'The client, sometimes' },
+    { key: 'sync', feature: 'Sync', numori: 'End-to-end encrypted', usual: 'Readable on the server' },
+    { key: 'ai', feature: 'AI training', numori: 'Never', usual: 'On by default' },
+  ]"
+/>`,
+      },
+      {
+        title: 'Custom cells',
+        description: 'The #cell scoped slot renders any cell — here a badge for a status column.',
+        code: `<UiTable
+  caption="Services"
+  :columns="[
+    { key: 'name', label: 'Service' },
+    { key: 'status', label: 'Status' },
+  ]"
+  :rows="[
+    { key: 'sync', name: 'Sync', status: 'active' },
+    { key: 'backup', name: 'Backup', status: 'paused' },
+  ]"
+>
+  <template #cell="{ column, value }">
+    <UiBadge v-if="column.key === 'status'" :color="value === 'active' ? 'green' : 'gray'">
+      {{ value }}
+    </UiBadge>
+    <template v-else>{{ value }}</template>
+  </template>
+</UiTable>`,
       },
     ],
   },

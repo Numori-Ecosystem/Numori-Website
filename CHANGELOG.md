@@ -6,8 +6,38 @@ deployed site, so changes land under **Unreleased** rather than versioned tags.
 
 ## [Unreleased]
 
+### Fixed
+
+- **UI manual code samples are now syntax-highlighted.** `CodePreview` rendered
+  its source as plain text; it now highlights with Shiki (a dual light/dark theme
+  switched under the `.dark` class). Highlighting runs once at prerender time and
+  is serialised into the page payload, so the highlighter and its wasm engine are
+  dead-code-eliminated from the client build and never ship to the browser.
+- **Overlays in the UI manual previews are no longer clipped.** The preview card
+  used `overflow-hidden`, which cut off `UiTooltip` and `UiDropdown` (both
+  position absolutely rather than teleporting). The clip is now scoped to the
+  source pane, so overlays escape the demo area in full.
+
 ### Changed
 
+- **Upgraded to Numori UI 0.4.0 and migrated its breaking changes** (dependency
+  now `"numori-ui": "^0.4.0"`). 0.4.0 is a consolidation release that folds two
+  components into more capable ones:
+  - `UiComparisonTable` was removed in favour of the general `UiTable`. The home
+    page's comparison now configures `UiTable` — a row-header label column, one
+    `highlight` column, and per-column tick/dash `icon`s — reproducing the old
+    look, with the caption kept for assistive technology via `hide-caption`.
+  - `UiButtonsGroup` was removed; its role is covered by `UiSegmented`, whose new
+    `variant` (`solid` / `outline` / `ghost`), `square` shape, `block` mode and
+    per-option `title` / `disabled` cover the former toolbar and tab layouts.
+  - `UiButton` shapes were trimmed to `round` / `pill` / `square`. The pricing
+    planner's stepper buttons moved from the removed `shape="circle"` to
+    `shape="pill"` with `icon-only`, which is now the circular icon-button recipe.
+- The UI manual catalogue (`app/data/ui-components.js`) tracks the 0.4.0 API:
+  the `UiButtonsGroup` and `UiComparisonTable` entries were removed, a `UiTable`
+  entry was added (data-table and comparison examples, `#cell` slot), and the
+  `UiSegmented` and `UiButton` entries were updated for the new props and shapes.
+  The component count updates automatically.
 - **Upgraded to Numori UI 0.3.0 and adopted its new components.** Three local
   components graduated into the design system and were removed here in favour of
   the shared versions (behaviour and appearance preserved):
