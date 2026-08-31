@@ -125,9 +125,6 @@ export default defineNuxtConfig({
      * unqualified "no cookies" claim.
      */
     detectBrowserLanguage: false,
-    bundle: {
-      optimizeTranslationDirective: false,
-    },
     experimental: {
       // Let @nuxtjs/i18n own the locale-related head tags (html lang/dir,
       // canonical, hreflang alternates, og:locale). In this mode `useLocaleHead`

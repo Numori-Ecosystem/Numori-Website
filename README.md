@@ -13,15 +13,22 @@ cookie banner.
   `node:sqlite` rather than `better-sqlite3`, so `npm install` needs no native
   build step. See [Content database](#content-database) if you would rather use
   the default driver.
-- `numori-ui` checked out as a sibling directory. It is consumed as
-  `file:../numori-ui`, which npm links as a symlink, so local edits to the design
-  system show up here immediately.
+- [`numori-ui`](https://www.npmjs.com/package/numori-ui) — the design system. It
+  is consumed from the npm registry (`"numori-ui": "^0.2.0"`), so a plain
+  `npm install` pulls it in; no sibling checkout is required.
 
+To work on the design system and this site together, link a local checkout:
+
+```bash
+# in ../numori-ui
+npm link
+# in this repository
+npm link numori-ui
 ```
-Work/numori/
-├── numori-ui/        ← the design system (required)
-└── numori-website/   ← this repository
-```
+
+`npm link` restores the published dependency. When linked, note that Tailwind
+scans `node_modules/numori-ui/src` (see [Styling](#styling)); that path resolves
+through the symlink to your local checkout, so component edits show up here.
 
 ## Getting started
 
@@ -77,6 +84,30 @@ This project uses the Nuxt 4 `app/` directory. Note that `numori-notes` and
 `numori-clips` predate it and keep `components/`, `pages/` and friends at the
 repository root; new projects should follow the layout here.
 
+### Components and the design system
+
+The site's UI is built on [Numori UI](https://www.npmjs.com/package/numori-ui),
+registered by its Nuxt module (`numori-ui/nuxt`) with the `Ui` prefix, so every
+`Ui*` tag auto-resolves with no import. Most components under `app/components/`
+compose those primitives rather than hand-rolling markup:
+
+- **Cards** (`ProductCard`, `BlogCard`, `PrincipleCard`, `PricingCard`,
+  `DonateOptions`, `UiComponentGallery`) build on `UiCard`.
+- **Headings** (`SectionHeading`, `CtaBand`) build on `UiSectionHeading`.
+- `BreadcrumbTrail` wraps `UiBreadcrumb` (routing its links through `NuxtLink`).
+- `BillingToggle` wraps `UiSegmented`.
+- `ProductMark` wraps `UiIconTile`, adding the per-product accent.
+
+What stays bespoke is deliberate: `LocaleSwitcher` is real anchor links (for SEO
+and no-JS), not a button group, and `PageHeader` is a page-level composition. When
+a pattern recurs across the site, prefer adding or extending a `numori-ui`
+component over duplicating markup here.
+
+Icons render through `@nuxt/icon` (MDI, bundled at build time); `numori-ui` is
+told to delegate its own icon rendering to that same `Icon` component via
+`numoriUi.icons.component` in `nuxt.config.ts`, so the whole site has one icon
+pipeline.
+
 ## Styling
 
 Tailwind 4 is wired as a **Vite plugin**, not through `@nuxtjs/tailwindcss`:
@@ -100,9 +131,11 @@ export default defineNuxtConfig({
 ```
 
 The `numori-ui/css` import is not optional. It carries the colour tokens
-(`primary`, `gray`, `success`, `warning`, `error`), the `dark` custom variant, and
-the `@source` declarations pointing at the library's own components — Tailwind
-skips `node_modules` otherwise, and every `Ui*` component would render unstyled.
+(`primary`, `gray`, `success`, `warning`, `error`) and the `dark` custom variant.
+`main.css` then adds two explicit `@source` lines pointing at
+`node_modules/numori-ui/src`, so Tailwind scans the library's own components and
+generates the utilities they use — Tailwind excludes `node_modules` from
+automatic detection, so without them every `Ui*` component would render unstyled.
 
 There is no `tailwind.config.js`. Project-specific tokens live in an `@theme`
 block in `main.css`, alongside a handful of helper classes: `.container-page`,

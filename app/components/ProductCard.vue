@@ -1,12 +1,10 @@
 <template>
-  <article
-    class="card-interactive group relative flex h-full flex-col gap-4 rounded-2xl border border-gray-200 bg-white p-5 shadow-card hover:shadow-card-hover dark:border-gray-700 dark:bg-gray-900"
-    :class="[
-      styles.ring,
-      // The whole card is one link, so lift the focus ring from the anchor text
-      // up to the card. The anchor drops its own ring to avoid drawing two.
-      'focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-primary-500 dark:focus-within:outline-primary-400',
-    ]"
+  <UiCard
+    tag="article"
+    interactive
+    focus-ring
+    class="group flex h-full flex-col gap-4"
+    :class="styles.ring"
   >
     <div class="flex items-start justify-between gap-3">
       <ProductMark
@@ -49,17 +47,19 @@
         />
       </p>
     </div>
-  </article>
+  </UiCard>
 </template>
 
 <script setup>
 /**
  * ProductCard — one product in a grid, linking to its detail page.
  *
+ * Built on the design system's `UiCard` (interactive surface with `focus-ring`).
  * The heading's link is stretched over the whole card with an `::after` overlay,
  * so the entire surface is clickable while remaining a single link and a single
  * tab stop. Nothing else in the card is interactive, which is what makes that
- * pattern safe here.
+ * pattern safe here. The accent hover border comes from the product's palette
+ * (`styles.ring`).
  *
  * The "Learn more" line is decorative and hidden from assistive technology: the
  * heading link already says where it goes.

@@ -1,10 +1,12 @@
 <template>
-  <div
-    class="card-interactive relative flex h-full flex-col rounded-2xl border bg-white p-6 dark:bg-gray-900"
+  <UiCard
+    interactive
+    padding="lg"
+    class="relative flex h-full flex-col"
     :class="
       highlighted
         ? 'border-primary-400 shadow-glow dark:border-primary-400/60'
-        : 'border-gray-200 shadow-card hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600'
+        : 'hover:border-gray-300 dark:hover:border-gray-600'
     "
   >
     <p
@@ -67,12 +69,17 @@
     <div class="mt-8 pt-2">
       <slot name="action" />
     </div>
-  </div>
+  </UiCard>
 </template>
 
 <script setup>
 /**
  * PricingCard — one plan on the pricing page.
+ *
+ * Built on the design system's `UiCard` (interactive surface). The recommended
+ * plan is marked with the site's `shadow-glow` and an accent border rather than
+ * the library's generic `highlighted` state, because the glow token is
+ * website-specific.
  *
  * The plans differ only by storage, so storage is the visual headline and the
  * price sits below it. The feature list exists to say "and everything else is

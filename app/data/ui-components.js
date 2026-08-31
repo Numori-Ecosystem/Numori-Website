@@ -2622,6 +2622,438 @@ export const uiComponents = [
       },
     ],
   },
+  {
+    slug: 'segmented',
+    base: 'Segmented',
+    name: 'UiSegmented',
+    category: 'actions',
+    icon: 'mdi:toggle-switch-off-outline',
+    summary: 'Segmented single-select control with a sliding pill.',
+    description:
+      'Pick one of a few named options from a row of buttons, with a pill that slides to the active choice. It is a group of aria-pressed toggle buttons, not a switch, because the choice is between named options rather than on/off. Bind the selection with v-model; label it with aria-label or aria-labelledby.',
+    props: [
+      {
+        name: 'modelValue',
+        type: 'string | number',
+        default: 'undefined',
+        values: null,
+        description: 'The selected option value (v-model).',
+      },
+      {
+        name: 'options',
+        type: 'array',
+        default: '—',
+        required: true,
+        values: null,
+        description: 'Options as `{ value, label, icon?, disabled? }`.',
+      },
+      {
+        name: 'size',
+        type: 'string',
+        default: "'md'",
+        values: ['sm', 'md'],
+        description: 'Control size.',
+      },
+      {
+        name: 'shape',
+        type: 'string',
+        default: "'pill'",
+        values: ['pill', 'rounded'],
+        description: 'Corner shape of the track and pill.',
+      },
+      {
+        name: 'ariaLabel',
+        type: 'string',
+        default: 'undefined',
+        values: null,
+        description: 'Accessible name for the group (omit if labelled by aria-labelledby).',
+      },
+    ],
+    events: [
+      {
+        name: 'update:modelValue',
+        payload: 'string | number',
+        description: "Emitted with the chosen option's value.",
+      },
+    ],
+    slots: [],
+    examples: [
+      {
+        title: 'Billing period',
+        description: 'Two named options; the pill slides to the active one.',
+        code: `<UiSegmented
+  v-model="state.billing"
+  aria-label="Billing period"
+  :options="[
+    { value: 'monthly', label: 'Monthly' },
+    { value: 'yearly', label: 'Yearly' },
+  ]"
+/>`,
+      },
+      {
+        title: 'With icons',
+        description: 'Each option can carry a leading icon.',
+        code: `<UiSegmented
+  v-model="state.view"
+  aria-label="View"
+  :options="[
+    { value: 'grid', label: 'Grid', icon: 'mdi:view-grid' },
+    { value: 'list', label: 'List', icon: 'mdi:view-list' },
+  ]"
+/>`,
+      },
+      {
+        title: 'Sizes and shape',
+        description: 'Two sizes (sm, md) and a squarer rounded shape.',
+        code: `<div class="flex flex-col items-start gap-3">
+  <UiSegmented v-model="state.a" size="sm" aria-label="Small" :options="[{ value: 'day', label: 'Day' }, { value: 'week', label: 'Week' }, { value: 'month', label: 'Month' }]" />
+  <UiSegmented v-model="state.b" shape="rounded" aria-label="Rounded" :options="[{ value: 'on', label: 'On' }, { value: 'off', label: 'Off' }]" />
+</div>`,
+      },
+    ],
+  },
+  {
+    slug: 'card',
+    base: 'Card',
+    name: 'UiCard',
+    category: 'display',
+    icon: 'mdi:card-outline',
+    summary: 'The surface primitive: a bordered, rounded, elevated container.',
+    description:
+      'The shell shared by product, blog, pricing and link cards. It lays out optional header, default and footer slots but takes no view over their contents. Renders as any element via tag (so a whole card can be a link), with interactive (hover lift), highlighted (accent border) and focus-ring (for the stretched-link pattern) states. External classes merge via tailwind-merge, so a caller can override the tint.',
+    props: [
+      {
+        name: 'tag',
+        type: 'string',
+        default: "'div'",
+        values: ['div', 'article', 'section', 'a', 'li', 'any valid tag'],
+        description: 'Element (or globally registered component) to render as.',
+      },
+      {
+        name: 'padding',
+        type: 'string',
+        default: "'md'",
+        values: ['none', 'xs', 'sm', 'md', 'lg'],
+        description: 'Inner padding.',
+      },
+      {
+        name: 'radius',
+        type: 'string',
+        default: "'2xl'",
+        values: ['lg', 'xl', '2xl'],
+        description: 'Corner radius.',
+      },
+      {
+        name: 'shadow',
+        type: 'string',
+        default: "'card'",
+        values: ['none', 'card', 'card-hover'],
+        description: 'Base drop shadow.',
+      },
+      {
+        name: 'bordered',
+        type: 'boolean',
+        default: 'true',
+        values: null,
+        description: 'Draw the surface border.',
+      },
+      {
+        name: 'interactive',
+        type: 'boolean',
+        default: 'false',
+        values: null,
+        description:
+          'Hover lift and stronger shadow; add a hover:border-* class to tint the border.',
+      },
+      {
+        name: 'highlighted',
+        type: 'boolean',
+        default: 'false',
+        values: null,
+        description: 'Accent border and a raised shadow, for the featured card in a group.',
+      },
+      {
+        name: 'focusRing',
+        type: 'boolean',
+        default: 'false',
+        values: null,
+        description: 'Lift the focus ring to the card for the stretched-link pattern.',
+      },
+    ],
+    events: [],
+    slots: [
+      { name: 'default', description: 'Card body.' },
+      { name: 'header', description: 'Optional header, drawn above the body with a divider.' },
+      { name: 'footer', description: 'Optional footer, drawn below the body with a divider.' },
+    ],
+    examples: [
+      {
+        title: 'Basic',
+        description: 'A padded, bordered surface.',
+        code: `<UiCard class="max-w-sm">
+  <h3 class="font-semibold">Encrypted by default</h3>
+  <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Your notes are yours alone.</p>
+</UiCard>`,
+      },
+      {
+        title: 'Interactive and highlighted',
+        description: 'Hover to lift; the highlighted card carries the accent border.',
+        code: `<div class="grid gap-4 sm:grid-cols-2">
+  <UiCard interactive class="hover:border-primary-300">
+    <h3 class="font-semibold">Standard</h3>
+    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">A regular tier.</p>
+  </UiCard>
+  <UiCard highlighted>
+    <h3 class="font-semibold">Recommended</h3>
+    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">The one most people pick.</p>
+  </UiCard>
+</div>`,
+      },
+      {
+        title: 'Header and footer',
+        description: 'The header and footer slots add dividers around the body.',
+        code: `<UiCard class="flex max-w-sm flex-col" padding="lg">
+  <template #header>
+    <h3 class="font-semibold">Plan</h3>
+  </template>
+  <p class="text-sm text-gray-600 dark:text-gray-400">Everything included, one price.</p>
+  <template #footer>
+    <UiButton block>Choose plan</UiButton>
+  </template>
+</UiCard>`,
+      },
+    ],
+  },
+  {
+    slug: 'icon-tile',
+    base: 'IconTile',
+    name: 'UiIconTile',
+    category: 'display',
+    icon: 'mdi:square-rounded',
+    summary: 'A rounded, tinted tile holding a single icon.',
+    description:
+      'The motif that stands in for a product logo or marks a feature next to a heading. Decorative by default (the icon is hidden from assistive technology). The tint uses the semantic palette; pass bg-*/text-* classes to override it with any colour via tailwind-merge.',
+    props: [
+      {
+        name: 'icon',
+        type: 'string',
+        default: '—',
+        required: true,
+        values: null,
+        description: 'MDI icon name.',
+      },
+      {
+        name: 'color',
+        type: 'string',
+        default: "'primary'",
+        values: ['primary', 'gray', 'success', 'warning', 'error', 'blue'],
+        description: 'Tint colour from the semantic palette.',
+      },
+      {
+        name: 'size',
+        type: 'string',
+        default: "'md'",
+        values: ['sm', 'md', 'lg', 'xl'],
+        description: 'Tile size; the radius scales with it.',
+      },
+    ],
+    events: [],
+    slots: [],
+    examples: [
+      {
+        title: 'Colours',
+        description: 'The semantic tints.',
+        code: `<div class="flex items-center gap-3">
+  <UiIconTile icon="mdi:shield-lock-outline" />
+  <UiIconTile icon="mdi:check" color="success" />
+  <UiIconTile icon="mdi:alert-outline" color="warning" />
+  <UiIconTile icon="mdi:close" color="error" />
+  <UiIconTile icon="mdi:information-outline" color="blue" />
+  <UiIconTile icon="mdi:cog-outline" color="gray" />
+</div>`,
+      },
+      {
+        title: 'Sizes',
+        description: 'Four sizes from sm to xl.',
+        code: `<div class="flex items-center gap-3">
+  <UiIconTile icon="mdi:note-text-outline" size="sm" />
+  <UiIconTile icon="mdi:note-text-outline" size="md" />
+  <UiIconTile icon="mdi:note-text-outline" size="lg" />
+  <UiIconTile icon="mdi:note-text-outline" size="xl" />
+</div>`,
+      },
+      {
+        title: 'Custom colour',
+        description: 'Pass bg-*/text-* classes to use a colour outside the semantic set.',
+        code: `<div class="flex items-center gap-3">
+  <UiIconTile icon="mdi:palette-outline" class="bg-sky-100 text-sky-700 dark:bg-sky-400/15 dark:text-sky-300" />
+  <UiIconTile icon="mdi:palette-outline" class="bg-violet-100 text-violet-700 dark:bg-violet-400/15 dark:text-violet-300" />
+</div>`,
+      },
+    ],
+  },
+  {
+    slug: 'section-heading',
+    base: 'SectionHeading',
+    name: 'UiSectionHeading',
+    category: 'display',
+    icon: 'mdi:format-header-pound',
+    summary: 'Eyebrow, heading and standfirst for a page or section.',
+    description:
+      'The eyebrow / heading / standfirst trio used at the top of a page or the start of a section. The heading tag (level) follows the document outline while the visual size is set separately, so neither is sacrificed for the other. Layout-neutral: the caller controls spacing and measure.',
+    props: [
+      {
+        name: 'eyebrow',
+        type: 'string',
+        default: "''",
+        values: null,
+        description: 'Small uppercase label above the heading.',
+      },
+      {
+        name: 'title',
+        type: 'string',
+        default: "''",
+        values: null,
+        description: 'Heading text (omit if using the title slot).',
+      },
+      {
+        name: 'subtitle',
+        type: 'string',
+        default: "''",
+        values: null,
+        description: 'Supporting paragraph below the heading.',
+      },
+      {
+        name: 'level',
+        type: 'string',
+        default: "'h2'",
+        values: ['h1', 'h2', 'h3', 'h4'],
+        description: 'Heading tag, chosen to match the document outline.',
+      },
+      {
+        name: 'size',
+        type: 'string',
+        default: "'md'",
+        values: ['sm', 'md', 'lg'],
+        description: 'Visual size of the heading, independent of level.',
+      },
+      {
+        name: 'align',
+        type: 'string',
+        default: "'left'",
+        values: ['left', 'center'],
+        description: 'Horizontal alignment.',
+      },
+      {
+        name: 'id',
+        type: 'string',
+        default: 'undefined',
+        values: null,
+        description: 'Optional id on the heading, for aria-labelledby.',
+      },
+    ],
+    events: [],
+    slots: [
+      { name: 'title', description: 'Overrides the title prop for rich heading content.' },
+      { name: 'subtitle', description: 'Overrides the subtitle prop.' },
+      {
+        name: 'default',
+        description: 'Extra content below the standfirst, e.g. a call to action.',
+      },
+    ],
+    examples: [
+      {
+        title: 'Section heading',
+        description: 'Eyebrow, heading and standfirst, left-aligned.',
+        code: `<UiSectionHeading
+  eyebrow="Pricing"
+  title="One price, everything included"
+  subtitle="No tiers, no add-ons — every app, one storage quota."
+/>`,
+      },
+      {
+        title: 'Centred hero',
+        description: 'A larger, centred heading with a nested level.',
+        code: `<UiSectionHeading
+  align="center"
+  size="lg"
+  level="h1"
+  title="Own your notes"
+  subtitle="A calm, private place to think."
+/>`,
+      },
+    ],
+  },
+  {
+    slug: 'breadcrumb',
+    base: 'Breadcrumb',
+    name: 'UiBreadcrumb',
+    category: 'display',
+    icon: 'mdi:chevron-right',
+    summary: 'The trail from the site root to the current page.',
+    description:
+      'A navigation trail whose final item always renders as aria-current="page" text rather than a link. Separators are decorative icons. Links render with linkTag, so a router link component can replace the plain anchor; the item scoped slot allows full control of each entry.',
+    props: [
+      {
+        name: 'items',
+        type: 'array',
+        default: '—',
+        required: true,
+        values: null,
+        description: 'Entries `{ label, to?, href? }`, root first; the last renders as text.',
+      },
+      {
+        name: 'ariaLabel',
+        type: 'string',
+        default: "'Breadcrumb'",
+        values: null,
+        description: 'Accessible name for the surrounding nav.',
+      },
+      {
+        name: 'linkTag',
+        type: 'string',
+        default: "'a'",
+        values: null,
+        description: 'Element or component used for linked entries (e.g. NuxtLink).',
+      },
+      {
+        name: 'separatorIcon',
+        type: 'string',
+        default: "'mdi:chevron-right'",
+        values: null,
+        description: 'MDI icon drawn between entries.',
+      },
+    ],
+    events: [],
+    slots: [
+      { name: 'item', description: 'Override a single entry. Scope: `{ item, index, isLast }`.' },
+    ],
+    examples: [
+      {
+        title: 'Anchor links',
+        description: 'The final entry is plain text; earlier ones link.',
+        code: `<UiBreadcrumb
+  :items="[
+    { label: 'Home', href: '#' },
+    { label: 'Products', href: '#' },
+    { label: 'Notes' },
+  ]"
+/>`,
+      },
+      {
+        title: 'Custom separator',
+        description: 'Any MDI icon can separate the entries.',
+        code: `<UiBreadcrumb
+  separator-icon="mdi:slash-forward"
+  :items="[
+    { label: 'Docs', href: '#' },
+    { label: 'Components', href: '#' },
+    { label: 'Breadcrumb' },
+  ]"
+/>`,
+      },
+    ],
+  },
 ]
 
 /** Look up a component doc by its URL slug. Returns undefined when unknown. */

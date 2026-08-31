@@ -2,39 +2,12 @@
   <div class="flex flex-wrap items-center justify-center gap-3">
     <h2 :id="groupId" class="sr-only">{{ $t('pricing.billing.label') }}</h2>
 
-    <div
-      role="group"
+    <UiSegmented
+      :model-value="modelValue"
+      :options="options"
       :aria-labelledby="groupId"
-      class="relative inline-flex rounded-full border border-gray-200 bg-gray-50 p-1 dark:border-gray-700 dark:bg-gray-900"
-    >
-      <button
-        v-for="option in options"
-        :key="option.value"
-        type="button"
-        :aria-pressed="modelValue === option.value ? 'true' : 'false'"
-        class="relative rounded-full px-4 py-1.5 text-sm font-semibold transition-colors duration-200"
-        :class="
-          modelValue === option.value
-            ? 'text-white'
-            : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100'
-        "
-        @click="emit('update:modelValue', option.value)"
-      >
-        <!--
-          The moving pill is a sibling behind the labels rather than a background
-          on the active button, so it can slide between them. `layout` is shared
-          across both buttons, which is what makes Vue reuse the element and
-          animate it instead of swapping two different ones.
-        -->
-        <span
-          v-if="modelValue === option.value"
-          class="absolute inset-0 -z-10 rounded-full bg-primary-500 transition-all duration-300"
-          style="view-transition-name: billing-pill"
-          aria-hidden="true"
-        />
-        {{ option.label }}
-      </button>
-    </div>
+      @update:model-value="emit('update:modelValue', $event)"
+    />
 
     <Transition name="swap">
       <span
@@ -52,9 +25,11 @@
 /**
  * BillingToggle — switches the pricing page between monthly and yearly prices.
  *
- * Two `aria-pressed` buttons in a labelled group rather than a switch: this is a
- * choice between two named options, not an on/off state, and "Yearly is off" is
- * not a sensible thing for a screen reader to say.
+ * Built on the design system's `UiSegmented`: a set of `aria-pressed` buttons in
+ * a labelled group rather than a switch, because this is a choice between two
+ * named options, not an on/off state, and "Yearly is off" is not a sensible
+ * thing for a screen reader to say. The group is named by the visually hidden
+ * heading via `aria-labelledby`.
  *
  * The saving badge only appears on the yearly option, and it animates in so the
  * page does not reflow abruptly underneath the pointer.

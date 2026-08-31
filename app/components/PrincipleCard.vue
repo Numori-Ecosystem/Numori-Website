@@ -1,25 +1,31 @@
 <template>
-  <div
-    class="card-interactive group flex h-full flex-col gap-3 rounded-2xl border border-gray-200 bg-white p-6 hover:border-primary-200 hover:shadow-card dark:border-gray-700 dark:bg-gray-900 dark:hover:border-primary-400/30"
+  <UiCard
+    interactive
+    shadow="none"
+    padding="lg"
+    class="group flex h-full flex-col gap-3 hover:border-primary-200 hover:shadow-card dark:hover:border-primary-400/30"
   >
-    <span
-      class="grid size-10 place-items-center rounded-xl bg-primary-100 text-primary-700 transition-transform duration-300 group-hover:scale-110 dark:bg-primary-400/15 dark:text-primary-300"
-    >
-      <Icon :name="icon" class="size-5" aria-hidden="true" />
-    </span>
+    <UiIconTile
+      :icon="icon"
+      class="transition-transform duration-300 group-hover:scale-110"
+    />
 
     <h3 class="text-base font-semibold">{{ title }}</h3>
 
     <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">{{ body }}</p>
-  </div>
+  </UiCard>
 </template>
 
 <script setup>
 /**
  * PrincipleCard — one of the commitments listed on the home page.
  *
- * Not a link, so it is a plain `<div>` rather than an `<article>`: it is a
- * fragment of a list, not a self-contained piece of content.
+ * Built on the design system's `UiCard` (interactive surface) and `UiIconTile`
+ * (the primary-tinted icon tile). It keeps the accent hover border by overriding
+ * the card's neutral hover tint via `tailwind-merge`.
+ *
+ * Not a link, so nothing inside is interactive — it is a fragment of a list, not
+ * a self-contained piece of content.
  *
  * @example
  * <PrincipleCard

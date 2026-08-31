@@ -3,16 +3,18 @@
     :aria-labelledby="headingId"
     class="hero-wash border-y border-gray-200 dark:border-gray-800"
   >
-    <div class="reveal container-page py-16 text-center sm:py-20">
-      <h2 :id="headingId" class="text-2xl font-bold sm:text-3xl">{{ title }}</h2>
-
-      <p class="mx-auto mt-4 max-w-2xl text-base text-gray-600 sm:text-lg dark:text-gray-400">
-        {{ body }}
-      </p>
-
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <slot />
-      </div>
+    <div class="reveal container-page py-16 sm:py-20">
+      <UiSectionHeading
+        :id="headingId"
+        align="center"
+        :title="title"
+        :subtitle="body"
+        class="mx-auto max-w-2xl"
+      >
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <slot />
+        </div>
+      </UiSectionHeading>
     </div>
   </section>
 </template>
@@ -21,7 +23,8 @@
 /**
  * CtaBand — the closing call-to-action band on a page.
  *
- * Uses `aria-labelledby` pointing at its own heading so the section has an
+ * Uses the design system's `UiSectionHeading` (centred) for the heading and
+ * standfirst, and points `aria-labelledby` at that heading so the section has an
  * accessible name and shows up as a meaningful landmark rather than an anonymous
  * region.
  *
